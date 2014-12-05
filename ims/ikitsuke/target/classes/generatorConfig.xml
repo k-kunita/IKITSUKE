@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<classPathEntry
+		location="C:/Users/h-takemoto/.m2/repository/mysql/mysql-connector-java/5.1.18/mysql-connector-java-5.1.18.jar" />
+	<context id="context1">
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/ikitsuke" userId="ikitsukeuser"
+			password="fores2014"></jdbcConnection>
+		<javaModelGenerator targetPackage="jp.co.ikitsuke.dataAccess.entity"
+			targetProject="ikitsuke/src/main/java"></javaModelGenerator>
+		<sqlMapGenerator targetPackage="jp.co.ikitsuke.dataAccess.mapper"
+			targetProject="ikitsuke/src/main/java" />
+		<javaClientGenerator targetPackage="jp.co.ikitsuke.dataAccess.client"
+			targetProject="ikitsuke/src/main/java" type="XMLMAPPER"></javaClientGenerator>
+		<table schema="ikitsuke" tableName="login"></table>
+		<table schema="ikitsuke" tableName="shop_category"></table>
+		<table schema="ikitsuke" tableName="shop_info"></table>
+	</context>
+</generatorConfiguration>
