@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+h1 {
+  margin: 10px 4%;
+  font-size: 35px;
+}
+
+.detarledit_list {
+  margin: 7% 0 5% 0;
+
+}
+
+.detarledit_list dt {
+  width: 20%;
+  margin-left: 30%;
+  float: left;
+  clear: both;
+  font-size: 30px;
+}
+
+.detarledit_list dd {
+  margin-bottom: 45px;
+}
+
+.addcoment_form {
+  height: 55px;
+}
+
+.detailedit_form {
+  font-size: 15px;
+}
+
+.detailedit_btn_group {
+  margin-left: 30%;
+}
+
+.detailedit_btn {
+  padding: 13px 49px;
+  font-size: 20px;
+  border-radius: 6px;
+}
+
+.delete_btn {
+  margin-right: 10%;
+}
+
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang=ja>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>IKITSUKE</title>
+  <link rel="stylesheet" href="reset.css" type="text/css">
+  <link rel="stylesheet" href="index.css" type="text/css">
+  <link rel="stylesheet" href="detailedit.css" type="text/css">
+</head>
+<body>
+
+  <!-- heade -->
+  <header>
+    <nav>
+      <ul class="nav_bar">
+        <li class="title">
+          <a href="#">
+            title
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            HOME</a>
+          </li>
+          <li>
+           <a href="#">
+             ACCOUNT
+           </a>
+         </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- main_contents -->
+    <div class="main_contents">
+      <h1>行きつけのお店を追加しよう！</h1>
+      <form>
+      <dl class="detarledit_list">
+        <dt>カテゴリ名</dt>
+        <dd>Bar</dd>
+        <dt>店舗名</dt>
+        <dd><input type="text" maxlength="15" class="detailedit_form"></dd>
+        <dt>電話番号</dt>
+        <dd><input type="text" maxlength="11" class="detailedit_form"></dd>
+        <dt>URL</dt>
+        <dd><input type="text" maxlength="2083" class="detailedit_form"></dd>
+        <dt>備考</dt>
+        <dd><input type="textarea" maxlength="500" class="detailedit_form addcoment_form"></dd>
+      </dl>
+
+      <!-- 削除はゴミ箱アイコンにしたい。。。 -->
+      <div class="detailedit_btn_group">
+      <button id="detailedit_delete" class="detailedit_btn delete_btn">削除</button>
+      <button id="detailedit_save" class="detailedit_btn">保存</button>
+      <button id="detailedit_cancel" class="detailedit_btn">キャンセル</button>
+      </div>
+      </form>
+    </div>
+
+    <!-- footer -->
+    <footer id="footer">
+      <div class="footer_iner">
+        <small>
+          <div class="footer_text">copyright &copy;Fores.inc All Rights Reserved. </div></small>
+      </div>
+    </footer>
+  </body>
+  </html>

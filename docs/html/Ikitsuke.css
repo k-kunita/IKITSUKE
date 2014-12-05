@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+div.sample {
+	background-image: url("footer_lodyas.png")
+}
+
+div.login {
+	size: 60;
+	align: center
+}
+div.loginbutton{
+	align:center;
+}
