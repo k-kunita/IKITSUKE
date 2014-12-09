@@ -5,17 +5,16 @@ import java.util.Date;
 import jp.co.ikitsuke.dataAccess.dao.LoginDao;
 import jp.co.ikitsuke.dataAccess.entity.Login;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class LoginDaoImpl implements LoginDao {
 
-	@Autowired
-	Login login;
+
+	Login login = new Login();
 
 	@Override
-	public Login findByMailAddressAndLoginPassword(String mailAddress,
+	public Login selectByMailAddressLoginPassword(String mailAddress,
 			String loginPassword) {
 
 		login.setMailAddress(mailAddress);

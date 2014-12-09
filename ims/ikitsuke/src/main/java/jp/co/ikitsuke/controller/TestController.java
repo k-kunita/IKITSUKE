@@ -3,7 +3,11 @@ package jp.co.ikitsuke.controller;
 import java.util.List;
 import java.util.Locale;
 
+import jp.co.ikitsuke.dataAccess.dao.LoginDao;
+import jp.co.ikitsuke.dataAccess.dao.ShopInfoDao;
+import jp.co.ikitsuke.dataAccess.entity.Login;
 import jp.co.ikitsuke.dataAccess.entity.ShopCategory;
+import jp.co.ikitsuke.dataAccess.entity.ShopInfo;
 import jp.co.ikitsuke.logic.ShopCategoryLogic;
 
 import org.slf4j.Logger;
@@ -21,6 +25,13 @@ public class TestController {
 	@Autowired
 	ShopCategoryLogic shopCategoryLogic;
 
+	@Autowired
+	LoginDao loginDao;
+
+	@Autowired
+	ShopInfoDao shopInfoDao;
+
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	/**
@@ -32,7 +43,12 @@ public class TestController {
 
 		List<ShopCategory> shopCategoryList = shopCategoryLogic.findByUserId(2);
 
+		List<ShopInfo> shopInfoList = shopInfoDao.selectByCategoryId(1);
+
+		Login login = loginDao.selectByMailAddressLoginPassword("mail", "pass");
+
 		System.out.println(shopCategoryList);
+		System.out.println("test 通過！！");
 
 		return new ModelAndView("home");
 	}

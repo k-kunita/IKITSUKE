@@ -6,13 +6,24 @@ import jp.co.ikitsuke.dataAccess.entity.ShopCategory;
 
 public interface ShopCategoryDao {
 
-	//店舗カテゴリ一覧の取得
-	public List<ShopCategory> findByUserId(Integer userId);
+	/***
+	 * ユーザID指定で取得
+	 * @param userId
+	 * @return
+	 */
+	public List<ShopCategory> selectByUserId(Integer userId);
 
-	//店舗カテゴリ名更新処理
+	/***
+	 * ユーザID指定でカテゴリ名を更新
+	 * @param categoryId
+	 * @param categoryName
+	 */
 	public void updateByCategoryName(Integer categoryId,String categoryName);
 
-	//店舗カテゴリ未使用更新処理
-	public void updateByDisabledFlag(Integer categoryId);
+	/***
+	 * カテゴリID指定で無効フラグを更新
+	 * @param categoryId
+	 */
+	public void updateByDisabledFlag(Integer categoryId,String disabledFlag);
 
 }

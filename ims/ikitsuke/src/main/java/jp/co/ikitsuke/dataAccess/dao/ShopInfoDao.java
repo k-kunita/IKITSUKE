@@ -6,15 +6,39 @@ import jp.co.ikitsuke.dataAccess.entity.ShopInfo;
 
 public interface ShopInfoDao {
 
-	//店舗情報登録処理
-	//TODO
+	/***
+	 * 登録処理
+	 * @param shopInfo
+	 * @return
+	 */
+	Integer insert(ShopInfo shopInfo);
 
-	//店舗情報一覧取得処理
-	List<ShopInfo> findByCategoryId(Integer categoryId);
+	/***
+	 * カテゴリID指定で店舗一覧を取得
+	 * @param categoryId
+	 * @return
+	 */
+	List<ShopInfo> selectByCategoryId(Integer categoryId);
 
-	//店舗情報更新処理
-	//TODO
+	/***
+	 * 店舗ID指定による更新処理
+	 * @param shopInfo
+	 * @return
+	 */
+	Integer updateByShopId(ShopInfo shopInfo);
 
-	//店舗情報削除処理
-	//TODO
+	/***
+	 * 店舗IO指定による論理削除処理
+	 * @param shopId
+	 * @return
+	 */
+	Integer deleteByShopId(Integer shopId);
+
+	/***
+	 * カテゴリID指定による論理削除処理
+	 * @param categoryId
+	 * @return
+	 */
+	Integer deleteByCategoryId(Integer categoryId);
+
 }

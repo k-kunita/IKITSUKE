@@ -23,7 +23,7 @@ public class ShopCategoryLogicImpl implements ShopCategoryLogic{
 	@Override
 	public List<ShopCategory> findByUserId(Integer userId) {
 
-		return shopCategoryDao.findByUserId(userId);
+		return shopCategoryDao.selectByUserId(userId);
 	}
 
 }
