@@ -1,41 +1,41 @@
-package fores.ikitsuke.model;
+package jp.co.ikitsuke.model;
 
 import java.util.Date;
 
 /**
- * ˆùH“Xî•ñƒ‚ƒfƒ‹
+ * ï¿½ï¿½ï¿½Hï¿½Xï¿½ï¿½ñƒ‚ƒfï¿½ï¿½
  *
  * @author watanabe
  *
  */
 public class ShopInfoModel {
 
-	/** ˆùH“XID */
+	/** ï¿½ï¿½ï¿½Hï¿½XID */
 	private int shop_id;
 
-	/** ˆùH“XƒJƒeƒSƒŠID */
+	/** ï¿½ï¿½ï¿½Hï¿½Xï¿½Jï¿½eï¿½Sï¿½ï¿½ID */
 	private int category_id;
 
-	/** ˆùH“X–¼ */
+	/** ï¿½ï¿½ï¿½Hï¿½Xï¿½ï¿½ */
 	private String shop_name;
 
-	/** “d˜b”Ô† */
+	/** ï¿½dï¿½bï¿½Ôï¿½ */
 	private String shop_tel;
 
-	/** ”õl */
+	/** ï¿½ï¿½ï¿½l */
 	private String shop_memo;
 
-	/** QÆURL */
+	/** ï¿½Qï¿½ï¿½URL */
 	private String shop_page_url;
 
-	/** –³Œøƒtƒ‰ƒO */
+	/** ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½O */
 	private boolean delete_flag;
 
-	/** XV—š—ğ (YYYYMMDDHHMM) */
+	/** ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½ (YYYYMMDDHHMM) */
 	private Date last_update_time;
 
 	/**
-	 * ˆùH“XID‚ğæ“¾‚·‚é
+	 * ï¿½ï¿½ï¿½Hï¿½XIDï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	 *
 	 * @return shop_id
 	 */
@@ -44,17 +44,17 @@ public class ShopInfoModel {
 	}
 
 	/**
-	 * ˆùH“XID‚ğİ’è‚·‚é
+	 * ï¿½ï¿½ï¿½Hï¿½XIDï¿½ï¿½İ’è‚·ï¿½ï¿½
 	 *
 	 * @param shop_id
-	 *            ƒZƒbƒg‚·‚é shop_id
+	 *            ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ shop_id
 	 */
 	public void setShopId(int shop_id) {
 		this.shop_id = shop_id;
 	}
 
 	/**
-	 * ˆùH“XƒJƒeƒSƒŠID‚ğæ“¾‚·‚é
+	 * ï¿½ï¿½ï¿½Hï¿½Xï¿½Jï¿½eï¿½Sï¿½ï¿½IDï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	 *
 	 * @return category_id
 	 */
@@ -63,17 +63,17 @@ public class ShopInfoModel {
 	}
 
 	/**
-	 * ˆùH“XƒJƒeƒSƒŠID‚ğİ’è‚·‚é
+	 * ï¿½ï¿½ï¿½Hï¿½Xï¿½Jï¿½eï¿½Sï¿½ï¿½IDï¿½ï¿½İ’è‚·ï¿½ï¿½
 	 *
 	 * @param category_id
-	 *            ƒZƒbƒg‚·‚é category_id
+	 *            ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ category_id
 	 */
 	public void setCategoryId(int category_id) {
 		this.category_id = category_id;
 	}
 
 	/**
-	 * ˆùH“X–¼‚ğæ“¾‚·‚é
+	 * ï¿½ï¿½ï¿½Hï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	 *
 	 * @return shop_name
 	 */
@@ -82,17 +82,17 @@ public class ShopInfoModel {
 	}
 
 	/**
-	 * ˆùH“X–¼‚ğİ’è‚·‚é
+	 * ï¿½ï¿½ï¿½Hï¿½Xï¿½ï¿½ï¿½ï¿½İ’è‚·ï¿½ï¿½
 	 *
 	 * @param shop_name
-	 *            ƒZƒbƒg‚·‚é shop_name
+	 *            ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ shop_name
 	 */
 	public void setShopName(String shop_name) {
 		this.shop_name = shop_name;
 	}
 
 	/**
-	 * “d˜b”Ô†‚ğæ“¾‚·‚é
+	 * ï¿½dï¿½bï¿½Ôï¿½ï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	 *
 	 * @return shop_tel
 	 */
@@ -101,17 +101,17 @@ public class ShopInfoModel {
 	}
 
 	/**
-	 * “d˜b”Ô†‚ğİ’è‚·‚é
+	 * ï¿½dï¿½bï¿½Ôï¿½ï¿½ï¿½İ’è‚·ï¿½ï¿½
 	 *
 	 * @param shop_tel
-	 *            ƒZƒbƒg‚·‚é shop_tel
+	 *            ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ shop_tel
 	 */
 	public void setShopTel(String shop_tel) {
 		this.shop_tel = shop_tel;
 	}
 
 	/**
-	 * ”õl‚ğæ“¾‚·‚é
+	 * ï¿½ï¿½ï¿½lï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	 *
 	 * @return shop_memo
 	 */
@@ -120,17 +120,17 @@ public class ShopInfoModel {
 	}
 
 	/**
-	 * ”õl‚ğİ’è‚·‚é
+	 * ï¿½ï¿½ï¿½lï¿½ï¿½İ’è‚·ï¿½ï¿½
 	 *
 	 * @param shop_memo
-	 *            ƒZƒbƒg‚·‚é shop_memo
+	 *            ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ shop_memo
 	 */
 	public void setShopMemo(String shop_memo) {
 		this.shop_memo = shop_memo;
 	}
 
 	/**
-	 * QÆURL‚ğæ“¾‚·‚é
+	 * ï¿½Qï¿½ï¿½URLï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	 *
 	 * @return shop_page_url
 	 */
@@ -139,17 +139,17 @@ public class ShopInfoModel {
 	}
 
 	/**
-	 * QÆURL‚ğİ’è‚·‚é
+	 * ï¿½Qï¿½ï¿½URLï¿½ï¿½İ’è‚·ï¿½ï¿½
 	 *
 	 * @param shop_page_url
-	 *            ƒZƒbƒg‚·‚é shop_page_url
+	 *            ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ shop_page_url
 	 */
 	public void setShopPageUrl(String shop_page_url) {
 		this.shop_page_url = shop_page_url;
 	}
 
 	/**
-	 * –³Œøƒtƒ‰ƒO‚ğæ“¾‚·‚é
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	 *
 	 * @return delete_flag
 	 */
@@ -158,17 +158,17 @@ public class ShopInfoModel {
 	}
 
 	/**
-	 * –³Œøƒtƒ‰ƒO‚ğİ’è‚·‚é
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½Oï¿½ï¿½İ’è‚·ï¿½ï¿½
 	 *
 	 * @param delete_flag
-	 *            ƒZƒbƒg‚·‚é delete_flag
+	 *            ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ delete_flag
 	 */
 	public void setDeleteFlag(boolean delete_flag) {
 		this.delete_flag = delete_flag;
 	}
 
 	/**
-	 * XV—š—ğ (YYYYMMDDHHMM)‚ğæ“¾‚·‚é
+	 * ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½ (YYYYMMDDHHMM)ï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	 *
 	 * @return last_update_time
 	 */
@@ -177,10 +177,10 @@ public class ShopInfoModel {
 	}
 
 	/**
-	 * XV—š—ğ (YYYYMMDDHHMM)‚ğİ’è‚·‚é
+	 * ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½ (YYYYMMDDHHMM)ï¿½ï¿½İ’è‚·ï¿½ï¿½
 	 *
 	 * @param last_update_time
-	 *            ƒZƒbƒg‚·‚é last_update_time
+	 *            ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ last_update_time
 	 */
 	public void setLastUpdateTime(Date last_update_time) {
 		this.last_update_time = last_update_time;

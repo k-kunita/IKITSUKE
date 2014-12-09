@@ -1,4 +1,4 @@
-package fores.ikitsuke.model;
+package jp.co.ikitsuke.model;
 
 import java.util.Date;
 import java.util.List;
