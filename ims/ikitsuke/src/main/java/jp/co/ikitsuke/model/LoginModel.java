@@ -1,4 +1,4 @@
-package jp.co.ikitsuke.model;
+package fores.ikitsuke.model;
 
 import java.util.Date;
 import java.util.List;
@@ -12,116 +12,116 @@ import java.util.List;
 public class LoginModel {
 
 	/** ユーザID */
-	private int user_id;
+	private int userId;
 
 	/** メールアドレス */
-	private String mail_address;
+	private String mailAddress;
 
 	/** ログインパスワード */
-	private String login_password;
+	private String loginPassword;
 
 	/** 登録日付 (YYYYMMDDHHMM) */
-	private Date create_date_time;
+	private Date createDateTime;
 
 	/** 更新日付 (YYYYMMDDHHMM) */
-	private Date last_update_time;
+	private Date updateTime;
 
 	/** 飲食店カテゴリリスト */
-	private List<ShopCategoryModel> ShopCategoryList;
+	private List<ShopCategoryModel> shopCategoryList;
 
 	/**
 	 * ユーザIDを取得する
 	 *
-	 * @return user_id
+	 * @return userId
 	 */
 	public int getUserId() {
-		return user_id;
+		return this.userId;
 	}
 
 	/**
 	 * ユーザIDを設定する
 	 *
-	 * @param user_id
-	 *            セットする user_id
+	 * @param userId
+	 *            セットする userId
 	 */
-	public void setUserId(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	/**
 	 * メールアドレスを取得する
 	 *
-	 * @return mail_address
+	 * @return mailAddress
 	 */
 	public String getMailAddress() {
-		return mail_address;
+		return this.mailAddress;
 	}
 
 	/**
 	 * メールアドレスを設定する
 	 *
-	 * @param mail_address
-	 *            セットする mail_address
+	 * @param mailAddress
+	 *            セットする mailAddress
 	 */
-	public void setMailAddress(String mail_address) {
-		this.mail_address = mail_address;
+	public void setMailAddress(String mailAddress) {
+		this.mailAddress = mailAddress;
 	}
 
 	/**
 	 * ログインパスワードを取得する
 	 *
-	 * @return login_password
+	 * @return loginPassword
 	 */
 	public String getLoginPassword() {
-		return login_password;
+		return this.loginPassword;
 	}
 
 	/**
 	 * ログインパスワードを設定する
 	 *
-	 * @param login_password
-	 *            セットする login_password
+	 * @param loginPassword
+	 *            セットする loginPassword
 	 */
-	public void setLoginPassword(String login_password) {
-		this.login_password = login_password;
+	public void setLoginPassword(String loginPassword) {
+		this.loginPassword = loginPassword;
 	}
 
 	/**
 	 * 登録日付 (YYYYMMDDHHMM)を取得する
 	 *
-	 * @return create_date_time
+	 * @return createDateTime
 	 */
 	public Date getCreateDateTime() {
-		return create_date_time;
+		return this.createDateTime;
 	}
 
 	/**
 	 * 登録日付 (YYYYMMDDHHMM)を設定する
 	 *
-	 * @param create_date_time
-	 *            セットする create_date_time
+	 * @param createDateTime
+	 *            セットする createDateTime
 	 */
-	public void setCreateDateTime(Date create_date_time) {
-		this.create_date_time = create_date_time;
+	public void setCreateDateTime(Date createDateTime) {
+		this.createDateTime = createDateTime;
 	}
 
 	/**
 	 * 更新日付 (YYYYMMDDHHMM)を取得する
 	 *
-	 * @return last_update_time
+	 * @return updateTime
 	 */
 	public Date getLastUpdateTime() {
-		return last_update_time;
+		return this.updateTime;
 	}
 
 	/**
 	 * 更新日付 (YYYYMMDDHHMM)を設定する
 	 *
-	 * @param last_update_time
-	 *            セットする last_update_time
+	 * @param updateTime
+	 *            セットする updateTime
 	 */
-	public void setLastUpdateTime(Date last_update_time) {
-		this.last_update_time = last_update_time;
+	public void setLastUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class LoginModel {
 	 * @return shopCategoryList
 	 */
 	public List<ShopCategoryModel> getShopCategoryList() {
-		return ShopCategoryList;
+		return this.shopCategoryList;
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class LoginModel {
 	 *            セットする shopCategoryList
 	 */
 	public void setShopCategoryList(List<ShopCategoryModel> shopCategoryList) {
-		ShopCategoryList = shopCategoryList;
+		this.shopCategoryList = shopCategoryList;
 	}
 
 }

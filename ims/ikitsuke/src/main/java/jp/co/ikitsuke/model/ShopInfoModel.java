@@ -1,189 +1,189 @@
-package jp.co.ikitsuke.model;
+package fores.ikitsuke.model;
 
 import java.util.Date;
 
 /**
- * ���H�X��񃂃f��
+ * 飲食店情報モデル
  *
  * @author watanabe
  *
  */
 public class ShopInfoModel {
 
-	/** ���H�XID */
-	private int shop_id;
+	/** 飲食店ID */
+	private int shopId;
 
-	/** ���H�X�J�e�S��ID */
-	private int category_id;
+	/** 飲食店カテゴリID */
+	private int categoryId;
 
-	/** ���H�X�� */
-	private String shop_name;
+	/** 飲食店名 */
+	private String shopName;
 
-	/** �d�b�ԍ� */
-	private String shop_tel;
+	/** 電話番号 */
+	private String shopTel;
 
-	/** ���l */
-	private String shop_memo;
+	/** 備考 */
+	private String shopMemo;
 
-	/** �Q��URL */
-	private String shop_page_url;
+	/** 参照URL */
+	private String shopUrl;
 
-	/** �����t���O */
-	private boolean delete_flag;
+	/** 無効フラグ */
+	private boolean deleteFlag;
 
-	/** �X�V���� (YYYYMMDDHHMM) */
-	private Date last_update_time;
+	/** 更新履歴 (YYYYMMDDHHMM) */
+	private Date updateTime;
 
 	/**
-	 * ���H�XID���擾����
+	 * 飲食店IDを取得する
 	 *
-	 * @return shop_id
+	 * @return shopId
 	 */
 	public int getShopId() {
-		return shop_id;
+		return this.shopId;
 	}
 
 	/**
-	 * ���H�XID��ݒ肷��
+	 * 飲食店IDを設定する
 	 *
-	 * @param shop_id
-	 *            �Z�b�g���� shop_id
+	 * @param shopId
+	 *            セットする shopId
 	 */
-	public void setShopId(int shop_id) {
-		this.shop_id = shop_id;
+	public void setShopId(int shopId) {
+		this.shopId = shopId;
 	}
 
 	/**
-	 * ���H�X�J�e�S��ID���擾����
+	 * 飲食店カテゴリIDを取得する
 	 *
-	 * @return category_id
+	 * @return categoryId
 	 */
 	public int getCategoryId() {
-		return category_id;
+		return this.categoryId;
 	}
 
 	/**
-	 * ���H�X�J�e�S��ID��ݒ肷��
+	 * 飲食店カテゴリIDを設定する
 	 *
-	 * @param category_id
-	 *            �Z�b�g���� category_id
+	 * @param categoryId
+	 *            セットする categoryId
 	 */
-	public void setCategoryId(int category_id) {
-		this.category_id = category_id;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	/**
-	 * ���H�X�����擾����
+	 * 飲食店名を取得する
 	 *
-	 * @return shop_name
+	 * @return shopName
 	 */
 	public String getShopName() {
-		return shop_name;
+		return this.shopName;
 	}
 
 	/**
-	 * ���H�X����ݒ肷��
+	 * 飲食店名を設定する
 	 *
-	 * @param shop_name
-	 *            �Z�b�g���� shop_name
+	 * @param shopName
+	 *            セットする shopName
 	 */
-	public void setShopName(String shop_name) {
-		this.shop_name = shop_name;
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
 	}
 
 	/**
-	 * �d�b�ԍ����擾����
+	 * 電話番号を取得する
 	 *
-	 * @return shop_tel
+	 * @return shopTel
 	 */
 	public String getShopTel() {
-		return shop_tel;
+		return this.shopTel;
 	}
 
 	/**
-	 * �d�b�ԍ���ݒ肷��
+	 * 電話番号を設定する
 	 *
-	 * @param shop_tel
-	 *            �Z�b�g���� shop_tel
+	 * @param shopTel
+	 *            セットする shopTel
 	 */
-	public void setShopTel(String shop_tel) {
-		this.shop_tel = shop_tel;
+	public void setShopTel(String shopTel) {
+		this.shopTel = shopTel;
 	}
 
 	/**
-	 * ���l���擾����
+	 * 備考を取得する
 	 *
-	 * @return shop_memo
+	 * @return shopMemo
 	 */
 	public String getShopMemo() {
-		return shop_memo;
+		return this.shopMemo;
 	}
 
 	/**
-	 * ���l��ݒ肷��
+	 * 備考を設定する
 	 *
-	 * @param shop_memo
-	 *            �Z�b�g���� shop_memo
+	 * @param shopMemo
+	 *            セットする shopMemo
 	 */
-	public void setShopMemo(String shop_memo) {
-		this.shop_memo = shop_memo;
+	public void setShopMemo(String shopMemo) {
+		this.shopMemo = shopMemo;
 	}
 
 	/**
-	 * �Q��URL���擾����
+	 * 参照URLを取得する
 	 *
-	 * @return shop_page_url
+	 * @return shopUrl
 	 */
 	public String getShopPageUrl() {
-		return shop_page_url;
+		return this.shopUrl;
 	}
 
 	/**
-	 * �Q��URL��ݒ肷��
+	 * 参照URLを設定する
 	 *
-	 * @param shop_page_url
-	 *            �Z�b�g���� shop_page_url
+	 * @param shopUrl
+	 *            セットする shopUrl
 	 */
-	public void setShopPageUrl(String shop_page_url) {
-		this.shop_page_url = shop_page_url;
+	public void setShopPageUrl(String shopUrl) {
+		this.shopUrl = shopUrl;
 	}
 
 	/**
-	 * �����t���O���擾����
+	 * 無効フラグを取得する
 	 *
-	 * @return delete_flag
+	 * @return deleteFlag
 	 */
 	public boolean isDeleteFlag() {
-		return delete_flag;
+		return this.deleteFlag;
 	}
 
 	/**
-	 * �����t���O��ݒ肷��
+	 * 無効フラグを設定する
 	 *
-	 * @param delete_flag
-	 *            �Z�b�g���� delete_flag
+	 * @param deleteFlag
+	 *            セットする deleteFlag
 	 */
-	public void setDeleteFlag(boolean delete_flag) {
-		this.delete_flag = delete_flag;
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 	/**
-	 * �X�V���� (YYYYMMDDHHMM)���擾����
+	 * 更新履歴 (YYYYMMDDHHMM)を取得する
 	 *
-	 * @return last_update_time
+	 * @return updateTime
 	 */
 	public Date getLastUpdateTime() {
-		return last_update_time;
+		return this.updateTime;
 	}
 
 	/**
-	 * �X�V���� (YYYYMMDDHHMM)��ݒ肷��
+	 * 更新履歴 (YYYYMMDDHHMM)を設定する
 	 *
-	 * @param last_update_time
-	 *            �Z�b�g���� last_update_time
+	 * @param updateTime
+	 *            セットする updateTime
 	 */
-	public void setLastUpdateTime(Date last_update_time) {
-		this.last_update_time = last_update_time;
+	public void setLastUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
 	}
 
 }
