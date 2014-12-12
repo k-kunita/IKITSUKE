@@ -1,22 +1,22 @@
-package fores.ikitsuke.model;
+package jp.co.ikitsuke.model;
 
 import java.util.Date;
 
 /**
- * 飲食店情報モデル
+ * 店舗情報モデル
  *
  * @author watanabe
  *
  */
 public class ShopInfoModel {
 
-	/** 飲食店ID */
+	/** 店舗ID */
 	private int shopId;
 
-	/** 飲食店カテゴリID */
+	/** 店舗カテゴリID */
 	private int categoryId;
 
-	/** 飲食店名 */
+	/** 店舗名 */
 	private String shopName;
 
 	/** 電話番号 */
@@ -35,7 +35,7 @@ public class ShopInfoModel {
 	private Date updateTime;
 
 	/**
-	 * 飲食店IDを取得する
+	 * 店舗IDを取得する
 	 *
 	 * @return shopId
 	 */
@@ -44,7 +44,7 @@ public class ShopInfoModel {
 	}
 
 	/**
-	 * 飲食店IDを設定する
+	 * 店舗IDを設定する
 	 *
 	 * @param shopId
 	 *            セットする shopId
@@ -54,7 +54,7 @@ public class ShopInfoModel {
 	}
 
 	/**
-	 * 飲食店カテゴリIDを取得する
+	 * 店舗カテゴリIDを取得する
 	 *
 	 * @return categoryId
 	 */
@@ -63,7 +63,7 @@ public class ShopInfoModel {
 	}
 
 	/**
-	 * 飲食店カテゴリIDを設定する
+	 * 店舗カテゴリIDを設定する
 	 *
 	 * @param categoryId
 	 *            セットする categoryId
@@ -73,7 +73,7 @@ public class ShopInfoModel {
 	}
 
 	/**
-	 * 飲食店名を取得する
+	 * 店舗名を取得する
 	 *
 	 * @return shopName
 	 */
@@ -82,7 +82,7 @@ public class ShopInfoModel {
 	}
 
 	/**
-	 * 飲食店名を設定する
+	 * 店舗名を設定する
 	 *
 	 * @param shopName
 	 *            セットする shopName
