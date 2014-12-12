@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <title>IKITSUKE</title>
-  <link rel="stylesheet" href="reset.css" type="text/css">
-  <link rel="stylesheet" href="index.css" type="text/css">
-  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="css/reset.css" type="text/css">
+  <link rel="stylesheet" href="css/index.css" type="text/css">
+  <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 
@@ -19,15 +19,6 @@
             title
           </a>
         </li>
-        <!-- <li>
-          <a href="#">
-            HOME</a>
-          </li>
-          <li>
-           <a href="#">
-             ACCOUNT
-           </a>
-         </li> -->
         </ul>
       </nav>
     </header>
@@ -35,17 +26,19 @@
     <!-- main_contents -->
     <div class="main_contents">
     <h1>あなただけのIKITSUKEを<br>作りませんか？</h1>
+    <form>
     <ul class="login_id_pass">
       <li><input type="text" name="" value="" placeholder="ID" class="login_form"></li>
       <li><input type="password" name="" value="" placeholder="PASS" class="login_form"></li>
     </ul>
-    <button type="submit" class="login_btn">ログイン</button>
+    <input type="button" value="ログイン" onClick="location.href='main.html'" id="login" class="login_btn">
+    </form>
     </div>
     <!-- footer -->
     <footer id="footer">
       <div class="footer_iner">
         <small>
-          <div class="footer_text">copyright &copy;Fores.inc All Rights Reserved. </div></small>
+          <div class="footer_text">copyright &copy;IKITSUKE.inc All Rights Reserved. </div></small>
       </div>
     </footer>
   </body>

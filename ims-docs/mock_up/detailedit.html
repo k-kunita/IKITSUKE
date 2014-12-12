@@ -4,9 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <title>IKITSUKE</title>
-  <link rel="stylesheet" href="reset.css" type="text/css">
-  <link rel="stylesheet" href="index.css" type="text/css">
-  <link rel="stylesheet" href="detailedit.css" type="text/css">
+  <link rel="stylesheet" href="css/reset.css" type="text/css">
+  <link rel="stylesheet" href="css/index.css" type="text/css">
+  <link rel="stylesheet" href="css/detailedit.css" type="text/css">
+  <script type='text/javascript' src="js/jquery.ui.min"></script>
+  <link rel="stylesheet" type="text/css" href="css/pepper-grinder/jquery-ui-1.8.12.custom.css">
+
+
 </head>
 <body>
 
@@ -20,12 +24,12 @@
           </a>
         </li>
         <li>
-          <a href="#">
-            HOME</a>
+          <a href="main.html">
+            Home</a>
           </li>
           <li>
-           <a href="#">
-             ACCOUNT
+           <a href="login.html">
+             Logout
            </a>
          </li>
         </ul>
@@ -36,7 +40,7 @@
     <div class="main_contents">
       <h1>行きつけのお店を追加しよう！</h1>
       <form>
-      <dl class="detarledit_list">
+      <dl class="detailedit_list">
         <dt>カテゴリ名</dt>
         <dd>Bar</dd>
         <dt>店舗名</dt>
@@ -51,9 +55,9 @@
 
       <!-- 削除はゴミ箱アイコンにしたい。。。 -->
       <div class="detailedit_btn_group">
-      <button id="detailedit_delete" class="detailedit_btn delete_btn">削除</button>
-      <button id="detailedit_save" class="detailedit_btn">保存</button>
-      <button id="detailedit_cancel" class="detailedit_btn">キャンセル</button>
+        <input type="button" value="削除" id="" class="detailedit_btn delete_btn">
+        <input type="button" value="保存" id="" class="detailedit_btn">
+        <input type="button" value="キャンセル" id="" class="detailedit_btn">
       </div>
       </form>
     </div>
