@@ -1,0 +1,12 @@
+insert into login values ('1','ikitsuke@ims.com','password',now(),now());
+insert into shop_category values ('1','居酒屋','1','0',now());
+insert into shop_category values ('2','ランチ','1','0',now());
+insert into shop_category values ('3',null,'1','1',now());
+insert into shop_category values ('4',null,'1','1',now());
+insert into shop_category values ('5',null,'1','1',now());
+insert into shop_category values ('6',null,'1','1',now());
+insert into shop_category values ('7',null,'1','1',now());
+insert into shop_category values ('8',null,'1','1',now());
+insert into shop_info values ('1','1','てば次郎 ','097123456','九州酒場 てば次郎 ','http://r.gnavi.co.jp/j0yj9mgu0000/','0',now());
+insert into shop_info values ('2','2','紅龍門','12345646','担担麺のお店','http://r.gnavi.co.jp/bnrjcaw30000/','0',now());
+insert into shop_info values ('3','2','焼肉 叙庵 ','10321535','単品メニューも食べ放題も充実！厳選したおいしいお肉をおなかいっぱいお召し上がりください','http://tabelog.com/tokyo/A1305/A130501/13003894/','0',now());
