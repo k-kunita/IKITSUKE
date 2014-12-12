@@ -1,5 +1,16 @@
 @charset "utf-8";
 
+.detail_edit_contents {
+  width: 1100px;
+  height: 510px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 h1 {
   padding: 2% 4% 1% 4%;
   font-size: 30px;
@@ -7,7 +18,6 @@ h1 {
 
 .detailedit_list {
   padding-top: 3%;
-
 }
 
 .detailedit_list dt {
@@ -32,7 +42,6 @@ h1 {
 
 .detailedit_btn_group {
   margin-left: 30%;
-  padding-bottom: 10px;
 }
 
 .detailedit_btn {
