@@ -4,41 +4,41 @@
 -- RDBMS Type   : MySQL
 -- Application  : A5:SQL Mk-2
 
--- “X•Üî•ñ
+-- åº—èˆ—æƒ…å ±
 drop table if exists shop_info cascade;
 
 create table shop_info (
-  shop_id INT not null comment '“X•Ü‚h‚c	 ˜A”Ô‚Åì¬'
-  , category_id INT not null comment '“X•ÜƒJƒeƒSƒŠ‚h‚c'
-  , shop_name VARCHAR(16) comment '“X•Ü–¼'
-  , shop_tel VARCHAR(11) comment '“d˜b”Ô†	 11Œ…'
-  , shop_memo VARCHAR(2000) comment '”õl	 ‘SŠp1000•¶š‚Ü‚Å‹–—e'
-  , shop_url VARCHAR(2048) comment 'QÆURL'
-  , delete_flag CHAR(1) default 0 not null comment 'íœƒtƒ‰ƒO	 ƒfƒtƒHƒ‹ƒg’l‚Í0'
-  , update_time DATE not null comment 'XV“ú•t	 yyyymmddhhmm'
+  shop_id INT not null comment 'åº—èˆ—ï¼©ï¼¤	 é€£ç•ªã§ä½œæˆ'
+  , category_id INT not null comment 'åº—èˆ—ã‚«ãƒ†ã‚´ãƒªï¼©ï¼¤'
+  , shop_name VARCHAR(16) comment 'åº—èˆ—å'
+  , shop_tel VARCHAR(11) comment 'é›»è©±ç•ªå·	 11æ¡'
+  , shop_memo VARCHAR(2000) comment 'å‚™è€ƒ	 å…¨è§’1000æ–‡å­—ã¾ã§è¨±å®¹'
+  , shop_url VARCHAR(2048) comment 'å‚ç…§URL'
+  , delete_flag CHAR(1) default 0 not null comment 'å‰Šé™¤ãƒ•ãƒ©ã‚°	 ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¯0'
+  , update_time DATE not null comment 'æ›´æ–°æ—¥ä»˜	 yyyymmddhhmm'
   , constraint shop_info_PKC primary key (shop_id)
-) comment '“X•Üî•ñ' ;
+) comment 'åº—èˆ—æƒ…å ±' ;
 
--- “X•ÜƒJƒeƒSƒŠî•ñ
+-- åº—èˆ—ã‚«ãƒ†ã‚´ãƒªæƒ…å ±
 drop table if exists shop_category cascade;
 
 create table shop_category (
-  category_id INT not null comment '“X•ÜƒJƒeƒSƒŠ‚h‚c	 ƒƒOƒCƒ“ƒ†[ƒUì¬‚É˜A”Ô‚Å‚WƒŒƒR[ƒhì¬'
-  , category_name VARCHAR(20) comment '“X•ÜƒJƒeƒSƒŠ–¼	 ‘SŠz10•¶š'
-  , user_id INT not null comment 'ƒ†[ƒU‚h‚c'
-  , disable_flag CHAR(1) default 1 not null comment '–³Œøƒtƒ‰ƒO	 ƒfƒtƒHƒ‹ƒg’l‚Í1'
-  , update_time DATE not null comment 'XV“ú•t	 yyyymmddhhmm'
+  category_id INT not null comment 'åº—èˆ—ã‚«ãƒ†ã‚´ãƒªï¼©ï¼¤	 ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶ä½œæˆæ™‚ã«é€£ç•ªã§ï¼˜ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ'
+  , category_name VARCHAR(20) comment 'åº—èˆ—ã‚«ãƒ†ã‚´ãƒªå	 å…¨é¡10æ–‡å­—'
+  , user_id INT not null comment 'ãƒ¦ãƒ¼ã‚¶ï¼©ï¼¤'
+  , disable_flag CHAR(1) default 1 not null comment 'ç„¡åŠ¹ãƒ•ãƒ©ã‚°	 ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¯1'
+  , update_time DATE not null comment 'æ›´æ–°æ—¥ä»˜	 yyyymmddhhmm'
   , constraint shop_category_PKC primary key (category_id)
-) comment '“X•ÜƒJƒeƒSƒŠî•ñ' ;
+) comment 'åº—èˆ—ã‚«ãƒ†ã‚´ãƒªæƒ…å ±' ;
 
--- ƒƒOƒCƒ“î•ñ
+-- ãƒ­ã‚°ã‚¤ãƒ³æƒ…å ±
 drop table if exists login cascade;
 
 create table login (
-  user_id INT not null comment 'ƒ†[ƒU‚h‚c'
-  , mail_address VARCHAR(64) not null comment 'ƒ[ƒ‹ƒAƒhƒŒƒX	 ”¼Šp‚Ì‚İ‹–—e'
-  , login_password VARCHAR(20) not null comment 'ƒƒOƒCƒ“ƒpƒXƒ[ƒh	 ”¼Šp‰p”š‚Ì‚İ‹–—e'
-  , create_date_time DATE not null comment '“o˜^“ú•t	 yyyymmddhhmm'
-  , update_time DATE not null comment 'XV“ú•t	 yyyymmddhhmm'
+  user_id INT not null comment 'ãƒ¦ãƒ¼ã‚¶ï¼©ï¼¤'
+  , mail_address VARCHAR(64) not null comment 'ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹	 åŠè§’ã®ã¿è¨±å®¹'
+  , login_password VARCHAR(20) not null comment 'ãƒ­ã‚°ã‚¤ãƒ³ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰	 åŠè§’è‹±æ•°å­—ã®ã¿è¨±å®¹'
+  , create_date_time DATE not null comment 'ç™»éŒ²æ—¥ä»˜	 yyyymmddhhmm'
+  , update_time DATE not null comment 'æ›´æ–°æ—¥ä»˜	 yyyymmddhhmm'
   , constraint login_PKC primary key (user_id)
-) comment 'ƒƒOƒCƒ“î•ñ' ;
+) comment 'ãƒ­ã‚°ã‚¤ãƒ³æƒ…å ±' ;
