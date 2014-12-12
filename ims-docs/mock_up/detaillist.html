@@ -4,9 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <title>IKITSUKE</title>
-  <link rel="stylesheet" href="reset.css" type="text/css">
-  <link rel="stylesheet" href="index.css" type="text/css">
-  <link rel="stylesheet" href="detaillist.css" type="text/css">
+  <link rel="stylesheet" href="css/reset.css" type="text/css">
+  <link rel="stylesheet" href="css/index.css" type="text/css">
+  <link rel="stylesheet" href="css/detaillist.css" type="text/css">
+  <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+  <script type='text/javascript' src="js/jquery.js"></script>
+  <script type='text/javascript' src="js/jquery-ui.min.js"></script>
 </head>
 <body>
 
@@ -20,12 +23,12 @@
           </a>
         </li>
         <li>
-          <a href="#">
-            HOME</a>
+          <a href="main.html">
+            Home</a>
           </li>
           <li>
-           <a href="#">
-             ACCOUNT
+           <a href="login.html">
+             Logout
            </a>
          </li>
         </ul>
@@ -36,14 +39,16 @@
     <div class="main_contents">
       <div class="cf">
     <h1>○○のIKITSUKE一覧</h1>
-    <button class="add_ikitsuke">追加</button>
+    <input type="button" value="追加" onClick="location.href='detailedit.html'" class="add_ikitsuke_btn">
     </div>
+
+    <div class="detalist_contents">
     <div class="ikitsuke_list">
     <ul class="detail_list">
       <li>手羽次郎</li>
       <li>03-3464-5745</li>
       <li>memo</li>
-      <li><button>編集</button></li>
+      <li><input type="button" value="編集" onClick="location.href='edit_detailedit.html'" class="edit_ikitsuke_btn"></li>
     </ul>
     </div>
 
@@ -53,7 +58,7 @@
       <li>手羽次郎</li>
       <li>03-3464-5745</li>
       <li>memo</li>
-      <li><button>編集</button></li>
+      <li><input type="button" value="編集" onClick="location.href='edit_detailedit.html'" class="edit_ikitsuke_btn"></li>
     </ul>
     </div>
 
@@ -62,20 +67,12 @@
       <li>手羽次郎</li>
       <li>03-3464-5745</li>
       <li>memo</li>
-      <li><button>編集</button></li>
-    </ul>
-    </div>
-
-    <div class="ikitsuke_list">
-    <ul class="detail_list">
-      <li>手羽次郎</li>
-      <li>03-3464-5745</li>
-      <li>memo</li>
-      <li><button>編集</button></li>
+      <li><input type="button" value="編集" onClick="location.href='edit_detailedit.html'" class="edit_ikitsuke_btn"></li>
     </ul>
     </div>
   </div>
   </div>
+</div>
 
     <!-- footer -->
     <footer id="footer">

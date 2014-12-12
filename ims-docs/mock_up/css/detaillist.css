@@ -2,8 +2,13 @@
 
 h1 {
   float: left;
-  margin: 4%;
+  padding: 4%;
   font-size: 20px;
+}
+
+.detalist_contents {
+  width: 900px;
+  margin: auto;
 }
 
 .detail_list {
@@ -12,9 +17,9 @@ h1 {
 
 .detail_list li {
 border: 1px solid;
-width: 250px;
-padding: 25px;
-font-size: 23px;
+width: 210px;
+padding: 17px;
+font-size: 20px;
 list-style: none;
 text-align: center;
 }
@@ -23,10 +28,11 @@ text-align: center;
   float: left;
 }
 
-.add_ikitsuke {
+.add_ikitsuke_btn {
   margin: 4% 4% 4% 62%;
   font-size: 20px;
   padding:5px 54px;
+  border-radius: 6px;
 }
 
 .cf:after {
