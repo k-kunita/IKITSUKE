@@ -1,8 +1,10 @@
 package jp.co.ikitsuke.dataAccess.client;
 
 import java.util.List;
+
 import jp.co.ikitsuke.dataAccess.entity.Login;
 import jp.co.ikitsuke.dataAccess.entity.LoginExample;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface LoginMapper {
@@ -74,4 +76,12 @@ public interface LoginMapper {
 	 * @mbggenerated  Sun Dec 07 22:06:14 JST 2014
 	 */
 	int updateByPrimaryKey(Login record);
+
+	/***
+	 * メールアドレスとパスワード指定によるセレクト
+	 * @param userId
+	 * @return
+	 */
+//	Login selectByMailAddressLoginPassword(Integer userId);
+
 }

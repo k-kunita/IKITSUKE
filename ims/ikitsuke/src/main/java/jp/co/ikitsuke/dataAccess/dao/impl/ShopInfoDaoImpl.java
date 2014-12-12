@@ -4,14 +4,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import jp.co.ikitsuke.dataAccess.client.ShopInfoMapper;
 import jp.co.ikitsuke.dataAccess.dao.ShopInfoDao;
 import jp.co.ikitsuke.dataAccess.entity.ShopInfo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ShopInfoDaoImpl implements ShopInfoDao {
 
+
+	@Autowired
+	ShopInfoMapper shopInfoMapper;
 
 	@Override
 	public List<ShopInfo> selectByCategoryId(Integer categoryId) {
@@ -74,9 +79,9 @@ public class ShopInfoDaoImpl implements ShopInfoDao {
 	}
 
 	@Override
-	public Integer insert(ShopInfo shopInfo) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+	public Integer insert(ShopInfo record) {
+
+		return shopInfoMapper.insert(record);
 	}
 
 	@Override

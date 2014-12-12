@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Locale;
 
 import jp.co.ikitsuke.dataAccess.client.LoginMapper;
+import jp.co.ikitsuke.dataAccess.client.ShopInfoMapper;
 import jp.co.ikitsuke.dataAccess.dao.LoginDao;
 import jp.co.ikitsuke.dataAccess.dao.ShopInfoDao;
 import jp.co.ikitsuke.dataAccess.entity.Login;
@@ -35,6 +36,9 @@ public class TestController {
 	@Autowired
 	LoginMapper loginMapper;
 
+	@Autowired
+	ShopInfoMapper shopInfoMapper;
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	/**
@@ -47,6 +51,13 @@ public class TestController {
 		List<ShopCategory> shopCategoryList = shopCategoryLogic.findByUserId(2);
 
 		List<ShopInfo> shopInfoList = shopInfoDao.selectByCategoryId(1);
+
+		ShopInfo shopInfo = shopInfoList.get(1);
+		shopInfo.setCategoryId(1);
+		shopInfo.setShopId(4);
+		//インサート文の実行
+		shopInfoMapper.insert(shopInfo);
+
 
 //		Login login = loginDao.selectByMailAddressLoginPassword("mail", "pass");
 

@@ -26,4 +26,17 @@ public class LoginDaoImpl implements LoginDao {
 		return login;
 	}
 
+
+//	public Login sselectByMailAddressLoginPassword(String mailAddress,
+//			String loginPassword) {
+//
+//		login.setMailAddress(mailAddress);
+//		login.setUserId(1);
+//		login.setLoginPassword(loginPassword);
+//		login.setCreateDateTime(new Date());
+//		login.setUpdateTime(new Date());
+//
+//		return login;
+//	}
+
 }
