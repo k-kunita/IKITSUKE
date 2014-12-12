@@ -4,17 +4,17 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 飲食店カテゴリ情報モデル
+ * 店舗カテゴリ情報モデル
  *
  * @author watanabe
  *
  */
 public class ShopCategoryModel {
 
-	/** 飲食店カテゴリID */
+	/** 店舗カテゴリID */
 	private int categoryId;
 
-	/** 飲食店カテゴリ名 */
+	/** 店舗カテゴリ名 */
 	private String categoryName;
 
 	/** ユーザID */
@@ -26,11 +26,11 @@ public class ShopCategoryModel {
 	/** 更新日付 (YYYYMMDDHHMM) */
 	private Date updateTime;
 
-	/** 飲食店情報リスト */
+	/** 店舗情報リスト */
 	private List<ShopInfoModel> shopInfoList;
 
 	/**
-	 * 飲食店カテゴリIDを取得する
+	 * 店舗カテゴリIDを取得する
 	 *
 	 * @return categoryId
 	 */
@@ -39,7 +39,7 @@ public class ShopCategoryModel {
 	}
 
 	/**
-	 * 飲食店カテゴリIDを設定する
+	 * 店舗カテゴリIDを設定する
 	 *
 	 * @param categoryId
 	 *            セットする categoryId
@@ -49,7 +49,7 @@ public class ShopCategoryModel {
 	}
 
 	/**
-	 * 飲食店カテゴリ名を取得する
+	 * 店舗カテゴリ名を取得する
 	 *
 	 * @return categoryName
 	 */
@@ -58,7 +58,7 @@ public class ShopCategoryModel {
 	}
 
 	/**
-	 * 飲食店カテゴリ名を設定する
+	 * 店舗カテゴリ名を設定する
 	 *
 	 * @param categoryName
 	 *            セットする categoryName
@@ -125,7 +125,7 @@ public class ShopCategoryModel {
 	}
 
 	/**
-	 * 飲食店情報リストを取得する
+	 * 店舗情報リストを取得する
 	 *
 	 * @return shopInfoList
 	 */
@@ -134,7 +134,7 @@ public class ShopCategoryModel {
 	}
 
 	/**
-	 * 飲食店情報リストを設定する
+	 * 店舗情報リストを設定する
 	 *
 	 * @param shopInfoList
 	 *            セットする shopInfoList

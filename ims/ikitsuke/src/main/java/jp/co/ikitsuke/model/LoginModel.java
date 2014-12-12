@@ -26,7 +26,7 @@ public class LoginModel {
 	/** 更新日付 (YYYYMMDDHHMM) */
 	private Date updateTime;
 
-	/** 飲食店カテゴリリスト */
+	/** 店舗カテゴリリスト */
 	private List<ShopCategoryModel> shopCategoryList;
 
 	/**
@@ -125,7 +125,7 @@ public class LoginModel {
 	}
 
 	/**
-	 * 飲食店カテゴリリストを取得する
+	 * 店舗カテゴリリストを取得する
 	 *
 	 * @return shopCategoryList
 	 */
@@ -134,7 +134,7 @@ public class LoginModel {
 	}
 
 	/**
-	 * 飲食店カテゴリリストを設定する
+	 * 店舗カテゴリリストを設定する
 	 *
 	 * @param shopCategoryList
 	 *            セットする shopCategoryList
