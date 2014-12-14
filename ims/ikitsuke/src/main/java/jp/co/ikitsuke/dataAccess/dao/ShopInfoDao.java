@@ -9,36 +9,36 @@ public interface ShopInfoDao {
 	/***
 	 * 登録処理
 	 * @param shopInfo
-	 * @return
+	 * @return 更新数
 	 */
-	Integer insert(ShopInfo shopInfo);
+	int insert(ShopInfo shopInfo);
 
 	/***
 	 * カテゴリID指定で店舗一覧を取得
 	 * @param categoryId
-	 * @return
+	 * @return 店舗情報リスト
 	 */
 	List<ShopInfo> selectByCategoryId(Integer categoryId);
 
 	/***
 	 * 店舗ID指定による更新処理
 	 * @param shopInfo
-	 * @return
+	 * @return 更新数
 	 */
-	Integer updateByShopId(ShopInfo shopInfo);
+	int updateByShopId(ShopInfo shopInfo);
 
 	/***
 	 * 店舗IO指定による論理削除処理
 	 * @param shopId
-	 * @return
+	 * @return 更新数
 	 */
-	Integer deleteByShopId(Integer shopId);
+	int deleteByShopId(Integer shopId);
 
 	/***
 	 * カテゴリID指定による論理削除処理
 	 * @param categoryId
-	 * @return
+	 * @return 更新数
 	 */
-	Integer deleteByCategoryId(Integer categoryId);
+	int deleteByCategoryId(Integer categoryId);
 
 }

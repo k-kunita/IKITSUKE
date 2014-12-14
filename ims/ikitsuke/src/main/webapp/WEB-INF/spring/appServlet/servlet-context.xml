@@ -20,6 +20,12 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	<context:component-scan base-package="jp.co.ikitsuke" />
+	<context:component-scan base-package="jp.co.ikitsuke.controller" />
+	<context:component-scan base-package="jp.co.ikitsuke.logic.impl" />
+	<!-- テスト用
+	<context:component-scan base-package="jp.co.ikitsuke.dataAccess.dao.testImpl" />
+	 テスト用 -->
+	<context:component-scan base-package="jp.co.ikitsuke.dataAccess.dao.impl" />
+
 
 </beans:beans>

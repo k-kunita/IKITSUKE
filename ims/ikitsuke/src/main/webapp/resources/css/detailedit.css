@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+.detail_edit_contents {
+  width: 1100px;
+  height: 510px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+h1 {
+  padding: 2% 4% 1% 4%;
+  font-size: 30px;
+}
+
+.detailedit_list {
+  padding-top: 3%;
+}
+
+.detailedit_list dt {
+  width: 20%;
+  margin-left: 30%;
+  float: left;
+  clear: both;
+  font-size: 26px;
+}
+
+.detailedit_list dd {
+  margin-bottom: 45px;
+}
+
+.addcoment_form {
+  height: 55px;
+}
+
+.detailedit_form {
+  font-size: 15px;
+}
+
+.detailedit_btn_group {
+  margin-left: 30%;
+}
+
+.detailedit_btn {
+  padding: 7px 30px;
+  font-size: 20px;
+  border-radius: 6px;
+}
+
+.delete_btn {
+  margin-right: 10%;
+}
+
+

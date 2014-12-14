@@ -9,7 +9,7 @@ public interface ShopCategoryDao {
 	/***
 	 * ユーザID指定で取得
 	 * @param userId
-	 * @return
+	 * @return 店舗カテゴリーリスト
 	 */
 	public List<ShopCategory> selectByUserId(Integer userId);
 
@@ -17,13 +17,15 @@ public interface ShopCategoryDao {
 	 * ユーザID指定でカテゴリ名を更新
 	 * @param categoryId
 	 * @param categoryName
+	 * @return 更新数
 	 */
-	public void updateByCategoryName(Integer categoryId,String categoryName);
+	public int updateCategoryNameByCategoryId(Integer categoryId,String categoryName);
 
 	/***
 	 * カテゴリID指定で無効フラグを更新
 	 * @param categoryId
+	 * @return 更新数
 	 */
-	public void updateByDisabledFlag(Integer categoryId,String disabledFlag);
+	public int updateDisabledFlagByCategoryId(Integer categoryId);
 
 }

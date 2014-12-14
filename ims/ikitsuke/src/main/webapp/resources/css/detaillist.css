@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+h1 {
+  float: left;
+  padding: 2% 4% 4% 4%;
+  font-size: 30px;
+}
+
+.detalist_contents {
+  width: 900px;
+  margin: auto;
+}
+
+.detail_list {
+  margin: 0 19px;
+}
+
+.detail_list li {
+border: 1px solid;
+width: 210px;
+padding: 17px;
+font-size: 20px;
+list-style: none;
+text-align: center;
+}
+
+.ikitsuke_list {
+  float: left;
+}
+
+.add_ikitsuke_btn {
+  margin: 2% 0 0 52%;  
+  font-size: 20px;
+  padding:5px 54px;
+  border-radius: 6px;
+}
+
+.cf:after {
+  content: "";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+
+}

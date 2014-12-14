@@ -1,13 +1,15 @@
 package jp.co.ikitsuke.dataAccess.dao.impl;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import jp.co.ikitsuke.dataAccess.client.ShopCategoryMapper;
 import jp.co.ikitsuke.dataAccess.dao.ShopCategoryDao;
 import jp.co.ikitsuke.dataAccess.entity.ShopCategory;
+import jp.co.ikitsuke.dataAccess.entity.ShopCategoryExample;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /***
  * 店舗カテゴリーDAO
@@ -15,67 +17,53 @@ import org.springframework.stereotype.Component;
  * @author yositune64
  *
  */
-@Component
+@Repository
 public class ShopCategoryDaoImpl implements ShopCategoryDao {
+
+	ShopCategory record;
+
+	@Autowired
+	ShopCategoryMapper mapper;
+
+	ShopCategoryExample example;
 
 	@Override
 	public List<ShopCategory> selectByUserId(Integer userId) {
 
-		//テスト用に、DB接続せず適当な値を返します。
+		example = new ShopCategoryExample();
 
-		Date newDate = new Date();
+		// ユーザIDによる検索
+		example.createCriteria().andUserIdEqualTo(userId);
 
-		List<ShopCategory> shopCategoryList = new ArrayList<>();
-
-		shopCategoryList.add(setValue(new ShopCategory(),1,"ランチ",userId,"0",newDate));
-		shopCategoryList.add(setValue(new ShopCategory(),2,"居酒屋",userId,"0",newDate));
-		shopCategoryList.add(setValue(new ShopCategory(),3,"",userId,"1",newDate));
-		shopCategoryList.add(setValue(new ShopCategory(),4,"",userId,"1",newDate));
-		shopCategoryList.add(setValue(new ShopCategory(),5,"",userId,"1",newDate));
-		shopCategoryList.add(setValue(new ShopCategory(),6,"",userId,"1",newDate));
-		shopCategoryList.add(setValue(new ShopCategory(),7,"",userId,"1",newDate));
-		shopCategoryList.add(setValue(new ShopCategory(),8,"",userId,"1",newDate));
-
-		return shopCategoryList;
+		return mapper.selectByExample(example);
 	}
 
 	@Override
-	public void updateByCategoryName(Integer categoryId, String categoryName) {
-		// TODO 自動生成されたメソッド・スタブ
+	public int updateCategoryNameByCategoryId(Integer categoryId, String categoryName) {
 
+		record = new ShopCategory();
+
+		record.setCategoryId(categoryId);
+		record.setUpdateTime(new Date());
+		// 変更後のカテゴリー名をセット
+		record.setCategoryName(categoryName);
+		// 無効フラグに0をセット
+		record.setDisableFlag("0");
+
+		return mapper.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
-	public void updateByDisabledFlag(Integer categoryId,String disabledFlag) {
-		// TODO 自動生成されたメソッド・スタブ
+	public int updateDisabledFlagByCategoryId(Integer categoryId) {
 
-	}
+		record = new ShopCategory();
 
-	/***
-	 * カテゴリ情報のセット処理
-	 * <pre>
-	 * テスト用のメソッド
-	 * </pre>
-	 *
-	 * @param shopCategory
-	 * @param categoryId
-	 * @param categoryName
-	 * @param userId
-	 * @param disableFlag
-	 * @param updateTime
-	 * @return
-	 */
-	private ShopCategory setValue(ShopCategory shopCategory,
-			Integer categoryId, String categoryName, Integer userId,
-			String disableFlag,Date updateTime) {
+		record.setCategoryId(categoryId);
+		record.setUpdateTime(new Date());
+		// 無効フラグに1をセット
+		record.setDisableFlag("1");
 
-		shopCategory.setCategoryId(categoryId);
-		shopCategory.setCategoryName(categoryName);
-		shopCategory.setUserId(userId);
-		shopCategory.setDisableFlag(disableFlag);
-		shopCategory.setUpdateTime(updateTime);
-
-		return shopCategory;
+		return mapper.updateByPrimaryKeySelective(record);
 	}
 
 }

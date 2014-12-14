@@ -3,13 +3,11 @@ package jp.co.ikitsuke.controller;
 import java.util.List;
 import java.util.Locale;
 
-import jp.co.ikitsuke.dataAccess.client.LoginMapper;
-import jp.co.ikitsuke.dataAccess.client.ShopInfoMapper;
 import jp.co.ikitsuke.dataAccess.dao.LoginDao;
+import jp.co.ikitsuke.dataAccess.dao.ShopCategoryDao;
 import jp.co.ikitsuke.dataAccess.dao.ShopInfoDao;
 import jp.co.ikitsuke.dataAccess.entity.Login;
 import jp.co.ikitsuke.dataAccess.entity.ShopCategory;
-import jp.co.ikitsuke.dataAccess.entity.ShopInfo;
 import jp.co.ikitsuke.logic.ShopCategoryLogic;
 
 import org.slf4j.Logger;
@@ -31,13 +29,11 @@ public class TestController {
 	LoginDao loginDao;
 
 	@Autowired
+	ShopCategoryDao shopCategoryDao;
+
+	@Autowired
 	ShopInfoDao shopInfoDao;
 
-	@Autowired
-	LoginMapper loginMapper;
-
-	@Autowired
-	ShopInfoMapper shopInfoMapper;
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
@@ -48,22 +44,22 @@ public class TestController {
 	public ModelAndView home(Locale locale, Model model) {
 		logger.info("Welcome test! The client locale is {}.", locale);
 
-		List<ShopCategory> shopCategoryList = shopCategoryLogic.findByUserId(2);
+		Login login = loginDao.selectByMailAddressLoginPassword("ims@ims.com", "password");
 
-		List<ShopInfo> shopInfoList = shopInfoDao.selectByCategoryId(1);
+		List<ShopCategory> shopCategoryList = shopCategoryDao.selectByUserId(1);
+		int shopCategoryUpdateResult = shopCategoryDao.updateCategoryNameByCategoryId(2, "朝飯");
+		int shopCategoryUpdateResult2 = shopCategoryDao.updateDisabledFlagByCategoryId(1);
 
-		ShopInfo shopInfo = shopInfoList.get(1);
-		shopInfo.setCategoryId(1);
-		shopInfo.setShopId(4);
-		//インサート文の実行
-		shopInfoMapper.insert(shopInfo);
+//		List<ShopInfo> shopInfoList = shopInfoDao.selectByCategoryId(2);
+//		ShopInfo shopInfo = shopInfoList.get(0);
+//		shopInfo.setShopId(null);
+//		int result3 = shopInfoDao.insert(shopInfo);
+//		ShopInfo shopInfo2 = shopInfoList.get(1);
+//		shopInfo2.setShopTel("99999");
+//		int result4 = shopInfoDao.updateByShopId(shopInfo2);
+//
+//		int result5 = shopInfoDao.deleteByShopId(2);
 
-
-//		Login login = loginDao.selectByMailAddressLoginPassword("mail", "pass");
-
-		Login login = loginMapper.selectByPrimaryKey(1);
-
-		System.out.println(shopCategoryList);
 		System.out.println("test 通過！！");
 
 		return new ModelAndView("home");

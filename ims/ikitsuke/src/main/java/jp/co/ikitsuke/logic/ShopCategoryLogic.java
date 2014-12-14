@@ -12,7 +12,24 @@ import jp.co.ikitsuke.dataAccess.entity.ShopCategory;
  */
 public interface ShopCategoryLogic {
 
-	/** カテゴリー一覧の取得 */
-	public List<ShopCategory> findByUserId(Integer usrId);
+	/***
+	 * カテゴリ一覧取得
+	 * @param usrId
+	 * @return
+	 */
+	public List<ShopCategory> getCategoryList(int usrId);
+
+	/***
+	 * カテゴリ名変更
+	 * @param categoryId
+	 * @param categoryName
+	 */
+	public void rename(int categoryId,String categoryName);
+
+	/***
+	 * カテゴリ削除
+	 * @param categoryId
+	 */
+	public void delete(int categoryId);
 
 }
