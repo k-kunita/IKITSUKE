@@ -25,7 +25,6 @@ public class LoginLogicImpl implements LoginLogic {
 		//取得に成功した場合
 		if(login != null){
 			registeredUser = true;
-			//TODO ログイン情報のセッションを作成
 		}
 		return registeredUser;
 	}

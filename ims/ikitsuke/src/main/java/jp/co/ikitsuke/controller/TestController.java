@@ -59,6 +59,7 @@ public class TestController {
 //		int result4 = shopInfoDao.updateByShopId(shopInfo2);
 //
 //		int result5 = shopInfoDao.deleteByShopId(2);
+//		request.getSession().setAttribute("unko", "うんこ");
 
 		System.out.println("test 通過！！");
 

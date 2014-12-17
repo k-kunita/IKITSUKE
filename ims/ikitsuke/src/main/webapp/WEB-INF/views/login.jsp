@@ -2,7 +2,7 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html lang=ja>
@@ -31,19 +31,22 @@
       </nav>
     </header>
 
+    <div>
+    	<c:out value="${unko}"></c:out>
+    </div>
+
     <!-- main_contents -->
     <div class="main_contents">
     <div class="login_contents">
     <h1>あなただけのIKITSUKEを<br>作りませんか？</h1>
-    <spring:url value="/ikitsuke/login/in" var="action" />
-    <form id="LoginInputForm" action="${action}" method="post" >
+    <spring:url value="/login/doLogin" var="action" />
+    <form:form modelAttribute="LoginInputForm" action="${action}" method="post" >
     <ul class="login_id_pass">
-      <li><input id="mailAddress" type="text" name="" value="" placeholder="ID" class="login_form"></li>
-      <li><input id="loginPassword" type="password" name="" value="" placeholder="PASS" class="login_form"></li>
-      <form:input path="mailAddress" />
+      <li><form:input path="mailAddress" type="text" value="" placeholder="ID" class="login_form" /></li>
+      <li><form:input path="loginPassword" type="password" value="" placeholder="PASS" class="login_form" /></li>
     </ul>
     <input type="submit" value="ログイン">
-    </form>
+    </form:form>
     </div>
     </div>
     <!-- footer -->
