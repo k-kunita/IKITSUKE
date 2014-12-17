@@ -5,7 +5,7 @@ package jp.co.ikitsuke.form;
 
 import java.util.List;
 
-import jp.co.ikitsuke.dataAccess.entity.ShopInfo;
+import jp.co.ikitsuke.dataAccess.entity.ShopInfoModel;
 
 /**
  * カテゴリ一覧画面<br>
@@ -23,7 +23,7 @@ public class CategoryOutputForm {
 	private int categoryName;
 
 	/** 店舗情報リスト */
-	private List<ShopInfo> shopInfoList;
+	private List<ShopInfoModel> shopInfoList;
 
 	/**
 	 * 店舗カテゴリＩＤを取得する
@@ -68,7 +68,7 @@ public class CategoryOutputForm {
 	 *
 	 * @return shopInfoList
 	 */
-	public List<ShopInfo> getShopInfoList() {
+	public List<ShopInfoModel> getShopInfoList() {
 		return shopInfoList;
 	}
 
@@ -78,7 +78,7 @@ public class CategoryOutputForm {
 	 * @param shopInfoList
 	 *            セットする shopInfoList
 	 */
-	public void setShopInfoList(List<ShopInfo> shopInfoList) {
+	public void setShopInfoList(List<ShopInfoModel> shopInfoList) {
 		this.shopInfoList = shopInfoList;
 	}
 
