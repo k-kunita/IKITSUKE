@@ -5,7 +5,8 @@ package jp.co.ikitsuke.form;
 
 import java.util.List;
 
-import jp.co.ikitsuke.dataAccess.entity.ShopInfoModel;
+import jp.co.ikitsuke.model.ShopInfoModel;
+
 
 /**
  * カテゴリ一覧画面<br>
