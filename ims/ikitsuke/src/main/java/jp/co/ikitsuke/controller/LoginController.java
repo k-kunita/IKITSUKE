@@ -37,13 +37,13 @@ public class LoginController {
 	@RequestMapping(value = "/login/doLogin", method = RequestMethod.POST)
 	public String doLogin(@ModelAttribute("LoginInputForm")LoginInputForm loginInputForm, HttpServletRequest request) {
 		
-		String forward;
+		String redirect;
 		
 		if(loginLogic.executeLogin(loginInputForm.getMailAddress(), loginInputForm.getLoginPassword())){
 			
-			forward = "forward:/shop";
+			redirect = "redirect:/shop";
 		}else{
-			forward = "forward:/login";
+			redirect = "redirect:/login";
 		}
 		
 		System.out.println(loginInputForm.getMailAddress());
@@ -52,7 +52,7 @@ public class LoginController {
 		request.getSession().setAttribute("unko", "うんこ");
 
 		//ログイン画面を表示
-		return str;
+		return redirect;
 	}
 
 }
