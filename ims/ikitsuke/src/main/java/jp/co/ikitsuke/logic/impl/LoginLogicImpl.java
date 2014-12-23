@@ -3,6 +3,7 @@ package jp.co.ikitsuke.logic.impl;
 import jp.co.ikitsuke.dataAccess.dao.LoginDao;
 import jp.co.ikitsuke.dataAccess.entity.Login;
 import jp.co.ikitsuke.logic.LoginLogic;
+import jp.co.ikitsuke.model.LoginModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,19 +15,25 @@ public class LoginLogicImpl implements LoginLogic {
 	LoginDao loginDao;
 
 	@Override
-	public boolean executeLogin(String mailAddress, String loginPassword) {
+	public LoginModel executeLogin(String mailAddress, String loginPassword) {
 
-		//登録済みユーザ
-		boolean registeredUser = false;
+		// ログインモデル
+		LoginModel loginModel = null;
 
-		//ログインユーザ情報の取得
-		Login login = loginDao.selectByMailAddressLoginPassword(mailAddress, loginPassword);
+		// ログインユーザ情報の取得
+		Login login = loginDao.selectByMailAddressLoginPassword(mailAddress,loginPassword);
 
-		//取得に成功した場合
-		if(login != null){
-			registeredUser = true;
+		// 取得に成功した場合
+		if (login != null) {
+			loginModel = new LoginModel();
+			loginModel.setMailAddress(login.getMailAddress());
+			loginModel.setLoginPassword(login.getLoginPassword());
+			loginModel.setUserId(login.getUserId());
+			loginModel.setCreateDateTime(login.getCreateDateTime());
+			loginModel.setLastUpdateTime(login.getUpdateTime());
 		}
-		return registeredUser;
+
+		return loginModel;
 	}
 
 }

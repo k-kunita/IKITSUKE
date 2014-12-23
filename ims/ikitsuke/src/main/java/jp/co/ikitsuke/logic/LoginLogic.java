@@ -1,5 +1,7 @@
 package jp.co.ikitsuke.logic;
 
+import jp.co.ikitsuke.model.LoginModel;
+
 /***
  * ログイン処理
  *
@@ -18,5 +20,5 @@ public interface LoginLogic {
 	 * @param loginPassword
 	 * @return ログイン可否
 	 */
-	public boolean executeLogin(String mailAddress,String loginPassword);
+	public LoginModel executeLogin(String mailAddress,String loginPassword);
 }

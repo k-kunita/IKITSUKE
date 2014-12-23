@@ -14,18 +14,24 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class LoginDaoImpl implements LoginDao {
 
-	Login record = new Login();
+	Login record;
 
-	List<Login> loginList = new ArrayList<>();
+	List<Login> loginList;
 
 	@Autowired
 	LoginMapper mapper;
 
-	LoginExample example = new LoginExample();
+	LoginExample example;
 
 	@Override
 	public Login selectByMailAddressLoginPassword(String mailAddress,
 			String loginPassword) {
+
+		record = null;
+
+		loginList = new ArrayList<>();
+
+		example = new LoginExample();
 
 		// 検索条件の作成
 		example.createCriteria().andMailAddressEqualTo(mailAddress)
@@ -36,6 +42,7 @@ public class LoginDaoImpl implements LoginDao {
 
 		// 複数取得の場合
 		if (loginList.size() == 1) {
+			System.out.println("レコード取得成功");
 			// 取得数が1の場合、配列0を返す
 			record = loginList.get(0);
 		} else {

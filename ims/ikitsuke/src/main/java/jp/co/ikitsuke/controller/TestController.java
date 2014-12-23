@@ -44,7 +44,7 @@ public class TestController {
 	public ModelAndView home(Locale locale, Model model) {
 		logger.info("Welcome test! The client locale is {}.", locale);
 
-		Login login = loginDao.selectByMailAddressLoginPassword("ims@ims.com", "password");
+		Login login = loginDao.selectByMailAddressLoginPassword("ikitsuke@ims.com", "password");
 
 		List<ShopCategory> shopCategoryList = shopCategoryDao.selectByUserId(1);
 		int shopCategoryUpdateResult = shopCategoryDao.updateCategoryNameByCategoryId(2, "朝飯");
