@@ -6,8 +6,6 @@ import jp.co.ikitsuke.form.LoginInputForm;
 import jp.co.ikitsuke.logic.LoginLogic;
 import jp.co.ikitsuke.model.LoginModel;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,8 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class LoginController {
-
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@Autowired
 	LoginLogic loginLogic;
@@ -49,7 +45,7 @@ public class LoginController {
 			//ログイン成功時
 			//ログインモデルをセッションに保管
 			request.getSession().setAttribute("loginModel", loginModel);
-			redirect = "redirect:/shop";
+			redirect = "redirect:/categoryManage";
 		}else{
 			//ログイン失敗時
 			redirect = "redirect:/login";
