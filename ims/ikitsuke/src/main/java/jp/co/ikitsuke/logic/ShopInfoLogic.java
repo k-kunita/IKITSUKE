@@ -1,5 +1,9 @@
 package jp.co.ikitsuke.logic;
 
+import java.util.List;
+
+import jp.co.ikitsuke.model.ShopInfoModel;
+
 
 /***
  * 店舗情報処理
@@ -8,6 +12,18 @@ package jp.co.ikitsuke.logic;
  *
  */
 public interface ShopInfoLogic {
+
+
+	/***
+	 * 店舗情報一覧取得
+	 * <pre>
+	 * カテゴリIDによる店舗情報一覧を取得する。
+	 * 取得ができない場合はnullを返す。
+	 * </pre>
+	 * @param categoryId
+	 * @return
+	 */
+	public List<ShopInfoModel> getShopInfo(int categoryId);
 
 	/***
 	 * 店舗情報登録
