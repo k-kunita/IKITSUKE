@@ -2,7 +2,7 @@ package jp.co.ikitsuke.logic;
 
 import java.util.List;
 
-import jp.co.ikitsuke.dataAccess.entity.ShopCategory;
+import jp.co.ikitsuke.model.ShopCategoryModel;
 
 /***
  * カテゴリ処理
@@ -14,10 +14,14 @@ public interface ShopCategoryLogic {
 
 	/***
 	 * カテゴリ一覧取得
+	 * <pre>
+	 * ユーザIDをキーにカテゴリー情報のListを取得する。
+	 * リストが取得できない場合はnullを返す。
+	 * </pre>
 	 * @param usrId
-	 * @return
+	 * @return カテゴリ一覧
 	 */
-	public List<ShopCategory> getCategoryList(int usrId);
+	public List<ShopCategoryModel> getCategoryList(int usrId);
 
 	/***
 	 * カテゴリ名変更
