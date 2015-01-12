@@ -45,7 +45,7 @@ public class LoginController {
 			//ログイン成功時
 			//ログインモデルをセッションに保管
 			request.getSession().setAttribute("loginModel", loginModel);
-			redirect = "redirect:/categoryManage";
+			redirect = "redirect:/categoryList";
 		}else{
 			//ログイン失敗時
 			redirect = "redirect:/login";
@@ -57,6 +57,15 @@ public class LoginController {
 		request.getSession().setAttribute("unko", "うんこ");
 
 		return redirect;
+	}
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String doLogout(HttpServletRequest request) {
+		
+		//セッションの取り消し
+		request.getSession().setAttribute("loginModel", null);
+		
+		//ログイン画面を表示
+		return "redirect:/login";
 	}
 
 }

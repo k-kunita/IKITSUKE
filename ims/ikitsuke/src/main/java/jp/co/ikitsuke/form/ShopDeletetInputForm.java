@@ -11,7 +11,7 @@ package jp.co.ikitsuke.form;
  * @author r-watanabe
  *
  */
-public class PurlieuDeletetInputForm {
+public class ShopDeletetInputForm {
 
 	/** 店舗ID */
 	private int shopId;

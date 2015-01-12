@@ -10,7 +10,7 @@ package jp.co.ikitsuke.form;
  * @author r-watanabe
  *
  */
-public class PurlieuEditInputForm extends AbstractForm {
+public class ShopListInputForm extends AbstractForm {
 
 	/** 店舗名 */
 	private String shopName;

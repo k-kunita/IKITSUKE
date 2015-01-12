@@ -67,4 +67,28 @@ public class ShopCategoryLogicImpl implements ShopCategoryLogic{
 		shopInfoDao.deleteByCategoryId(categoryId);
 	}
 
+	@Override
+	public ShopCategoryModel getCategory(int categoryId) {
+		
+		ShopCategoryModel  shopCategoryModel = null;
+		
+		//ショップカテゴリー情報の取得
+		ShopCategory shopCategory = shopCategoryDao.selectByCategoryId(categoryId);
+		
+		//取得成功の場合
+		if(shopCategory != null && shopCategory.getCategoryId() != null){
+			//Modelのインスタンス生成
+			shopCategoryModel = new ShopCategoryModel();
+			//Modelにカテゴリー情報をセット
+			shopCategoryModel.setCategoryId(categoryId);
+			shopCategoryModel.setCategoryName(shopCategory.getCategoryName());
+			shopCategoryModel.setShopInfoList(null);
+			shopCategoryModel.setUserId(shopCategory.getUserId());
+			shopCategoryModel.setLastUpdateTime(shopCategory.getUpdateTime());
+			shopCategoryModel.setDisableFlag(ConvertUtil.convertStringFlg(shopCategory.getDisableFlag()));
+		}
+
+		return shopCategoryModel;
+	}
+
 }

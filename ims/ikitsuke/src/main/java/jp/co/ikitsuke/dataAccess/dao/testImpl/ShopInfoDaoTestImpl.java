@@ -19,7 +19,7 @@ public class ShopInfoDaoTestImpl implements ShopInfoDao {
 	ShopInfoMapper shopInfoMapper;
 
 	@Override
-	public List<ShopInfo> selectByCategoryId(Integer categoryId) {
+	public List<ShopInfo> selectByCategoryId(int categoryId) {
 
 		//テスト用に値を返します
 
@@ -91,15 +91,21 @@ public class ShopInfoDaoTestImpl implements ShopInfoDao {
 	}
 
 	@Override
-	public int deleteByShopId(Integer shopId) {
+	public int deleteByShopId(int shopId) {
 		// TODO 自動生成されたメソッド・スタブ
 		return 0;
 	}
 
 	@Override
-	public int deleteByCategoryId(Integer categoryId) {
+	public int deleteByCategoryId(int categoryId) {
 		// TODO 自動生成されたメソッド・スタブ
 		return 0;
+	}
+
+	@Override
+	public ShopInfo selectByShopId(int shopId) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
 	}
 
 }

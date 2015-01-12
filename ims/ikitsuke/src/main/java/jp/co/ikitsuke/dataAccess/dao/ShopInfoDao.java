@@ -18,7 +18,14 @@ public interface ShopInfoDao {
 	 * @param categoryId
 	 * @return 店舗情報リスト
 	 */
-	List<ShopInfo> selectByCategoryId(Integer categoryId);
+	List<ShopInfo> selectByCategoryId(int categoryId);
+	
+	/***
+	 * 店舗ID指定で店舗情報を取得
+	 * @param shopId
+	 * @return 店舗情報
+	 */
+	ShopInfo selectByShopId(int shopId);
 
 	/***
 	 * 店舗ID指定による更新処理
@@ -32,13 +39,13 @@ public interface ShopInfoDao {
 	 * @param shopId
 	 * @return 更新数
 	 */
-	int deleteByShopId(Integer shopId);
+	int deleteByShopId(int shopId);
 
 	/***
 	 * カテゴリID指定による論理削除処理
 	 * @param categoryId
 	 * @return 更新数
 	 */
-	int deleteByCategoryId(Integer categoryId);
+	int deleteByCategoryId(int categoryId);
 
 }

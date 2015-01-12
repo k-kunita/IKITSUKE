@@ -1,17 +1,23 @@
-/**
- *
- */
 package jp.co.ikitsuke.form;
+
+import java.util.List;
+
+import jp.co.ikitsuke.model.ShopInfoModel;
 
 /**
  * 行きつけ一覧<br>
  * 編集画面<br>
- * 保存ボタン Input<br>
  *
  * @author r-watanabe
  *
  */
-public class PurlieuEditSaveInputForm extends AbstractForm {
+public class ShopEditOutputForm extends AbstractForm {
+
+	/** 店舗カテゴリId */
+	private int categoryId;
+
+	/** 店舗カテゴリ名 */
+	private String categoryName;
 
 	/** 店舗名 */
 	private String shopName;
@@ -24,81 +30,63 @@ public class PurlieuEditSaveInputForm extends AbstractForm {
 
 	/** 参照URL */
 	private String shopPageUrl;
+	
+	
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+	/**
+	 * 店舗カテゴリ名を取得する
+	 *
+	 * @return categoryName
+	 */
+	public String getCategoryName() {
+		return categoryName;
+	}
 
 	/**
-	 * 店舗名を取得する
+	 * 店舗カテゴリ名を設定する
 	 *
-	 * @return shopName
+	 * @param categoryName
+	 *            セットする categoryName
 	 */
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+	
 	public String getShopName() {
 		return shopName;
 	}
 
-	/**
-	 * 店舗名を設定する
-	 *
-	 * @param shopName
-	 *            セットする shopName
-	 */
 	public void setShopName(String shopName) {
 		this.shopName = shopName;
 	}
 
-	/**
-	 * 電話番号を取得する
-	 *
-	 * @return shopTel
-	 */
 	public String getShopTel() {
 		return shopTel;
 	}
 
-	/**
-	 * 電話番号を設定する
-	 *
-	 * @param shopTel
-	 *            セットする shopTel
-	 */
 	public void setShopTel(String shopTel) {
 		this.shopTel = shopTel;
 	}
 
-	/**
-	 * 備考を取得する
-	 *
-	 * @return shopMemo
-	 */
 	public String getShopMemo() {
 		return shopMemo;
 	}
 
-	/**
-	 * 備考を設定する
-	 *
-	 * @param shopMemo
-	 *            セットする shopMemo
-	 */
 	public void setShopMemo(String shopMemo) {
 		this.shopMemo = shopMemo;
 	}
 
-	/**
-	 * 参照URLを取得する
-	 *
-	 * @return shopPageUrl
-	 */
 	public String getShopPageUrl() {
 		return shopPageUrl;
 	}
 
-	/**
-	 * 参照URLを設定する
-	 *
-	 * @param shopPageUrl
-	 *            セットする shopPageUrl
-	 */
 	public void setShopPageUrl(String shopPageUrl) {
 		this.shopPageUrl = shopPageUrl;
 	}
-
 }

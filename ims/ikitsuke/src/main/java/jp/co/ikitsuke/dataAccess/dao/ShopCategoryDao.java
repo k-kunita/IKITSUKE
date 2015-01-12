@@ -11,21 +11,28 @@ public interface ShopCategoryDao {
 	 * @param userId
 	 * @return 店舗カテゴリーリスト
 	 */
-	public List<ShopCategory> selectByUserId(Integer userId);
-
+	public List<ShopCategory> selectByUserId(int userId);
+	
+	/***
+	 * カテゴリーID指定で取得
+	 * @param categoryId
+	 * @return
+	 */
+	public ShopCategory selectByCategoryId(int categoryId);
+	
 	/***
 	 * ユーザID指定でカテゴリ名を更新
 	 * @param categoryId
 	 * @param categoryName
 	 * @return 更新数
 	 */
-	public int updateCategoryNameByCategoryId(Integer categoryId,String categoryName);
+	public int updateCategoryNameByCategoryId(int categoryId,String categoryName);
 
 	/***
 	 * カテゴリID指定で無効フラグを更新
 	 * @param categoryId
 	 * @return 更新数
 	 */
-	public int updateDisabledFlagByCategoryId(Integer categoryId);
+	public int updateDisabledFlagByCategoryId(int categoryId);
 
 }

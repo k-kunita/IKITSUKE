@@ -10,10 +10,21 @@ package jp.co.ikitsuke.form;
  * @author r-watanabe
  *
  */
-public class PurlieuAddOutputForm extends AbstractForm {
+public class ShopAddOutputForm extends AbstractForm {
+
+	/** カテゴリーID */
+	private int categoryId;
 
 	/** 店舗カテゴリ名 */
 	private String categoryName;
+	
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
 
 	/**
 	 * 店舗カテゴリ名を取得する

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class ShopCategoryDaoTestImpl implements ShopCategoryDao {
 
 	@Override
-	public List<ShopCategory> selectByUserId(Integer userId) {
+	public List<ShopCategory> selectByUserId(int userId) {
 
 		//テスト用に、DB接続せず適当な値を返します。
 
@@ -34,12 +34,12 @@ public class ShopCategoryDaoTestImpl implements ShopCategoryDao {
 	}
 
 	@Override
-	public int updateCategoryNameByCategoryId(Integer categoryId, String categoryName) {
+	public int updateCategoryNameByCategoryId(int categoryId, String categoryName) {
 		return 0;
 	}
 
 	@Override
-	public int updateDisabledFlagByCategoryId(Integer categoryId) {
+	public int updateDisabledFlagByCategoryId(int categoryId) {
 		return 0;
 	}
 
@@ -64,6 +64,12 @@ public class ShopCategoryDaoTestImpl implements ShopCategoryDao {
 		shopCategory.setUpdateTime(updateTime);
 
 		return shopCategory;
+	}
+
+	@Override
+	public ShopCategory selectByCategoryId(int categoryId) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
 	}
 
 }

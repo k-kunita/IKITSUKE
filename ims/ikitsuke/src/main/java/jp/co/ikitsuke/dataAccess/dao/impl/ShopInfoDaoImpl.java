@@ -24,18 +24,21 @@ public class ShopInfoDaoImpl implements ShopInfoDao {
 
 
 	@Override
-	public List<ShopInfo> selectByCategoryId(Integer categoryId) {
+	public List<ShopInfo> selectByCategoryId(int categoryId) {
 
 		example = new ShopInfoExample();
-		//カテゴリID指定による検索
-		example.createCriteria().andCategoryIdEqualTo(categoryId);
-
+		//カテゴリID指定による検索&未削除のみ検索対象
+		example.createCriteria().andCategoryIdEqualTo(categoryId).andDeleteFlagEqualTo("0");
+		
 		return mapper.selectByExample(example);
 	}
 
 	@Override
 	public int insert(ShopInfo record) {
-
+		
+		record.setUpdateTime(new Date());
+		record.setDeleteFlag("0");
+		
 		return mapper.insert(record);
 	}
 
@@ -43,12 +46,13 @@ public class ShopInfoDaoImpl implements ShopInfoDao {
 	public int updateByShopId(ShopInfo record) {
 
 		record.setUpdateTime(new Date());
+		record.setDeleteFlag("0");
 
 		return mapper.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
-	public int deleteByShopId(Integer shopId) {
+	public int deleteByShopId(int shopId) {
 
 		record = new ShopInfo();
 
@@ -61,7 +65,7 @@ public class ShopInfoDaoImpl implements ShopInfoDao {
 	}
 
 	@Override
-	public int deleteByCategoryId(Integer categoryId) {
+	public int deleteByCategoryId(int categoryId) {
 
 		record = new ShopInfo();
 
@@ -73,6 +77,12 @@ public class ShopInfoDaoImpl implements ShopInfoDao {
 		example.createCriteria().andCategoryIdEqualTo(categoryId);
 
 		return mapper.updateByExampleSelective(record, example);
+	}
+
+	@Override
+	public ShopInfo selectByShopId(int shopId) {
+		
+		return mapper.selectByPrimaryKey(shopId);
 	}
 
 }

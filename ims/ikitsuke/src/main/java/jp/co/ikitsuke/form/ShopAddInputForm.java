@@ -4,14 +4,14 @@
 package jp.co.ikitsuke.form;
 
 /**
+ *
  * 行きつけ一覧<br>
- * 追加画面<br>
- * 保存ボタン Input<br>
+ * 追加ボタン Input<br>
  *
  * @author r-watanabe
  *
  */
-public class PurlieuAddSaveInputForm extends AbstractForm {
+public class ShopAddInputForm extends AbstractForm {
 
 	/** 店舗名 */
 	private String shopName;

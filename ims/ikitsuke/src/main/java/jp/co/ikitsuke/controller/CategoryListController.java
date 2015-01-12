@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class CategoryManageController {
+public class CategoryListController {
 
 	LoginModel loginModel;
 
 	@Autowired
 	ShopCategoryLogic shopCategoryLogic;
 
-	@RequestMapping(value = "/categoryManage", method = RequestMethod.GET)
-	public ModelAndView login(@ModelAttribute("CategoryOutputForm")CategoryOutputForm categoryOutputForm, HttpServletRequest request) {
+	@RequestMapping(value = "/categoryList", method = RequestMethod.GET)
+	public ModelAndView categoryList(@ModelAttribute("CategoryOutputForm")CategoryOutputForm categoryOutputForm, HttpServletRequest request) {
 
 		//セッションからログイン情報を取得
 		loginModel = (LoginModel)request.getSession().getAttribute("loginModel");
@@ -39,7 +39,7 @@ public class CategoryManageController {
 		categoryOutputForm.setShopCategoryList(ConvertUtil.toShopCategoryParts(shopCategoryModelList));
 
 		//カテゴリ一覧画面を表示
-		return new ModelAndView("categoryManage","CategoryOutputForm",categoryOutputForm);
+		return new ModelAndView("categoryList","CategoryOutputForm",categoryOutputForm);
 	}
 
 

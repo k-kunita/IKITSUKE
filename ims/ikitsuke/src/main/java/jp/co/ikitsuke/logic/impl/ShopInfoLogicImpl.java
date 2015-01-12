@@ -20,7 +20,7 @@ public class ShopInfoLogicImpl implements ShopInfoLogic {
 
 
 	@Override
-	public List<ShopInfoModel> getShopInfo(int categoryId) {
+	public List<ShopInfoModel> getShopInfoList(int categoryId) {
 
 		List<ShopInfoModel> shopInfoModelList = null;
 
@@ -51,17 +51,15 @@ public class ShopInfoLogicImpl implements ShopInfoLogic {
 	}
 
 	@Override
-	public void register(Integer shopId, Integer categoryId, String shopName,
-			String shopTel, String shopMemo, String shopUrl) {
+	public void register(ShopInfoModel shopInfoModel) {
 
 		ShopInfo shopInfo = new ShopInfo();
 
-		shopInfo.setShopId(shopId);
-		shopInfo.setCategoryId(categoryId);
-		shopInfo.setShopName(shopName);
-		shopInfo.setShopTel(shopTel);
-		shopInfo.setShopMemo(shopMemo);
-		shopInfo.setShopUrl(shopUrl);
+		shopInfo.setCategoryId(shopInfoModel.getCategoryId());
+		shopInfo.setShopName(shopInfoModel.getShopName());
+		shopInfo.setShopTel(shopInfoModel.getShopTel());
+		shopInfo.setShopMemo(shopInfoModel.getShopMemo());
+		shopInfo.setShopUrl(shopInfoModel.getShopPageUrl());
 
 		//INSERT処理の実行
 		shopInfoDao.insert(shopInfo);
@@ -70,17 +68,17 @@ public class ShopInfoLogicImpl implements ShopInfoLogic {
 	}
 
 	@Override
-	public void update(Integer shopId, Integer categoryId, String shopName,
-			String shopTel, String shopMemo, String shopUrl) {
+	public void update(ShopInfoModel shopInfoModel) {
 
 		ShopInfo shopInfo = new ShopInfo();
 
-		shopInfo.setShopId(shopId);
-		shopInfo.setCategoryId(categoryId);
-		shopInfo.setShopName(shopName);
-		shopInfo.setShopTel(shopTel);
-		shopInfo.setShopMemo(shopMemo);
-		shopInfo.setShopUrl(shopUrl);
+		shopInfo.setShopId(shopInfoModel.getShopId());
+		shopInfo.setCategoryId(shopInfoModel.getCategoryId());
+		shopInfo.setShopName(shopInfoModel.getShopName());
+		shopInfo.setShopTel(shopInfoModel.getShopTel());
+		shopInfo.setShopMemo(shopInfoModel.getShopMemo());
+		shopInfo.setShopUrl(shopInfoModel.getShopPageUrl());
+		
 
 		//UPDATE処理の実行
 		shopInfoDao.updateByShopId(shopInfo);
@@ -93,6 +91,30 @@ public class ShopInfoLogicImpl implements ShopInfoLogic {
 		//論理削除処理の実行
 		shopInfoDao.deleteByShopId(shopId);
 		//TODO 更新失敗時の挙動
+	}
+
+	@Override
+	public ShopInfoModel getShopInfo(int shopId) {
+		
+		ShopInfoModel shopInfoModel = null;
+		
+		//店舗IDによる店舗情報の取得
+		ShopInfo shopInfo = shopInfoDao.selectByShopId(shopId);
+		
+		//取得成功の場合はModelに値をセット
+		if(shopInfo != null && shopInfo.getShopId() != null){
+			shopInfoModel = new ShopInfoModel();
+			shopInfoModel.setShopId(shopInfo.getShopId());
+			shopInfoModel.setShopName(shopInfo.getShopName());
+			shopInfoModel.setShopTel(shopInfo.getShopTel());
+			shopInfoModel.setShopPageUrl(shopInfo.getShopUrl());
+			shopInfoModel.setShopMemo(shopInfo.getShopMemo());
+			shopInfoModel.setCategoryId(shopInfo.getCategoryId());
+			shopInfoModel.setLastUpdateTime(shopInfo.getUpdateTime());
+			shopInfoModel.setDeleteFlag(ConvertUtil.convertStringFlg(shopInfo.getDeleteFlag()));
+		}
+		
+		return shopInfoModel;
 	}
 
 }

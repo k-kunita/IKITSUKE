@@ -7,21 +7,21 @@ import java.util.List;
 
 import jp.co.ikitsuke.model.ShopInfoModel;
 
-
 /**
+ *
  * 行きつけ一覧<br>
- * 追加画面<br>
- * 保存ボタン<br>
+ * 編集画面<br>
+ * 削除ボタン OUtput<br>
  *
  * @author r-watanabe
  *
  */
-public class PurlieuAddSaveOutputForm extends AbstractForm {
+public class ShopDeletetOutputForm extends AbstractForm {
 
 	/** 店舗カテゴリ名 */
 	private String categoryName;
 
-	/** 店舗カテゴリ情報詳細リスト */
+	/** 店舗カテゴリ詳細情報リスト */
 	private List<ShopInfoModel> shopCategoryDetailList;
 
 	/**
@@ -44,7 +44,7 @@ public class PurlieuAddSaveOutputForm extends AbstractForm {
 	}
 
 	/**
-	 * 店舗カテゴリ情報詳細リストを取得する
+	 * 店舗カテゴリ詳細情報リストを取得する
 	 *
 	 * @return shopCategoryDetailList
 	 */
@@ -53,12 +53,13 @@ public class PurlieuAddSaveOutputForm extends AbstractForm {
 	}
 
 	/**
-	 * 店舗カテゴリ情報詳細リストを設定する
+	 * 店舗カテゴリ詳細情報リストを設定する
 	 *
 	 * @param shopCategoryDetailList
 	 *            セットする shopCategoryDetailList
 	 */
-	public void setShopCategoryDetailList(List<ShopInfoModel> shopCategoryDetailList) {
+	public void setShopCategoryDetailList(
+			List<ShopInfoModel> shopCategoryDetailList) {
 		this.shopCategoryDetailList = shopCategoryDetailList;
 	}
 

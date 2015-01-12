@@ -14,10 +14,13 @@ import jp.co.ikitsuke.form.part.ShopInfoPart;
  * @author r-watanabe
  *
  */
-public class PurlieuEditOutputForm {
+public class ShopListOutputForm {
 
 	/** 店舗情報のリスト */
 	private List<ShopInfoPart> shopInfoList;
+	
+	/** カテゴリーID */
+	private int categoryId;
 
 	/***
 	 * 店舗情報リストのgetter
@@ -34,4 +37,13 @@ public class PurlieuEditOutputForm {
 	public void setShopInfoList(List<ShopInfoPart> shopInfoList) {
 		this.shopInfoList = shopInfoList;
 	}
+	
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+	
 }

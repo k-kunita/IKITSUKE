@@ -22,6 +22,17 @@ public interface ShopCategoryLogic {
 	 * @return カテゴリ一覧
 	 */
 	public List<ShopCategoryModel> getCategoryList(int usrId);
+	
+	/***
+	 * カテゴリー情報取得
+	 * <pre>
+	 * カテゴリーIDをキーにカテゴリー情報を取得する。
+	 * カテゴリー情報が取得できない場合はnullを返す。
+	 * </pre>
+	 * @param categoryId
+	 * @return ShopCategoryModel
+	 */
+	public ShopCategoryModel getCategory(int categoryId);
 
 	/***
 	 * カテゴリ名変更

@@ -23,8 +23,8 @@
 		<nav>
 			<ul class="nav_bar">
 				<li class="title"><a href="#"> title </a></li>
-				<li><a href="main.html"> Home</a></li>
-				<li><a href="login.html"> Logout </a></li>
+				<li><a href="/ikitsuke/categoryList"> Home</a></li>
+				<li><a href="/ikitsuke/logout"> Logout </a></li>
 			</ul>
 		</nav>
 	</header>
@@ -37,10 +37,9 @@
 					<form>
 						<input type="button"
 							value="<c:out value="${obj.categoryName}"/>"
-							onClick="location. href='detaillist.html'"
+							onClick="location. href='categoryList/<c:out value="${obj.categoryId}/shopList"/>'"
 							id="<c:out value="${obj.categoryId}"/>" class="category_btn">
 							 <input type="button" value="編集" id="category_edit" class="edit_btn">
-
 					</form>
 				</c:forEach>
 		</div>

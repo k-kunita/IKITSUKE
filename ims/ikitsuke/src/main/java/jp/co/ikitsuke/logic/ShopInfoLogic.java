@@ -23,31 +23,32 @@ public interface ShopInfoLogic {
 	 * @param categoryId
 	 * @return
 	 */
-	public List<ShopInfoModel> getShopInfo(int categoryId);
+	public List<ShopInfoModel> getShopInfoList(int categoryId);
+	
+	/***
+	 * 店舗情報取得
+	 * <pre>
+	 * 店舗IDにより店舗情報を取得する。
+	 * 取得ができない場合はnullを返す。
+	 * </pre>
+	 * @param shopId
+	 * @return
+	 */
+	public ShopInfoModel getShopInfo(int shopId);
+	
 
 	/***
 	 * 店舗情報登録
-	 * @param shopId
-	 * @param categoryId
-	 * @param shopName
-	 * @param shopTel
-	 * @param shopMemo
-	 * @param shopUrl
+	 * @param shopInfoModel
 	 */
-	public void register(Integer shopId, Integer categoryId, String shopName,
-			String shopTel, String shopMemo, String shopUrl);
+	public void register(ShopInfoModel shopInfoModel);
 
 	/***
 	 * 店舗情報更新
-	 * @param shopId
-	 * @param categoryId
-	 * @param shopName
-	 * @param shopTel
-	 * @param shopMemo
-	 * @param shopUrl
+	 * @param shopInfoModel
 	 */
-	public void update(Integer shopId, Integer categoryId, String shopName,
-			String shopTel, String shopMemo, String shopUrl);
+	public void update(ShopInfoModel shopInfoModel);
+	
 	/***
 	 * 店舗情報削除
 	 * @param shopId

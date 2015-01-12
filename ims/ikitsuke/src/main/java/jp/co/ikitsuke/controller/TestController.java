@@ -34,15 +34,11 @@ public class TestController {
 	@Autowired
 	ShopInfoDao shopInfoDao;
 
-
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/test/", method = RequestMethod.GET)
 	public ModelAndView home(Locale locale, Model model) {
-		logger.info("Welcome test! The client locale is {}.", locale);
 
 		Login login = loginDao.selectByMailAddressLoginPassword("ikitsuke@ims.com", "password");
 

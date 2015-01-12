@@ -28,7 +28,7 @@ public class ShopCategoryDaoImpl implements ShopCategoryDao {
 	ShopCategoryExample example;
 
 	@Override
-	public List<ShopCategory> selectByUserId(Integer userId) {
+	public List<ShopCategory> selectByUserId(int userId) {
 
 		example = new ShopCategoryExample();
 
@@ -39,7 +39,7 @@ public class ShopCategoryDaoImpl implements ShopCategoryDao {
 	}
 
 	@Override
-	public int updateCategoryNameByCategoryId(Integer categoryId, String categoryName) {
+	public int updateCategoryNameByCategoryId(int categoryId, String categoryName) {
 
 		record = new ShopCategory();
 
@@ -54,7 +54,7 @@ public class ShopCategoryDaoImpl implements ShopCategoryDao {
 	}
 
 	@Override
-	public int updateDisabledFlagByCategoryId(Integer categoryId) {
+	public int updateDisabledFlagByCategoryId(int categoryId) {
 
 		record = new ShopCategory();
 
@@ -64,6 +64,12 @@ public class ShopCategoryDaoImpl implements ShopCategoryDao {
 		record.setDisableFlag("1");
 
 		return mapper.updateByPrimaryKeySelective(record);
+	}
+
+	@Override
+	public ShopCategory selectByCategoryId(int categoryId) {
+		
+		return mapper.selectByPrimaryKey(categoryId);
 	}
 
 }
