@@ -20,27 +20,26 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class CategoryListController {
 
-	LoginModel loginModel;
+    LoginModel loginModel;
 
-	@Autowired
-	ShopCategoryLogic shopCategoryLogic;
+    @Autowired
+    ShopCategoryLogic shopCategoryLogic;
 
-	@RequestMapping(value = "/categoryList", method = RequestMethod.GET)
-	public ModelAndView categoryList(@ModelAttribute("CategoryOutputForm")CategoryOutputForm categoryOutputForm, HttpServletRequest request) {
+    @RequestMapping(value = "/categoryList", method = RequestMethod.GET)
+    public ModelAndView categoryList(@ModelAttribute("CategoryOutputForm") CategoryOutputForm categoryOutputForm, HttpServletRequest request) {
 
-		//セッションからログイン情報を取得
-		loginModel = (LoginModel)request.getSession().getAttribute("loginModel");
+        // セッションからログイン情報を取得
+        loginModel = (LoginModel) request.getSession().getAttribute("loginModel");
 
-		List<ShopCategoryModel> shopCategoryModelList = shopCategoryLogic.getCategoryList(loginModel.getUserId());
+        List<ShopCategoryModel> shopCategoryModelList = shopCategoryLogic.getCategoryList(loginModel.getUserId());
 
-		//TODO modelListにnullが返ってきた場合
+        // TODO modelListにnullが返ってきた場合
 
-		//ModelをPartに変換しFormにセット
-		categoryOutputForm.setShopCategoryList(ConvertUtil.toShopCategoryParts(shopCategoryModelList));
+        // ModelをPartに変換しFormにセット
+        categoryOutputForm.setShopCategoryList(ConvertUtil.toShopCategoryParts(shopCategoryModelList));
 
-		//カテゴリ一覧画面を表示
-		return new ModelAndView("categoryList","CategoryOutputForm",categoryOutputForm);
-	}
-
+        // カテゴリ一覧画面を表示
+        return new ModelAndView("categoryList", "CategoryOutputForm", categoryOutputForm);
+    }
 
 }

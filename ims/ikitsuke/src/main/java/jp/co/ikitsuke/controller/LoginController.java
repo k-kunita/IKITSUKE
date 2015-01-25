@@ -16,56 +16,57 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
-	@Autowired
-	LoginLogic loginLogic;
+    @Autowired
+    LoginLogic loginLogic;
 
-	LoginModel loginModel;
+    LoginModel loginModel;
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView login(@ModelAttribute("LoginInputForm")LoginInputForm loginInputForm) {
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login(@ModelAttribute("LoginInputForm") LoginInputForm loginInputForm) {
 
-		loginInputForm.setMailAddress("ikitsuke@ims.com");
-		loginInputForm.setLoginPassword("password");
+        loginInputForm.setMailAddress("ikitsuke@ims.com");
+        loginInputForm.setLoginPassword("password");
 
-		//ログイン画面を表示
-		return new ModelAndView("login");
-	}
+        // ログイン画面を表示
+        return new ModelAndView("login");
+    }
 
-	@RequestMapping(value = "/login/doLogin", method = RequestMethod.POST)
-	public String doLogin(@ModelAttribute("LoginInputForm")LoginInputForm loginInputForm, HttpServletRequest request) {
+    @RequestMapping(value = "/login/doLogin", method = RequestMethod.POST)
+    public String doLogin(@ModelAttribute("LoginInputForm") LoginInputForm loginInputForm, HttpServletRequest request) {
 
-		//遷移先
-		String redirect;
+        // 遷移先
+        String redirect;
 
-		//メールアドレスとパスワードによりログイン情報を取得
-		loginModel = loginLogic.executeLogin(loginInputForm.getMailAddress(), loginInputForm.getLoginPassword());
+        // メールアドレスとパスワードによりログイン情報を取得
+        loginModel = loginLogic.executeLogin(loginInputForm.getMailAddress(), loginInputForm.getLoginPassword());
 
-		//モデルの有無判定
-		if(loginModel != null){
-			//ログイン成功時
-			//ログインモデルをセッションに保管
-			request.getSession().setAttribute("loginModel", loginModel);
-			redirect = "redirect:/categoryList";
-		}else{
-			//ログイン失敗時
-			redirect = "redirect:/login";
-		}
+        // モデルの有無判定
+        if (loginModel != null) {
+            // ログイン成功時
+            // ログインモデルをセッションに保管
+            request.getSession().setAttribute("loginModel", loginModel);
+            redirect = "redirect:/categoryList";
+        } else {
+            // ログイン失敗時
+            redirect = "redirect:/login";
+        }
 
-		System.out.println(loginInputForm.getMailAddress());
-		System.out.println(loginInputForm.getLoginPassword());
+        System.out.println(loginInputForm.getMailAddress());
+        System.out.println(loginInputForm.getLoginPassword());
 
-		request.getSession().setAttribute("unko", "うんこ");
+        request.getSession().setAttribute("unko", "うんこ");
 
-		return redirect;
-	}
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String doLogout(HttpServletRequest request) {
-		
-		//セッションの取り消し
-		request.getSession().setAttribute("loginModel", null);
-		
-		//ログイン画面を表示
-		return "redirect:/login";
-	}
+        return redirect;
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String doLogout(HttpServletRequest request) {
+
+        // セッションの取り消し
+        request.getSession().setAttribute("loginModel", null);
+
+        // ログイン画面を表示
+        return "redirect:/login";
+    }
 
 }

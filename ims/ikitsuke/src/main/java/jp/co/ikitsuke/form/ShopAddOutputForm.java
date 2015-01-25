@@ -12,37 +12,37 @@ package jp.co.ikitsuke.form;
  */
 public class ShopAddOutputForm extends AbstractForm {
 
-	/** カテゴリーID */
-	private int categoryId;
+    /** カテゴリーID */
+    private int categoryId;
 
-	/** 店舗カテゴリ名 */
-	private String categoryName;
-	
-	public int getCategoryId() {
-		return categoryId;
-	}
+    /** 店舗カテゴリ名 */
+    private String categoryName;
 
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
+    public int getCategoryId() {
+        return categoryId;
+    }
 
-	/**
-	 * 店舗カテゴリ名を取得する
-	 *
-	 * @return categoryName
-	 */
-	public String getCategoryName() {
-		return categoryName;
-	}
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
 
-	/**
-	 * 店舗カテゴリ名を設定する
-	 *
-	 * @param categoryName
-	 *            セットする categoryName
-	 */
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
+    /**
+     * 店舗カテゴリ名を取得する
+     *
+     * @return categoryName
+     */
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    /**
+     * 店舗カテゴリ名を設定する
+     *
+     * @param categoryName
+     *            セットする categoryName
+     */
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
 }

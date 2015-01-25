@@ -13,80 +13,80 @@ import jp.co.ikitsuke.model.ShopInfoModel;
  */
 public class ShopEditOutputForm extends AbstractForm {
 
-	/** 店舗カテゴリId */
-	private int categoryId;
+    /** 店舗カテゴリId */
+    private int categoryId;
 
-	/** 店舗カテゴリ名 */
-	private String categoryName;
+    /** 店舗カテゴリ名 */
+    private String categoryName;
 
-	/** 店舗名 */
-	private String shopName;
+    /** 店舗名 */
+    private String shopName;
 
-	/** 電話番号 */
-	private String shopTel;
+    /** 電話番号 */
+    private String shopTel;
 
-	/** 備考 */
-	private String shopMemo;
+    /** 備考 */
+    private String shopMemo;
 
-	/** 参照URL */
-	private String shopPageUrl;
-	
-	
-	public int getCategoryId() {
-		return categoryId;
-	}
+    /** 参照URL */
+    private String shopPageUrl;
 
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
-	/**
-	 * 店舗カテゴリ名を取得する
-	 *
-	 * @return categoryName
-	 */
-	public String getCategoryName() {
-		return categoryName;
-	}
+    public int getCategoryId() {
+        return categoryId;
+    }
 
-	/**
-	 * 店舗カテゴリ名を設定する
-	 *
-	 * @param categoryName
-	 *            セットする categoryName
-	 */
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
-	
-	public String getShopName() {
-		return shopName;
-	}
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
 
-	public void setShopName(String shopName) {
-		this.shopName = shopName;
-	}
+    /**
+     * 店舗カテゴリ名を取得する
+     *
+     * @return categoryName
+     */
+    public String getCategoryName() {
+        return categoryName;
+    }
 
-	public String getShopTel() {
-		return shopTel;
-	}
+    /**
+     * 店舗カテゴリ名を設定する
+     *
+     * @param categoryName
+     *            セットする categoryName
+     */
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
-	public void setShopTel(String shopTel) {
-		this.shopTel = shopTel;
-	}
+    public String getShopName() {
+        return shopName;
+    }
 
-	public String getShopMemo() {
-		return shopMemo;
-	}
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
 
-	public void setShopMemo(String shopMemo) {
-		this.shopMemo = shopMemo;
-	}
+    public String getShopTel() {
+        return shopTel;
+    }
 
-	public String getShopPageUrl() {
-		return shopPageUrl;
-	}
+    public void setShopTel(String shopTel) {
+        this.shopTel = shopTel;
+    }
 
-	public void setShopPageUrl(String shopPageUrl) {
-		this.shopPageUrl = shopPageUrl;
-	}
+    public String getShopMemo() {
+        return shopMemo;
+    }
+
+    public void setShopMemo(String shopMemo) {
+        this.shopMemo = shopMemo;
+    }
+
+    public String getShopPageUrl() {
+        return shopPageUrl;
+    }
+
+    public void setShopPageUrl(String shopPageUrl) {
+        this.shopPageUrl = shopPageUrl;
+    }
 }

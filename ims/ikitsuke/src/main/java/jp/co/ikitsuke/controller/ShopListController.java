@@ -22,26 +22,25 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ShopListController {
 
-	@Autowired
-	ShopInfoLogic shopInfoLogic;
+    @Autowired
+    ShopInfoLogic shopInfoLogic;
 
-	@RequestMapping(value = "categoryList/{categoryId}/shopList", method = RequestMethod.GET)
-	public ModelAndView shopListView(@PathVariable("categoryId") String categoryId,
-			@ModelAttribute("ShopEditOutputForm")ShopListOutputForm shopEditOutputForm) {
-		
-		//FormにカテゴリーIDをセット
-		shopEditOutputForm.setCategoryId(Integer.parseInt(categoryId));
+    @RequestMapping(value = "categoryList/{categoryId}/shopList", method = RequestMethod.GET)
+    public ModelAndView shopListView(@PathVariable("categoryId") String categoryId, @ModelAttribute("ShopEditOutputForm") ShopListOutputForm shopEditOutputForm) {
 
-		//カテゴリーIDで店舗一覧取得
-		List<ShopInfoModel> modelList = shopInfoLogic.getShopInfoList(Integer.parseInt(categoryId));
-		
-		//一覧を取得した場合
-		if(modelList != null){
-			shopEditOutputForm.setShopInfoList(ConvertUtil.toShopInfoParts(modelList));
-		}
+        // FormにカテゴリーIDをセット
+        shopEditOutputForm.setCategoryId(Integer.parseInt(categoryId));
 
-		//店舗一覧画面を表示
-		return new ModelAndView("shopList","PurlieuEditOutputForm",shopEditOutputForm);
-	}
+        // カテゴリーIDで店舗一覧取得
+        List<ShopInfoModel> modelList = shopInfoLogic.getShopInfoList(Integer.parseInt(categoryId));
+
+        // 一覧を取得した場合
+        if (modelList != null) {
+            shopEditOutputForm.setShopInfoList(ConvertUtil.toShopInfoParts(modelList));
+        }
+
+        // 店舗一覧画面を表示
+        return new ModelAndView("shopList", "PurlieuEditOutputForm", shopEditOutputForm);
+    }
 
 }

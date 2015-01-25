@@ -8,53 +8,63 @@
 <html lang=ja>
 <head>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <title>IKITSUKE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>IKITSUKE</title>
+
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/bootstrap/css/signin.css" />" rel="stylesheet">
+
 
 </head>
 <body>
+	<!-- heade -->
+	<header>
+		<nav>
+			<a href="#">
+				<ul class="nav_bar">
+					<li class="title">title
+				</ul>
+			</a>
+		</nav>
+	</header>
 
-  <!-- heade -->
-  <header>
-    <nav>
-          <a href="#">
-      <ul class="nav_bar">
-        <li class="title">
-            title
-          </a>
-        </li>
-        </ul>
-      </nav>
-    </header>
+	<div>
+		<c:out value="${unko}"></c:out>
+	</div>
 
-    <div>
-    	<c:out value="${unko}"></c:out>
-    </div>
+	<!-- main_contents -->
+	<div class="container">
+			<h1>
+				あなただけのIKITSUKEを<br>作りませんか？
+			</h1>
 
-    <!-- main_contents -->
-    <div class="main_contents">
-    <div class="login_contents">
-    <h1>あなただけのIKITSUKEを<br>作りませんか？</h1>
-    <spring:url value="/login/doLogin" var="action" />
-    <form:form modelAttribute="LoginInputForm" action="${action}" method="post" >
-    <ul class="login_id_pass">
-      <li><form:input path="mailAddress" type="text" value="" placeholder="ID" class="login_form" /></li>
-      <li><form:input path="loginPassword" type="password" value="" placeholder="PASS" class="login_form" /></li>
-    </ul>
-    <input type="submit" value="ログイン">
-    </form:form>
-    </div>
-    </div>
-    <!-- footer -->
-    <footer id="footer">
-      <div class="footer_iner">
-        <small>
-          <div class="footer_text">copyright &copy;IKITSUKE.inc All Rights Reserved. </div></small>
-      </div>
-    </footer>
-  </body>
-  </html>
+			<spring:url value="/login/doLogin" var="action" />
+			<form:form modelAttribute="LoginInputForm" action="${action}"
+				method="post" class="form-signin">
+				<h2 class="form-signin-heading">Please sign in</h2>
+				<label for="mailAddress" class="sr-only">Email address</label>
+				<form:input path="mailAddress" type="email" class="form-control"
+					placeholder="Email address" required="true" autofocus="true" />
+				<label for="loginPassword" class="sr-only">Password</label>
+				<form:input path="loginPassword" type="password"
+					class="form-control" placeholder="Password" required="true" />
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+					in</button>
+
+			</form:form>
+	</div>
+	<!-- /container -->
+	<!-- footer -->
+	<footer id="footer">
+		<div class="footer_iner">
+			<small>
+				<div class="footer_text">copyright &copy;IKITSUKE.inc All
+					Rights Reserved.</div>
+			</small>
+		</div>
+	</footer>
+</body>
+</html>

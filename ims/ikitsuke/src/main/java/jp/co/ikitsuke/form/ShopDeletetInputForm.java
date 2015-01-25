@@ -13,26 +13,26 @@ package jp.co.ikitsuke.form;
  */
 public class ShopDeletetInputForm {
 
-	/** 店舗ID */
-	private int shopId;
+    /** 店舗ID */
+    private int shopId;
 
-	/**
-	 * 店舗IDを取得する
-	 *
-	 * @return shopId
-	 */
-	public int getShopId() {
-		return shopId;
-	}
+    /**
+     * 店舗IDを取得する
+     *
+     * @return shopId
+     */
+    public int getShopId() {
+        return shopId;
+    }
 
-	/**
-	 * 店舗IDを設定する
-	 *
-	 * @param shopId
-	 *            セットする shopId
-	 */
-	public void setShopId(int shopId) {
-		this.shopId = shopId;
-	}
+    /**
+     * 店舗IDを設定する
+     *
+     * @param shopId
+     *            セットする shopId
+     */
+    public void setShopId(int shopId) {
+        this.shopId = shopId;
+    }
 
 }

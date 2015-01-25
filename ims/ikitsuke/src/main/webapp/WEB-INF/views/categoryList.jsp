@@ -15,6 +15,10 @@
 <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 
+<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/bootstrap/css/bootstrap-theme.min.css" />" rel="stylesheet">
+
+
 </head>
 <body>
 
@@ -38,8 +42,8 @@
 						<input type="button"
 							value="<c:out value="${obj.categoryName}"/>"
 							onClick="location. href='categoryList/<c:out value="${obj.categoryId}/shopList"/>'"
-							id="<c:out value="${obj.categoryId}"/>" class="category_btn">
-							 <input type="button" value="編集" id="category_edit" class="edit_btn">
+							id="<c:out value="${obj.categoryId}"/>" class="btn btn-lg btn-default">
+							 <input type="button" value="編集" id="category_edit" class="btn btn-xs btn-default">
 					</form>
 				</c:forEach>
 		</div>

@@ -19,6 +19,15 @@
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
 <script src="<c:url value="/resources/js/jquery.js" />"></script>
 <script src="<c:url value="/resources/js/jquery-ui.min.js" />"></script>
+
+<link
+	href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />"
+	rel="stylesheet">
+<link
+	href="<c:url value="/resources/bootstrap/css/bootstrap-theme.min.css" />"
+	rel="stylesheet">
+
+
 </head>
 <body>
 
@@ -37,10 +46,44 @@
 	<div class="main_contents">
 		<div class="cf">
 			<h1>○○のIKITSUKE一覧</h1>
-			<input type="button" value="追加"
-				onClick="location. href='shopAdd'" class="add_ikitsuke_btn">
+			<input type="button" value="追加" onClick="location. href='shopAdd'"
+				class="btn btn-default btn-lg add_ikitsuke_btn">
 		</div>
 
+
+		<c:forEach var="obj" items="${ShopEditOutputForm.shopInfoList}">
+			<div class="col-sm-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<c:out value="${obj.shopName}" />
+						</h3>
+					</div>
+					<div class="panel-body">
+						<table>
+							<tbody>
+								<tr>
+									<th>TEL</th>
+									<td><c:out value="${obj.shopTel}" /></td>
+								</tr>
+								<tr>
+									<th>Memo</th>
+									<td><c:out value="${obj.shopMemo}" /></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="panel-body">
+						<input type="button" value="編集"
+							onClick="location.href='shopDetail/<c:out value="${obj.shopId}"/>'"
+							class="btn">
+					</div>
+				</div>
+			</div>
+		</c:forEach>
+
+
+		<!-- footer
 		<div class="detalist_contents">
 			<c:forEach var="obj" items="${ShopEditOutputForm.shopInfoList}">
 				<div class="ikitsuke_list">
@@ -50,11 +93,12 @@
 						<li><c:out value="${obj.shopMemo}"/></li>
 						<li><input type="button" value="編集"
 							onClick="location.href='shopDetail/<c:out value="${obj.shopId}"/>'"
-							class="edt_ikitsuke_btn"></li>
+							class="btn"></li>
 					</ul>
 				</div>
 			</c:forEach>
 		</div>
+ -->
 	</div>
 	</div>
 	</div>
