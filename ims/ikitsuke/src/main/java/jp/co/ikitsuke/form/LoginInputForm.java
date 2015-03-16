@@ -3,6 +3,12 @@
  */
 package jp.co.ikitsuke.form;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
+
+
 /**
  * ログイン画面<br>
  * ログインボタン Input<br>
@@ -13,8 +19,11 @@ package jp.co.ikitsuke.form;
 public class LoginInputForm {
 
     /** メールアドレス */
+    @Email
     private String mailAddress;
 
+    @NotEmpty
+    @Length(min = 10,max = 99)
     /** ログインパスワード */
     private String loginPassword;
 

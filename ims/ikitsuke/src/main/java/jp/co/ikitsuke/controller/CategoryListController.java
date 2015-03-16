@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import jp.co.ikitsuke.form.CategoryInputForm;
 import jp.co.ikitsuke.form.CategoryOutputForm;
 import jp.co.ikitsuke.logic.ShopCategoryLogic;
 import jp.co.ikitsuke.model.LoginModel;
@@ -26,20 +27,58 @@ public class CategoryListController {
     ShopCategoryLogic shopCategoryLogic;
 
     @RequestMapping(value = "/categoryList", method = RequestMethod.GET)
-    public ModelAndView categoryList(@ModelAttribute("CategoryOutputForm") CategoryOutputForm categoryOutputForm, HttpServletRequest request) {
-
+    public ModelAndView categoryList(@ModelAttribute("CategoryOutputForm") CategoryOutputForm categoryOutputForm,
+            @ModelAttribute("CategoryInputForm") CategoryInputForm categoryInputForm,HttpServletRequest request) {
+        
+        // ModelAndViewのインスタンス生成
+        ModelAndView mv = new ModelAndView("categoryList");
+        
         // セッションからログイン情報を取得
         loginModel = (LoginModel) request.getSession().getAttribute("loginModel");
-
+        
         List<ShopCategoryModel> shopCategoryModelList = shopCategoryLogic.getCategoryList(loginModel.getUserId());
-
+        
         // TODO modelListにnullが返ってきた場合
-
+        
         // ModelをPartに変換しFormにセット
         categoryOutputForm.setShopCategoryList(ConvertUtil.toShopCategoryParts(shopCategoryModelList));
-
+        
+        mv.addObject("CategoryOutputForm", categoryOutputForm);
+        mv.addObject("CategoryInputForm", categoryInputForm);
+        
         // カテゴリ一覧画面を表示
-        return new ModelAndView("categoryList", "CategoryOutputForm", categoryOutputForm);
+        return mv;
     }
-
+    
+    @RequestMapping(value = "/categoryList/rename", method = RequestMethod.POST)
+    public String doRename(@ModelAttribute("CategoryInputForm") CategoryInputForm categoryInputForm, HttpServletRequest request) {
+        
+        // カテゴリ名の修正
+        shopCategoryLogic.rename(categoryInputForm.getCategoryId(), categoryInputForm.getCategoryName());
+        
+        // カテゴリ一覧画面を表示
+        return "redirect:/categoryList";
+    }
+    
+    @RequestMapping(value = "/categoryList/delete", method = RequestMethod.POST)
+    public String doDelete(@ModelAttribute("CategoryInputForm") CategoryInputForm categoryInputForm, HttpServletRequest request) {
+        
+        // セッションからログイン情報を取得
+        LoginModel loginModel = (LoginModel)request.getSession().getAttribute("loginModel");
+        
+        // 取得に成功した場合のみ処理実行
+        if(loginModel != null){
+            // カテゴリの削除（カテゴリに含む店舗も削除）
+            shopCategoryLogic.delete(categoryInputForm.getCategoryId());
+            
+            // 削除レコードの代替初期レコードを作成する
+            shopCategoryLogic.add(loginModel.getUserId());
+        }else{
+            
+        }
+        
+        // カテゴリ一覧画面を表示
+        return "redirect:/categoryList";
+    }
+    
 }

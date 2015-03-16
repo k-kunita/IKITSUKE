@@ -12,11 +12,10 @@
 <title>IKITSUKE</title>
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/detailedit.css" />"
-	rel="stylesheet">
+<link href="<c:url value="/resources/css/detailedit.css" />"rel="stylesheet">
+
 </head>
 <body>
-
 	<!-- heade -->
 	<header>
 		<nav>
@@ -31,6 +30,7 @@
 	<!-- main_contents -->
 	<div class="main_contents">
 		<h1>行きつけのお店を編集しよう！</h1>
+
 		<spring:url value="./${ShopEditInputForm.shopId}/edit" var="action" />
 		<form:form modelAttribute="ShopEditInputForm" action="${action}" method="post">
 			<div class="detail_edit_contents">
@@ -57,7 +57,7 @@
 
 				<!-- 削除はゴミ箱アイコンにしたい。。。 -->
 				<div class="detailedit_btn_group">
-					<input type="button" value="削除" onClick="location.href='./${ShopEditInputForm.shopId}/delete'" class="detailedit_btn delete_btn"> 
+				<a href='./${ShopEditInputForm.shopId}/delete'"><img border=0 src="../../../resources/image/dustbox.png"></a>
 					<input type="submit" value="保存" class="detailedit_btn">
 					<input type="button" value="キャンセル" onClick="location.href='../shopList'"
 					class="detailedit_btn">

@@ -7,8 +7,10 @@ import jp.co.ikitsuke.model.LoginModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(readOnly=true)
 public class LoginLogicImpl implements LoginLogic {
 
 	@Autowired

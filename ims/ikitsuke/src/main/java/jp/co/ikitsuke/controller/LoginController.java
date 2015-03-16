@@ -1,13 +1,25 @@
 package jp.co.ikitsuke.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import javax.validation.Validator;
 
+import jp.co.ikitsuke.form.ErrorMessageForm;
 import jp.co.ikitsuke.form.LoginInputForm;
+import jp.co.ikitsuke.form.part.ErrorMessagePart;
+import jp.co.ikitsuke.logic.ErrorMessageLogic;
 import jp.co.ikitsuke.logic.LoginLogic;
+import jp.co.ikitsuke.model.ErrorMessageModel;
 import jp.co.ikitsuke.model.LoginModel;
+import jp.co.ikitsuke.utils.ConvertUtil;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,9 +30,16 @@ public class LoginController {
 
     @Autowired
     LoginLogic loginLogic;
-
+    
+    @Autowired
+    private ErrorMessageLogic errorMessageLogic;
+    
+    @Autowired
+    private Validator validator;
+    
     LoginModel loginModel;
-
+    ErrorMessageModel errorMessageModel;
+    
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@ModelAttribute("LoginInputForm") LoginInputForm loginInputForm) {
 
@@ -32,10 +51,30 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login/doLogin", method = RequestMethod.POST)
-    public String doLogin(@ModelAttribute("LoginInputForm") LoginInputForm loginInputForm, HttpServletRequest request) {
-
+    public String doLogin(
+            @Valid @ModelAttribute("LoginInputForm") LoginInputForm loginInputForm, 
+            BindingResult bindingResult,
+            HttpServletRequest request) {
+        
         // 遷移先
-        String redirect;
+        String redirect ;
+        
+        //バリデーション処理
+        if(bindingResult.hasErrors()){
+            System.out.println("errorです");
+            ErrorMessageForm errorForm = new ErrorMessageForm();
+            
+            //InputFormのバリデーションメッセージを取得しエラーPartListにセット
+            List<ErrorMessagePart> errorPartList 
+                = ConvertUtil.toErrorMessageParts(errorMessageLogic.addMessage(validator.validate(loginInputForm)));
+            
+            if(errorPartList != null){
+                errorForm.setErrorMessageList(errorPartList);
+                //セッションにエラーフォームをセット
+                request.getSession().setAttribute("errorMessageForm", errorForm);
+            }
+            return "redirect:/login";
+        }
 
         // メールアドレスとパスワードによりログイン情報を取得
         loginModel = loginLogic.executeLogin(loginInputForm.getMailAddress(), loginInputForm.getLoginPassword());
@@ -48,14 +87,11 @@ public class LoginController {
             redirect = "redirect:/categoryList";
         } else {
             // ログイン失敗時
-            redirect = "redirect:/login";
+            redirect = "redirect:/categoryList";
         }
-
-        System.out.println(loginInputForm.getMailAddress());
-        System.out.println(loginInputForm.getLoginPassword());
-
+        
         request.getSession().setAttribute("unko", "うんこ");
-
+        
         return redirect;
     }
 

@@ -33,6 +33,11 @@
 
 	<div>
 		<c:out value="${unko}"></c:out>
+		
+	<c:forEach var="msg" items="${errorMessageForm.errorMessageList}" varStatus="status">
+	　　項目：<c:out value="${msg.errorItem}"/><br>
+	　　メッセージ：<c:out value="${msg.errorMessage}"/><br>
+	</c:forEach>
 	</div>
 
 	<!-- main_contents -->
@@ -49,8 +54,7 @@
 				<form:input path="mailAddress" type="email" class="form-control"
 					placeholder="Email address" required="true" autofocus="true" />
 				<label for="loginPassword" class="sr-only">Password</label>
-				<form:input path="loginPassword" type="password"
-					class="form-control" placeholder="Password" required="true" />
+				<form:input path="loginPassword" type="password" class="form-control" placeholder="Password" required="true" />
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
 					in</button>
 

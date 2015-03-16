@@ -3,8 +3,10 @@ package jp.co.ikitsuke.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import jp.co.ikitsuke.form.part.ErrorMessagePart;
 import jp.co.ikitsuke.form.part.ShopCategoryPart;
 import jp.co.ikitsuke.form.part.ShopInfoPart;
+import jp.co.ikitsuke.model.ErrorMessageModel;
 import jp.co.ikitsuke.model.ShopCategoryModel;
 import jp.co.ikitsuke.model.ShopInfoModel;
 
@@ -23,12 +25,10 @@ public class ConvertUtil {
 
     /***
      * 文字列をbooleanに変換する
-     * 
      * <pre>
      * 入力値が０の場合はfalse、１の場合はtrueを返す。
      * その他の文字列が入力された場合はfalseを返す。
      * </pre>
-     * 
      * @param flg
      * @return
      */
@@ -45,11 +45,9 @@ public class ConvertUtil {
 
     /***
      * ShopCategoryMpdelをPartクラスに変換
-     * 
      * <pre>
      * 引数がnullの場合はnullを返す
      * </pre>
-     * 
      * @param model
      * @return
      */
@@ -91,11 +89,9 @@ public class ConvertUtil {
 
     /***
      * ShopInfoMpdelをPartクラスに変換
-     * 
      * <pre>
      * 引数がnullの場合はnullを返す
      * </pre>
-     * 
      * @param model
      * @return
      */
@@ -113,11 +109,9 @@ public class ConvertUtil {
 
     /***
      * ShopInfoMpdelのListをPartのListに変換
-     * 
      * <pre>
      * 引数がnullの場合はnullを返す
      * </pre>
-     * 
      * @param modelList
      * @return
      */
@@ -133,6 +127,48 @@ public class ConvertUtil {
             }
         }
 
+        return partList;
+    }
+    
+    /***
+     * ErrorMessageMpdelをPartクラスに変換
+     * <pre>
+     * 引数がnullの場合はnullを返す
+     * </pre>
+     * @param model
+     * @return ErrorMessagePart
+     */
+    public static ErrorMessagePart toErrorMessagePart(ErrorMessageModel model) {
+
+        ErrorMessagePart part = null;
+
+        if (model != null) {
+            part = new ErrorMessagePart();
+            BeanUtils.copyProperties(model, part);
+        }
+
+        return part;
+    }
+    
+    /***
+     * ErrorMessageMpdelのListをPartのListに変換
+     * <pre>
+     * 引数がnullの場合はnullを返す
+     * </pre>
+     * @param modelList
+     * @return List<ErrorMessagePart>
+     */
+    public static List<ErrorMessagePart> toErrorMessageParts(List<ErrorMessageModel> modelList){
+        
+        List<ErrorMessagePart> partList = null;
+        
+        if (modelList != null && !modelList.isEmpty()) {
+            partList = new ArrayList<>();
+            // リスト内のModelをすべて変換
+            for (ErrorMessageModel model : modelList) {
+                partList.add(toErrorMessagePart(model));
+            }
+        }
         return partList;
     }
 

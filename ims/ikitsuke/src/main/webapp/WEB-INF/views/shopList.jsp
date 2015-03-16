@@ -78,6 +78,12 @@
 							onClick="location.href='shopDetail/<c:out value="${obj.shopId}"/>'"
 							class="btn">
 					</div>
+					<div class="panel-body">
+						<input type="button" value="ULR先に移動"
+							onClick="location.href='<c:out value="${obj.shopPageUrl}"/>'"
+							class="btn">
+					</div>
+					
 				</div>
 			</div>
 		</c:forEach>
@@ -92,7 +98,7 @@
 						<li><c:out value="${obj.shopTel}"/></li>
 						<li><c:out value="${obj.shopMemo}"/></li>
 						<li><input type="button" value="編集"
-							onClick="location.href='shopDetail/<c:out value="${obj.shopId}"/>'"
+							onClick="location.href='shopDetail/<c:out value="${obj.shopPageUrl}"/>'"
 							class="btn"></li>
 					</ul>
 				</div>

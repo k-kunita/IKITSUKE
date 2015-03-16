@@ -37,6 +37,25 @@
 	<div class="main_contents">
 		<h1>カテゴリを編集して行きつけをまとめよう！</h1>
 		<div class="detail_contents">
+		
+			<spring:url value="/categoryList/rename" var="action" />
+			<form:form modelAttribute="CategoryInputForm" action="${action}" method="post" class="form-signin">
+				<h2 class="form-signin-heading">カテゴリ名変更テスト</h2>
+				<label for="categoryId" class="sr-only">CategoryId</label>
+				<form:input path="categoryId" type="text" class="form-control" placeholder="category id" required="true" autofocus="true" />
+				<label for="categoryName" class="sr-only">CategoryName</label>
+				<form:input path="categoryName" type="text" class="form-control" placeholder="category name" required="true" />
+				<button class="btn btn-lg btn-primary btn-block" type="submit">カテゴリ名更新</button>
+			</form:form>
+		
+			<spring:url value="/categoryList/delete" var="action" />
+			<form:form modelAttribute="CategoryInputForm" action="${action}" method="post" class="form-signin">
+				<h2 class="form-signin-heading">カテゴリ削除テスト</h2>
+				<label for="categoryId" class="sr-only">CategoryId</label>
+				<form:input path="categoryId" type="text" class="form-control" placeholder="category id" required="true" autofocus="true" />
+				<button class="btn btn-lg btn-primary btn-block" type="submit">カテゴリ削除</button>
+			</form:form>
+		
 				<c:forEach var="obj" items="${CategoryOutputForm.shopCategoryList}">
 					<form>
 						<input type="button"
