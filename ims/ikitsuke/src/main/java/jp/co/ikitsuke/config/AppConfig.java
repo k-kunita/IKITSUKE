@@ -9,14 +9,14 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 @Configuration
 public class AppConfig {
-    
+
     @Bean(name="validator")
     public LocalValidatorFactoryBean localValidatorFactoryBean() {
         LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
         localValidatorFactoryBean.setValidationMessageSource(messageSource());
         return localValidatorFactoryBean;
     }
-     
+
     /**
      * ValidationのメッセージをUTF-8で管理します。
      * @return
@@ -29,6 +29,6 @@ public class AppConfig {
         bean.setDefaultEncoding("UTF-8");
         return bean;
     }
-    
-    
+
+
 }

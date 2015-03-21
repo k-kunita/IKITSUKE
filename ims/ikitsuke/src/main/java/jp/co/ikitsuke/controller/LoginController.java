@@ -1,6 +1,5 @@
 package jp.co.ikitsuke.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +15,6 @@ import jp.co.ikitsuke.model.ErrorMessageModel;
 import jp.co.ikitsuke.model.LoginModel;
 import jp.co.ikitsuke.utils.ConvertUtil;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -30,17 +28,17 @@ public class LoginController {
 
     @Autowired
     LoginLogic loginLogic;
-    
+
     @Autowired
     private ErrorMessageLogic errorMessageLogic;
-    
+
     @Autowired
     private Validator validator;
-    
+
     LoginModel loginModel;
     ErrorMessageModel errorMessageModel;
-    
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/login" ,method = RequestMethod.GET )
     public ModelAndView login(@ModelAttribute("LoginInputForm") LoginInputForm loginInputForm) {
 
         loginInputForm.setMailAddress("ikitsuke@ims.com");
@@ -52,28 +50,29 @@ public class LoginController {
 
     @RequestMapping(value = "/login/doLogin", method = RequestMethod.POST)
     public String doLogin(
-            @Valid @ModelAttribute("LoginInputForm") LoginInputForm loginInputForm, 
+            @Valid @ModelAttribute("LoginInputForm") LoginInputForm loginInputForm,
             BindingResult bindingResult,
             HttpServletRequest request) {
-        
+
         // 遷移先
         String redirect ;
-        
+
         //バリデーション処理
         if(bindingResult.hasErrors()){
             System.out.println("errorです");
             ErrorMessageForm errorForm = new ErrorMessageForm();
-            
+
             //InputFormのバリデーションメッセージを取得しエラーPartListにセット
-            List<ErrorMessagePart> errorPartList 
+            List<ErrorMessagePart> errorPartList
                 = ConvertUtil.toErrorMessageParts(errorMessageLogic.addMessage(validator.validate(loginInputForm)));
-            
+
             if(errorPartList != null){
                 errorForm.setErrorMessageList(errorPartList);
                 //セッションにエラーフォームをセット
+                System.out.println(errorForm.toString());
                 request.getSession().setAttribute("errorMessageForm", errorForm);
             }
-            return "redirect:/login";
+            return "/login";
         }
 
         // メールアドレスとパスワードによりログイン情報を取得
@@ -87,11 +86,11 @@ public class LoginController {
             redirect = "redirect:/categoryList";
         } else {
             // ログイン失敗時
-            redirect = "redirect:/categoryList";
+            redirect = "redirect:/login";
         }
-        
+
         request.getSession().setAttribute("unko", "うんこ");
-        
+
         return redirect;
     }
 

@@ -8,14 +8,16 @@
 <html lang=ja>
 <head>
 
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <title>IKITSUKE</title>
 
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/bootstrap/css/signin.css" />" rel="stylesheet">
+<link
+	href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />"
+	rel="stylesheet">
+<link href="<c:url value="/resources/bootstrap/css/signin.css" />"
+	rel="stylesheet">
 
 
 </head>
@@ -33,32 +35,38 @@
 
 	<div>
 		<c:out value="${unko}"></c:out>
-		
-	<c:forEach var="msg" items="${errorMessageForm.errorMessageList}" varStatus="status">
-	　　項目：<c:out value="${msg.errorItem}"/><br>
-	　　メッセージ：<c:out value="${msg.errorMessage}"/><br>
-	</c:forEach>
+
+		<c:forEach var="msg" items="${errorMessageForm.errorMessageList}"
+			varStatus="status">
+	　　項目：<c:out value="${msg.errorItem}" />
+			<br>
+	　　メッセージ：<c:out value="${msg.errorMessage}" />
+			<br>
+		</c:forEach>
 	</div>
 
 	<!-- main_contents -->
 	<div class="container">
-			<h1>
-				あなただけのIKITSUKEを<br>作りませんか？
-			</h1>
+		<h1>
+			あなただけのIKITSUKEを<br>作りませんか？
+		</h1>
 
-			<spring:url value="/login/doLogin" var="action" />
-			<form:form modelAttribute="LoginInputForm" action="${action}"
-				method="post" class="form-signin">
-				<h2 class="form-signin-heading">Please sign in</h2>
-				<label for="mailAddress" class="sr-only">Email address</label>
-				<form:input path="mailAddress" type="email" class="form-control"
-					placeholder="Email address" required="true" autofocus="true" />
-				<label for="loginPassword" class="sr-only">Password</label>
-				<form:input path="loginPassword" type="password" class="form-control" placeholder="Password" required="true" />
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
-					in</button>
+		<spring:url value="/login/doLogin" var="action" />
+		<form:form modelAttribute="LoginInputForm" action="${action}"
+			method="post" class="form-signin">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<label for="mailAddress" class="sr-only">Email address</label>
+			<form:input path="mailAddress" type="email" class="form-control"
+				placeholder="Email address" required="true" autofocus="true" />
+			<label for="loginPassword" class="sr-only">Password</label>
+			<form:errors path="mailAddress" />
+			<form:input path="loginPassword" type="password" class="form-control"
+				placeholder="Password" required="true" />
+			<form:errors path="loginPassword" />
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+				in</button>
 
-			</form:form>
+		</form:form>
 	</div>
 	<!-- /container -->
 	<!-- footer -->
