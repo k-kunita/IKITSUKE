@@ -42,13 +42,13 @@ public class LoginController {
     public ModelAndView login(@ModelAttribute("LoginInputForm") LoginInputForm loginInputForm) {
 
         loginInputForm.setMailAddress("ikitsuke@ims.com");
-        loginInputForm.setLoginPassword("password");
+        loginInputForm.setLoginPassword("password123");
 
         // ログイン画面を表示
         return new ModelAndView("login");
     }
 
-    @RequestMapping(value = "/login/doLogin", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String doLogin(
             @Valid @ModelAttribute("LoginInputForm") LoginInputForm loginInputForm,
             BindingResult bindingResult,

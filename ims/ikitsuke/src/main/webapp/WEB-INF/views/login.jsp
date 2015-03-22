@@ -51,7 +51,7 @@
 			あなただけのIKITSUKEを<br>作りませんか？
 		</h1>
 
-		<spring:url value="/login/doLogin" var="action" />
+		<spring:url value="/login" var="action" />
 		<form:form modelAttribute="LoginInputForm" action="${action}"
 			method="post" class="form-signin">
 			<h2 class="form-signin-heading">Please sign in</h2>
