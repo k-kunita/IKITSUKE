@@ -13,21 +13,22 @@
 <title>IKITSUKE</title>
 
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/bootstrap/css/bootstrap-theme.min.css" /> "rel="stylesheet">
+<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" /> "rel="stylesheet">
 <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/bootstrap/css/signin.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
 
 
 </head>
 <body>
-	<!-- heade -->
+	<!-- header -->
 	<header>
 		<nav>
-			<a href="#">
 				<ul class="nav_bar">
-					<li class="title">title
-				</ul>
+			<a href="#">
+					<li class="title">title</li>
 			</a>
+				</ul>
 		</nav>
 	</header>
 
@@ -36,25 +37,33 @@
 	</div>
 
 	<!-- main_contents -->
-	<div class="container">
+	<div class="main_contents">
+		<div class="login_contents">
 			<h1>
 				あなただけのIKITSUKEを<br>作りませんか？
 			</h1>
 
 			<spring:url value="/login/doLogin" var="action" />
 			<form:form modelAttribute="LoginInputForm" action="${action}"
-				method="post" class="form-signin">
+				method="post" class="login_id_pass">
 				<h2 class="form-signin-heading">Please sign in</h2>
+				<ul class="login_id_pass">
 				<label for="mailAddress" class="sr-only">Email address</label>
-				<form:input path="mailAddress" type="email" class="form-control"
+				<li>
+				<form:input path="mailAddress" type="email" class="login_form"
 					placeholder="Email address" required="true" autofocus="true" />
+				</li>
 				<label for="loginPassword" class="sr-only">Password</label>
-				<form:input path="loginPassword" type="password"
-					class="form-control" placeholder="Password" required="true" />
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+				<li>
+				<form:input path="loginPassword" type="password" class="login_form"
+					placeholder="Password" required="true" />
+				</li>
+				</ul>
+				<button class="login_btn btn btn-warning" type="submit">Sign
 					in</button>
 
 			</form:form>
+		</div>
 	</div>
 	<!-- /container -->
 	<!-- footer -->

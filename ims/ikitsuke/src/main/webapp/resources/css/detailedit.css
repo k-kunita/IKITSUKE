@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+.edit_contents {
+  width: 500px;
+}
+
 .detail_edit_contents {
   width: 1100px;
   height: 510px;
@@ -29,7 +33,11 @@ h1 {
 }
 
 .detailedit_list dd {
-  margin-bottom: 45px;
+  margin-bottom: 40px;
+}
+
+.detailedit_list dd:last-child {
+  margin-bottom: 0;
 }
 
 .addcoment_form {
@@ -37,7 +45,10 @@ h1 {
 }
 
 .detailedit_form {
+  height: 40px;
   font-size: 15px;
+  border: 1px solid #fff;
+  border-radius: 5px;
 }
 
 .detailedit_btn_group {
@@ -51,7 +62,7 @@ h1 {
 }
 
 .delete_btn {
-  margin-right: 10%;
+  margin-right: 15%;
 }
 
 
