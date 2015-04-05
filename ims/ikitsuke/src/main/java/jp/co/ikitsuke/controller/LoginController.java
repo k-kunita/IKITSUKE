@@ -15,6 +15,7 @@ import jp.co.ikitsuke.model.ErrorMessageModel;
 import jp.co.ikitsuke.model.LoginModel;
 import jp.co.ikitsuke.utils.ConvertUtil;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -25,6 +26,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class LoginController {
+
+    private static Logger logger = Logger.getLogger(LoginController.class);
 
     @Autowired
     LoginLogic loginLogic;
@@ -40,6 +43,7 @@ public class LoginController {
 
     @RequestMapping(value = "/login" ,method = RequestMethod.GET )
     public ModelAndView login(@ModelAttribute("LoginInputForm") LoginInputForm loginInputForm) {
+    	logger.info("GET Request!!");
 
         loginInputForm.setMailAddress("ikitsuke@ims.com");
         loginInputForm.setLoginPassword("password123");

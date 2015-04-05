@@ -16,6 +16,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class ControllerInterceptor {
 
+
+
 	@Before("execution(* jp.co.ikitsuke.controller..*.*(..)) && !jp.co.ikitsuke.aop.PointcutDefinition.loginControllerClass()")
 	public void checkSession(JoinPoint joinPoint){
 		System.out.println("*execute method before...*");
@@ -30,7 +32,7 @@ public class ControllerInterceptor {
 	    		request = (HttpServletRequest)obj;
 	    	}
 	    }
-	    
+
 	    if(request == null || request.getSession().getAttribute("loginModel") == null){
 	    	System.out.println("AccessSession:null");
 	    	LoginController login = new LoginController();
