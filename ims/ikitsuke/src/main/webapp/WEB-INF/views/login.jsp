@@ -25,9 +25,7 @@
 	<header>
 		<nav>
 				<ul class="nav_bar">
-			<a href="#">
-					<li class="title">title</li>
-			</a>
+					<li class="title"><a href="#">title</a></li>
 				</ul>
 		</nav>
 	</header>

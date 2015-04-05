@@ -12,11 +12,14 @@
 <title>IKITSUKE</title>
 
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/bootstrap/css/bootstrap-theme.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
-
-<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/bootstrap/css/bootstrap-theme.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/jquery-ui.min.css" />" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 
 
 </head>
@@ -37,15 +40,19 @@
 	<div class="main_contents">
 		<h1>カテゴリを編集して行きつけをまとめよう！</h1>
 		<div class="detail_contents">
+	       <ul>
 				<c:forEach var="obj" items="${CategoryOutputForm.shopCategoryList}">
 					<form>
+					<li class="category_list">
 						<input type="button"
 							value="<c:out value="${obj.categoryName}"/>"
 							onClick="location. href='categoryList/<c:out value="${obj.categoryId}/shopList"/>'"
-							id="<c:out value="${obj.categoryId}"/>" class="btn btn-lg btn-default">
-							 <input type="button" value="編集" id="category_edit" class="btn btn-xs btn-default">
+							id="<c:out value="${obj.categoryId}"/>" class="category_btn">
+							 <input type="button" value="編集" id="category_edit" class="edit_btn btn btn-warning" title="fff">
+					 </li>
 					</form>
 				</c:forEach>
+			</ul>
 		</div>
 	</div>
 	<!-- footer -->
