@@ -20,21 +20,21 @@
 				value="%d{yyyy/MM/dd HH:mm:ss} %p:%r:%c:%m%n" />
 		</layout>
 	</appender>
-
+	
 	<!-- Application Loggers -->
 	<logger name="jp.co.ikitsuke">
 		<level value="info" />
 	</logger>
-
+	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
 		<level value="info" />
 	</logger>
-
+	
 	<logger name="org.springframework.beans">
 		<level value="info" />
 	</logger>
-
+	
 	<logger name="org.springframework.context">
 		<level value="info" />
 	</logger>
@@ -49,5 +49,5 @@
 		<appender-ref ref="console" />
 		<appender-ref ref="FILE" />
 	</root>
-
+	
 </log4j:configuration>

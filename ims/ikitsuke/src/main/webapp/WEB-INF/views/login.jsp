@@ -8,6 +8,7 @@
 <html lang=ja>
 <head>
 
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <title>IKITSUKE</title>
 
@@ -50,23 +51,36 @@
 		<h1>
 			あなただけのIKITSUKEを<br>作りませんか？
 		</h1>
+		
+		<form name="f" action="<c:url value='j_spring_security_check'/>"
+			method="post">
+			<table class="login">
+				<tr>
+					<th>ログインID</th>
+					<td><input type="text" name="j_username"></td>
+				</tr>
+				<tr>
+					<th>ログインPW</th>
+					<td><input type="text" name="j_password"></td>
+				</tr>
+			</table>
+			<input type="submit" name="login" value="ログイン">
+		</form>
+		<!-- 変更前
+			<spring:url value="/login/doLogin" var="action" />
+			<form:form modelAttribute="LoginInputForm" action="${action}"
+				method="post" class="form-signin">
+				<h2 class="form-signin-heading">Please sign in</h2>
+				<label for="mailAddress" class="sr-only">Email address</label>
+				<form:input path="mailAddress" type="email" class="form-control"
+					placeholder="Email address" required="true" autofocus="true" />
+				<label for="loginPassword" class="sr-only">Password</label>
+				<form:input path="loginPassword" type="password" class="form-control" placeholder="Password" required="true" />
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+					in</button>
+			</form:form>
+	-->
 
-		<spring:url value="/login" var="action" />
-		<form:form modelAttribute="LoginInputForm" action="${action}"
-			method="post" class="form-signin">
-			<h2 class="form-signin-heading">Please sign in</h2>
-			<label for="mailAddress" class="sr-only">Email address</label>
-			<form:input path="mailAddress" type="email" class="form-control"
-				placeholder="Email address" required="true" autofocus="true" />
-			<label for="loginPassword" class="sr-only">Password</label>
-			<form:errors path="mailAddress" />
-			<form:input path="loginPassword" type="password" class="form-control"
-				placeholder="Password" required="true" />
-			<form:errors path="loginPassword" />
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
-				in</button>
-
-		</form:form>
 	</div>
 	<!-- /container -->
 	<!-- footer -->
