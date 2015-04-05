@@ -1,44 +1,57 @@
 package jp.co.ikitsuke.interceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import jp.co.ikitsuke.controller.LoginController;
-import jp.co.ikitsuke.form.LoginInputForm;
-
-import org.apache.catalina.connector.RequestFacade;
-import org.aspectj.lang.JoinPoint;
+import org.apache.log4j.Logger;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StopWatch;
 
 @Component
 @Aspect
 public class ControllerInterceptor {
 
+	public static final Logger log = Logger.getLogger(Object.class);
 
-
-	@Before("execution(* jp.co.ikitsuke.controller..*.*(..)) && !jp.co.ikitsuke.aop.PointcutDefinition.loginControllerClass()")
-	public void checkSession(JoinPoint joinPoint){
+	@Around("execution(* jp.co.ikitsuke.controller..*.*(..))")
+	public Object checkSession(ProceedingJoinPoint joinPoint) throws Throwable {
 		System.out.println("*execute method before...*");
 
+		System.out.println("AOPクラスで、@Aroundを使って、メソッド実行「前後」に引数を取得します。");
+
+
+
+		StopWatch stopWatch = new StopWatch();
+
+		Logger.getLogger(this.getClass()).info("Method Start");
+
+		stopWatch.start();
+
+	    // ここで対象のメソッドを呼び出します。
+		Object retVal = joinPoint.proceed();
+
 	    Object[] objArray = joinPoint.getArgs();
-	    HttpServletRequest request = null;
-	    HttpSession session = null;
 
-	    // 引数よりセッション情報を取得
 	    for (Object obj : objArray) {
-	    	if(obj instanceof RequestFacade){
-	    		request = (HttpServletRequest)obj;
-	    	}
+	        System.out.println("引数の値です。 : " + obj.toString());
 	    }
 
-	    if(request == null || request.getSession().getAttribute("loginModel") == null){
-	    	System.out.println("AccessSession:null");
-	    	LoginController login = new LoginController();
-	    	login.login(new LoginInputForm());
-	    }
+		stopWatch.stop();
 
+		StringBuffer logMessageStringBuffer = new StringBuffer();
+		logMessageStringBuffer.append(joinPoint.getTarget().getClass().getName());
+		logMessageStringBuffer.append(".");
+		logMessageStringBuffer.append(joinPoint.getSignature().getName());
+		logMessageStringBuffer.append("(");
+		logMessageStringBuffer.append(joinPoint.getArgs());
+		logMessageStringBuffer.append(")");
+		logMessageStringBuffer.append(" execution time: ");
+		logMessageStringBuffer.append(stopWatch.getTotalTimeMillis());
+		logMessageStringBuffer.append(" ms");
+		logMessageStringBuffer.append(" end");
+		Logger.getLogger(this.getClass()).info(logMessageStringBuffer.toString());
+
+		return retVal;
 	}
 
 }

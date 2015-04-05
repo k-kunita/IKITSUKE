@@ -9,12 +9,13 @@
 
 	<!-- 認証と認可の設定です -->
 	<sec:http auto-config="true" access-denied-page="/login">
-	
+
 		<!-- 認可のURL設定 -->
 		<sec:intercept-url pattern="/error/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<sec:intercept-url pattern="/login/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<sec:intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<sec:intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY" />
-		
+
 		<!-- 認証の設定 -->
 		<sec:form-login login-page="/login" default-target-url="/login/doLogin"
 			authentication-failure-url="/error" />
@@ -31,8 +32,8 @@
 					authorities="ROLE_USER" />
 			</user-service>
  -->
- 			<jdbc-user-service data-source-ref="dataSource" 
- 			users-by-username-query="SELECT mail_address as username, login_password as password, true as enable FROM login WHERE mail_address = ?" 
+ 			<jdbc-user-service data-source-ref="dataSource"
+ 			users-by-username-query="SELECT mail_address as username, login_password as password, true as enable FROM login WHERE mail_address = ?"
  			authorities-by-username-query="SELECT mail_address as username, 'ROLE_USER' as authority FROM login WHERE mail_address = ?"/>
 		</authentication-provider>
 	</authentication-manager>
