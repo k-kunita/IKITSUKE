@@ -1,6 +1,6 @@
 package jp.co.ikitsuke.controller;
 
-import java.util.ArrayList;
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +16,6 @@ import jp.co.ikitsuke.model.ErrorMessageModel;
 import jp.co.ikitsuke.model.LoginModel;
 import jp.co.ikitsuke.utils.ConvertUtil;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -49,51 +48,75 @@ public class LoginController {
         // ログイン画面を表示
         return new ModelAndView("login");
     }
-
-    @RequestMapping(value = "/login/doLogin", method = RequestMethod.POST)
+    
+    @RequestMapping(value = "/login/doLogin", method = RequestMethod.GET)
     public String doLogin(
-            @Valid @ModelAttribute("LoginInputForm") LoginInputForm loginInputForm, 
-            BindingResult bindingResult,
-            HttpServletRequest request) {
-        
+            HttpServletRequest request,
+            Principal principal) {
         // 遷移先
-        String redirect ;
+        String redirect  = "";
         
-        //バリデーション処理
-        if(bindingResult.hasErrors()){
-            System.out.println("errorです");
-            ErrorMessageForm errorForm = new ErrorMessageForm();
-            
-            //InputFormのバリデーションメッセージを取得しエラーPartListにセット
-            List<ErrorMessagePart> errorPartList 
-                = ConvertUtil.toErrorMessageParts(errorMessageLogic.addMessage(validator.validate(loginInputForm)));
-            
-            if(errorPartList != null){
-                errorForm.setErrorMessageList(errorPartList);
-                //セッションにエラーフォームをセット
-                request.getSession().setAttribute("errorMessageForm", errorForm);
-            }
-            return "redirect:/login";
-        }
+//      // メールアドレスとパスワードによりログイン情報を取得
+      loginModel = loginLogic.executeLogin(principal.getName(),"password123");
 
-        // メールアドレスとパスワードによりログイン情報を取得
-        loginModel = loginLogic.executeLogin(loginInputForm.getMailAddress(), loginInputForm.getLoginPassword());
-
-        // モデルの有無判定
-        if (loginModel != null) {
-            // ログイン成功時
-            // ログインモデルをセッションに保管
-            request.getSession().setAttribute("loginModel", loginModel);
-            redirect = "redirect:/categoryList";
-        } else {
-            // ログイン失敗時
-            redirect = "redirect:/categoryList";
-        }
-        
-        request.getSession().setAttribute("unko", "うんこ");
-        
-        return redirect;
+      // モデルの有無判定
+      if (loginModel != null) {
+          // ログイン成功時
+          // ログインモデルをセッションに保管
+          request.getSession().setAttribute("loginModel", loginModel);
+          redirect = "redirect:/categoryList";
+      } else {
+          // ログイン失敗時
+          redirect = "redirect:/login";
+      }
+       return redirect;
     }
+    
+//    @RequestMapping(value = "/login/doLogin", method = RequestMethod.POST)
+//    public String doLogin(
+//            @Valid @ModelAttribute("LoginInputForm") LoginInputForm loginInputForm, 
+//            BindingResult bindingResult,
+//            HttpServletRequest request,
+//            Principal principal) {
+//        
+//        // 遷移先
+//        String redirect ;
+//        
+//        //バリデーション処理
+//        if(bindingResult.hasErrors()){
+//            System.out.println("errorです");
+//            ErrorMessageForm errorForm = new ErrorMessageForm();
+//            
+//            //InputFormのバリデーションメッセージを取得しエラーPartListにセット
+//            List<ErrorMessagePart> errorPartList 
+//                = ConvertUtil.toErrorMessageParts(errorMessageLogic.addMessage(validator.validate(loginInputForm)));
+//            
+//            if(errorPartList != null){
+//                errorForm.setErrorMessageList(errorPartList);
+//                //セッションにエラーフォームをセット
+//                request.getSession().setAttribute("errorMessageForm", errorForm);
+//            }
+//            return "redirect:/login";
+//        }
+//
+//        // メールアドレスとパスワードによりログイン情報を取得
+//        loginModel = loginLogic.executeLogin(loginInputForm.getMailAddress(), loginInputForm.getLoginPassword());
+//
+//        // モデルの有無判定
+//        if (loginModel != null) {
+//            // ログイン成功時
+//            // ログインモデルをセッションに保管
+//            request.getSession().setAttribute("loginModel", loginModel);
+//            redirect = "redirect:/categoryList";
+//        } else {
+//            // ログイン失敗時
+//            redirect = "redirect:/categoryList";
+//        }
+//        
+//        request.getSession().setAttribute("unko", "うんこ");
+//        
+//        return redirect;
+//    }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String doLogout(HttpServletRequest request) {

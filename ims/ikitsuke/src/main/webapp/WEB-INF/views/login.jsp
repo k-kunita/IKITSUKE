@@ -14,8 +14,11 @@
 
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/bootstrap/css/signin.css" />" rel="stylesheet">
+<link
+	href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />"
+	rel="stylesheet">
+<link href="<c:url value="/resources/bootstrap/css/signin.css" />"
+	rel="stylesheet">
 
 
 </head>
@@ -33,19 +36,37 @@
 
 	<div>
 		<c:out value="${unko}"></c:out>
-		
-	<c:forEach var="msg" items="${errorMessageForm.errorMessageList}" varStatus="status">
-	　　項目：<c:out value="${msg.errorItem}"/><br>
-	　　メッセージ：<c:out value="${msg.errorMessage}"/><br>
-	</c:forEach>
+
+		<c:forEach var="msg" items="${errorMessageForm.errorMessageList}"
+			varStatus="status">
+	　　項目：<c:out value="${msg.errorItem}" />
+			<br>
+	　　メッセージ：<c:out value="${msg.errorMessage}" />
+			<br>
+		</c:forEach>
 	</div>
 
 	<!-- main_contents -->
 	<div class="container">
-			<h1>
-				あなただけのIKITSUKEを<br>作りませんか？
-			</h1>
-
+		<h1>
+			あなただけのIKITSUKEを<br>作りませんか？
+		</h1>
+		
+		<form name="f" action="<c:url value='j_spring_security_check'/>"
+			method="post">
+			<table class="login">
+				<tr>
+					<th>ログインID</th>
+					<td><input type="text" name="j_username"></td>
+				</tr>
+				<tr>
+					<th>ログインPW</th>
+					<td><input type="text" name="j_password"></td>
+				</tr>
+			</table>
+			<input type="submit" name="login" value="ログイン">
+		</form>
+		<!-- 変更前
 			<spring:url value="/login/doLogin" var="action" />
 			<form:form modelAttribute="LoginInputForm" action="${action}"
 				method="post" class="form-signin">
@@ -57,8 +78,9 @@
 				<form:input path="loginPassword" type="password" class="form-control" placeholder="Password" required="true" />
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
 					in</button>
-
 			</form:form>
+	-->
+
 	</div>
 	<!-- /container -->
 	<!-- footer -->
