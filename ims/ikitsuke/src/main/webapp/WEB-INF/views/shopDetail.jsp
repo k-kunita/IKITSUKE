@@ -37,6 +37,7 @@
 				<dl class="detailedit_list">
 					<dt>カテゴリ名</dt>
 					<dd>${ShopEditOutputForm.categoryName}</dd>
+					 <form:errors path="*" element="div" />
 					<dt>店舗名</dt>
 					<dd>
 						<form:input path="shopName" type="text" maxlength="15" value="" class="detailedit_form" />
@@ -57,7 +58,7 @@
 
 				<!-- 削除はゴミ箱アイコンにしたい。。。 -->
 				<div class="detailedit_btn_group">
-					<input type="button" value="削除" onClick="location.href='./${ShopEditInputForm.shopId}/delete'" class="detailedit_btn delete_btn"> 
+					<input type="button" value="削除" onClick="location.href='./${ShopEditInputForm.shopId}/delete'" class="detailedit_btn delete_btn">
 					<input type="submit" value="保存" class="detailedit_btn">
 					<input type="button" value="キャンセル" onClick="location.href='../shopList'"
 					class="detailedit_btn">
