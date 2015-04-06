@@ -48,9 +48,20 @@ public interface ShopCategoryLogic {
 
     /***
      * カテゴリ削除
-     * 
+     * <pre>
+     * カテゴリ情報と対象カテゴリに登録されている店舗情報を論理削除
+     * </pre>
      * @param categoryId
      */
     public void delete(int categoryId);
+    
+    /***
+     * カテゴリ情報追加
+     * <pre>
+     * 初期レコードの作成
+     * </pre>
+     * @param userId
+     */
+    public void add(int userId);
 
 }

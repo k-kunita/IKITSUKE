@@ -11,8 +11,10 @@ import jp.co.ikitsuke.utils.ConvertUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(readOnly=true)
 public class ShopInfoLogicImpl implements ShopInfoLogic {
 
 	@Autowired
@@ -51,6 +53,7 @@ public class ShopInfoLogicImpl implements ShopInfoLogic {
 	}
 
 	@Override
+    @Transactional(readOnly=false, rollbackFor=RuntimeException.class)
 	public void register(ShopInfoModel shopInfoModel) {
 
 		ShopInfo shopInfo = new ShopInfo();
@@ -68,6 +71,7 @@ public class ShopInfoLogicImpl implements ShopInfoLogic {
 	}
 
 	@Override
+    @Transactional(readOnly=false, rollbackFor=RuntimeException.class)
 	public void update(ShopInfoModel shopInfoModel) {
 
 		ShopInfo shopInfo = new ShopInfo();
@@ -86,6 +90,7 @@ public class ShopInfoLogicImpl implements ShopInfoLogic {
 	}
 
 	@Override
+    @Transactional(readOnly=false, rollbackFor=RuntimeException.class)
 	public void delete(Integer shopId) {
 
 		//論理削除処理の実行

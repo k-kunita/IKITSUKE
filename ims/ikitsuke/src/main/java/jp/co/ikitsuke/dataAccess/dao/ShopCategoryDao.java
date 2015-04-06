@@ -38,5 +38,11 @@ public interface ShopCategoryDao {
      * @return 更新数
      */
     public int updateDisabledFlagByCategoryId(int categoryId);
-
+    
+    /***
+     * カテゴリー情報の追加
+     * @param shopCategory
+     * @return
+     */
+    public int insert(ShopCategory shopCategory);
 }

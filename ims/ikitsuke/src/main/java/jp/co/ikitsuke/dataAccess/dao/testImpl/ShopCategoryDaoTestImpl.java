@@ -72,4 +72,10 @@ public class ShopCategoryDaoTestImpl implements ShopCategoryDao {
 		return null;
 	}
 
+    @Override
+    public int insert(ShopCategory shopCategory) {
+        // TODO 自動生成されたメソッド・スタブ
+        return 0;
+    }
+
 }

@@ -33,7 +33,7 @@ public class ShopCategoryDaoImpl implements ShopCategoryDao {
 		example = new ShopCategoryExample();
 
 		// ユーザIDによる検索
-		example.createCriteria().andUserIdEqualTo(userId);
+		example.createCriteria().andUserIdEqualTo(userId).andDisableFlagNotEqualTo("1");
 
 		return mapper.selectByExample(example);
 	}
@@ -71,5 +71,24 @@ public class ShopCategoryDaoImpl implements ShopCategoryDao {
 		
 		return mapper.selectByPrimaryKey(categoryId);
 	}
+
+    @Override
+    public int insert(ShopCategory shopCategory) {
+        
+        //更新結果
+        int result = 0;
+        
+        // userIdが入力されている場合にInsert処理を実施
+        if(shopCategory != null && shopCategory.getUserId() != 0){
+            
+            shopCategory.setDisableFlag("0");
+            shopCategory.setUpdateTime(new Date());
+            // 追加処理の実行
+            mapper.insert(shopCategory);
+            result = 1;
+        }
+        
+        return result;
+    }
 
 }
