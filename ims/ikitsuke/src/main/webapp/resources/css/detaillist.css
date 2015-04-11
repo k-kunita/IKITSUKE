@@ -51,6 +51,15 @@ text-align: center;
 
 }
 
+.title-area {
+	width : 50px;
+}
+
+.text-area {
+	width : 200px;
+	
+}
+
 .edit_ikitsuke_btn {
  width: 122px;
 }

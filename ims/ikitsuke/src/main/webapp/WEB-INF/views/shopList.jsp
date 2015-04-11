@@ -11,23 +11,15 @@
 <meta name="viewport" content="width=device-width">
 <title>IKITSUKE</title>
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/bootstrap/css/bootstrap-theme.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/detaillist.css" />"
 	rel="stylesheet">
 <link href="<c:url value="/resources/css/jquery-ui.min.css" />"
 	rel="stylesheet">
-<link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
 <script src="<c:url value="/resources/js/jquery.js" />"></script>
 <script src="<c:url value="/resources/js/jquery-ui.min.js" />"></script>
-
-<link
-	href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />"
-	rel="stylesheet">
-<link
-	href="<c:url value="/resources/bootstrap/css/bootstrap-theme.min.css" />"
-	rel="stylesheet">
-
-
 </head>
 <body>
 
@@ -47,7 +39,7 @@
 		<div class="cf">
 			<h1>○○のIKITSUKE一覧</h1>
 			<input type="button" value="追加" onClick="location. href='shopAdd'"
-				class="btn btn-default btn-lg add_ikitsuke_btn">
+				class="add_ikitsuke_btn btn btn-warning">
 		</div>
 
 
@@ -63,12 +55,12 @@
 						<table>
 							<tbody>
 								<tr>
-									<th>TEL</th>
-									<td><c:out value="${obj.shopTel}" /></td>
+									<th class="title-area" >TEL</th>
+									<td class="text-area"><c:out value="${obj.shopTel}" /></td>
 								</tr>
 								<tr>
-									<th>Memo</th>
-									<td><c:out value="${obj.shopMemo}" /></td>
+									<th class="title-area">Memo</th>
+									<td class="text-area"><c:out value="${obj.shopMemo}" /></td>
 								</tr>
 							</tbody>
 						</table>
@@ -76,31 +68,11 @@
 					<div class="panel-body">
 						<input type="button" value="編集"
 							onClick="location.href='shopDetail/<c:out value="${obj.shopId}"/>'"
-							class="btn">
+							class="edit_ikitsuke_btn btn btn-warning">
 					</div>
 				</div>
 			</div>
 		</c:forEach>
-
-
-		<!-- footer
-		<div class="detalist_contents">
-			<c:forEach var="obj" items="${ShopEditOutputForm.shopInfoList}">
-				<div class="ikitsuke_list">
-					<ul class="detail_list">
-						<li><c:out value="${obj.shopName}"/></li>
-						<li><c:out value="${obj.shopTel}"/></li>
-						<li><c:out value="${obj.shopMemo}"/></li>
-						<li><input type="button" value="編集"
-							onClick="location.href='shopDetail/<c:out value="${obj.shopId}"/>'"
-							class="btn"></li>
-					</ul>
-				</div>
-			</c:forEach>
-		</div>
- -->
-	</div>
-	</div>
 	</div>
 
 	<!-- footer -->
