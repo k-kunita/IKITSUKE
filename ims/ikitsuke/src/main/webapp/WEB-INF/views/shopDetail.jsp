@@ -11,6 +11,8 @@
 <meta name="viewport" content="width=device-width">
 <title>IKITSUKE</title>
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/bootstrap/css/bootstrap-theme.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/detailedit.css" />"
 	rel="stylesheet">
@@ -51,16 +53,16 @@
 					</dd>
 					<dt>備考</dt>
 					<dd>
-						<form:input path="shopMemo" type="text" maxlength="500" value="" class="detailedit_form" />
+						<form:input path="shopMemo" type="text" maxlength="500" value="" class="detailedit_form--area" />
 					</dd>
 				</dl>
 
 				<!-- 削除はゴミ箱アイコンにしたい。。。 -->
 				<div class="detailedit_btn_group">
-					<input type="button" value="削除" onClick="location.href='./${ShopEditInputForm.shopId}/delete'" class="detailedit_btn delete_btn"> 
-					<input type="submit" value="保存" class="detailedit_btn">
+					<input type="submit" value="保存" class="detailedit_btn btn btn-warning">
+					<input type="button" value="削除" onClick="location.href='./${ShopEditInputForm.shopId}/delete'" class="detailedit_btn btn btn-warning"> 
 					<input type="button" value="キャンセル" onClick="location.href='../shopList'"
-					class="detailedit_btn">
+					class="detailedit_btn cancel_btn btn btn-warning">
 				</div>
 			</div>
 			</form:form>

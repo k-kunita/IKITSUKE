@@ -25,8 +25,8 @@ h1 {
 }
 
 .detailedit_list dt {
-  width: 20%;
-  margin-left: 30%;
+  width: 22%;
+  margin-left: 20%;
   float: left;
   clear: both;
   font-size: 26px;
@@ -34,6 +34,10 @@ h1 {
 
 .detailedit_list dd {
   margin-bottom: 40px;
+}
+
+.detailedit_list dd input {
+	width: 30%;
 }
 
 .detailedit_list dd:last-child {
@@ -50,19 +54,27 @@ h1 {
   border: 1px solid #fff;
   border-radius: 5px;
 }
+.detailedit_form--area {
+  height: 40px;
+  font-size: 15px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  resize: both;
+}
 
 .detailedit_btn_group {
-  margin-left: 30%;
+padding: 0 26% 0 20%;
 }
 
 .detailedit_btn {
   padding: 7px 30px;
   font-size: 20px;
   border-radius: 6px;
+  margin-right: 20px;
+}
+.cancel_btn {
+	float: right;
 }
 
-.delete_btn {
-  margin-right: 15%;
-}
 
 
