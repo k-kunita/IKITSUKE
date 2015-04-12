@@ -3,6 +3,7 @@ package jp.co.ikitsuke.dataAccess.dao;
 import java.util.List;
 
 import jp.co.ikitsuke.dataAccess.entity.ShopCategory;
+import jp.co.ikitsuke.model.ShopCategoryModel;
 
 public interface ShopCategoryDao {
 
@@ -29,7 +30,7 @@ public interface ShopCategoryDao {
      * @param categoryName
      * @return 更新数
      */
-    public int updateCategoryNameByCategoryId(int categoryId, String categoryName);
+    public int updateByCategoryId(ShopCategoryModel model);
 
     /***
      * カテゴリID指定で無効フラグを更新

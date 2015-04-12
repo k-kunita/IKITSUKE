@@ -39,12 +39,11 @@ public interface ShopCategoryLogic {
     public ShopCategoryModel getCategory(int categoryId);
 
     /***
-     * カテゴリ名変更
-     * 
-     * @param categoryId
-     * @param categoryName
+     * カテゴリー更新処理
+     * @param model
+     * @return
      */
-    public void rename(int categoryId, String categoryName);
+    public int update(ShopCategoryModel model);
 
     /***
      * カテゴリ削除
@@ -53,7 +52,7 @@ public interface ShopCategoryLogic {
      * </pre>
      * @param categoryId
      */
-    public void delete(int categoryId);
+    public int delete(int categoryId);
     
     /***
      * カテゴリ情報追加

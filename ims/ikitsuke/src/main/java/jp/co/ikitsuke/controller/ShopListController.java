@@ -2,12 +2,10 @@ package jp.co.ikitsuke.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
-import jp.co.ikitsuke.form.LoginInputForm;
-import jp.co.ikitsuke.form.ShopAddInputForm;
 import jp.co.ikitsuke.form.ShopListOutputForm;
+import jp.co.ikitsuke.logic.ShopCategoryLogic;
 import jp.co.ikitsuke.logic.ShopInfoLogic;
+import jp.co.ikitsuke.model.ShopCategoryModel;
 import jp.co.ikitsuke.model.ShopInfoModel;
 import jp.co.ikitsuke.utils.ConvertUtil;
 
@@ -24,16 +22,26 @@ public class ShopListController {
 
     @Autowired
     ShopInfoLogic shopInfoLogic;
-
+    
+    @Autowired
+    ShopCategoryLogic shopCategoryLogic;
+    
     @RequestMapping(value = "categoryList/{categoryId}/shopList", method = RequestMethod.GET)
-    public ModelAndView shopListView(@PathVariable("categoryId") String categoryId, @ModelAttribute("ShopEditOutputForm") ShopListOutputForm shopEditOutputForm) {
-
+    public ModelAndView shopListView(@PathVariable("categoryId") String inputCategoryId, @ModelAttribute("ShopEditOutputForm") ShopListOutputForm shopEditOutputForm) {
+        
+        int categoryId = Integer.parseInt(inputCategoryId);
+        
         // FormにカテゴリーIDをセット
-        shopEditOutputForm.setCategoryId(Integer.parseInt(categoryId));
-
+        shopEditOutputForm.setCategoryId(categoryId);
+        
+        ShopCategoryModel categoryModel = shopCategoryLogic.getCategory(categoryId);
+        if(categoryModel == null || categoryModel.isDisableFlag()){
+            System.out.println("不正なカテゴリーをゲットした！");
+        }
+        
         // カテゴリーIDで店舗一覧取得
-        List<ShopInfoModel> modelList = shopInfoLogic.getShopInfoList(Integer.parseInt(categoryId));
-
+        List<ShopInfoModel> modelList = shopInfoLogic.getShopInfoList(categoryId);
+        
         // 一覧を取得した場合
         if (modelList != null) {
             shopEditOutputForm.setShopInfoList(ConvertUtil.toShopInfoParts(modelList));

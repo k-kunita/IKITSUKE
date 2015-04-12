@@ -7,6 +7,7 @@ import jp.co.ikitsuke.dataAccess.client.ShopCategoryMapper;
 import jp.co.ikitsuke.dataAccess.dao.ShopCategoryDao;
 import jp.co.ikitsuke.dataAccess.entity.ShopCategory;
 import jp.co.ikitsuke.dataAccess.entity.ShopCategoryExample;
+import jp.co.ikitsuke.model.ShopCategoryModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,21 +34,19 @@ public class ShopCategoryDaoImpl implements ShopCategoryDao {
 		example = new ShopCategoryExample();
 
 		// ユーザIDによる検索
-		example.createCriteria().andUserIdEqualTo(userId).andDisableFlagNotEqualTo("1");
+		example.createCriteria().andUserIdEqualTo(userId);
 
 		return mapper.selectByExample(example);
 	}
 
 	@Override
-	public int updateCategoryNameByCategoryId(int categoryId, String categoryName) {
+	public int updateByCategoryId(ShopCategoryModel model) {
 
 		record = new ShopCategory();
 
-		record.setCategoryId(categoryId);
-		record.setUpdateTime(new Date());
-		// 変更後のカテゴリー名をセット
-		record.setCategoryName(categoryName);
-		// 無効フラグに0をセット
+		record.setCategoryId(model.getCategoryId());
+		record.setCategoryName(model.getCategoryName());
+        record.setUpdateTime(new Date());
 		record.setDisableFlag("0");
 
 		return mapper.updateByPrimaryKeySelective(record);

@@ -43,7 +43,6 @@ public class TestController {
         Login login = loginDao.selectByMailAddressLoginPassword("ikitsuke@ims.com", "password");
 
         List<ShopCategory> shopCategoryList = shopCategoryDao.selectByUserId(1);
-        int shopCategoryUpdateResult = shopCategoryDao.updateCategoryNameByCategoryId(2, "朝飯");
         int shopCategoryUpdateResult2 = shopCategoryDao.updateDisabledFlagByCategoryId(1);
 
         // List<ShopInfo> shopInfoList = shopInfoDao.selectByCategoryId(2);

@@ -6,6 +6,7 @@ import java.util.List;
 
 import jp.co.ikitsuke.dataAccess.dao.ShopCategoryDao;
 import jp.co.ikitsuke.dataAccess.entity.ShopCategory;
+import jp.co.ikitsuke.model.ShopCategoryModel;
 
 import org.springframework.stereotype.Component;
 
@@ -31,11 +32,6 @@ public class ShopCategoryDaoTestImpl implements ShopCategoryDao {
 		shopCategoryList.add(setValue(new ShopCategory(),8,"",userId,"1",newDate));
 
 		return shopCategoryList;
-	}
-
-	@Override
-	public int updateCategoryNameByCategoryId(int categoryId, String categoryName) {
-		return 0;
 	}
 
 	@Override
@@ -74,6 +70,12 @@ public class ShopCategoryDaoTestImpl implements ShopCategoryDao {
 
     @Override
     public int insert(ShopCategory shopCategory) {
+        // TODO 自動生成されたメソッド・スタブ
+        return 0;
+    }
+
+    @Override
+    public int updateByCategoryId(ShopCategoryModel model) {
         // TODO 自動生成されたメソッド・スタブ
         return 0;
     }
