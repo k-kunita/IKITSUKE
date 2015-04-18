@@ -28,5 +28,11 @@ public class LoginDaoTestImpl implements LoginDao {
 		return login;
 	}
 
+    @Override
+    public Login selectByMailAddress(String mailAddress) {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
 
 }
