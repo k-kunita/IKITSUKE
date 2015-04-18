@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<!-- 認証と認可の設定です -->
+	<sec:http auto-config="true" access-denied-page="/login">
+
+		<!-- 認可のURL設定 -->
+		<sec:intercept-url pattern="/error/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<sec:intercept-url pattern="/login/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<sec:intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<sec:intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY" />
+
+		<!-- 認証の設定 -->
+		<sec:form-login login-page="/login" default-target-url="/login/doLogin"
+			authentication-failure-url="/error" />
+		<sec:logout logout-url="/logout" logout-success-url="/login"
+			invalidate-session="true" />
+		<sec:anonymous granted-authority="ROLE_USER" />
+	</sec:http>
+
+	<authentication-manager>
+		<authentication-provider>
+<!-- テスト用ログイン情報
+			<user-service>
+				<user name="ikitsuke@ims.com" password="password123"
+					authorities="ROLE_USER" />
+			</user-service>
+ -->
+ 			<jdbc-user-service data-source-ref="dataSource"
+ 			users-by-username-query="SELECT mail_address as username, login_password as password, true as enable FROM login WHERE mail_address = ?"
+ 			authorities-by-username-query="SELECT mail_address as username, 'ROLE_USER' as authority FROM login WHERE mail_address = ?"/>
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>

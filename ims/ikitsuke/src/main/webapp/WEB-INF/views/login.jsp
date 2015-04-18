@@ -41,27 +41,20 @@
 				あなただけのIKITSUKEを<br>作りませんか？
 			</h1>
 
-			<spring:url value="/login/doLogin" var="action" />
-			<form:form modelAttribute="LoginInputForm" action="${action}"
-				method="post" class="login_id_pass">
+			<form name="f" action="<c:url value='j_spring_security_check'/>"method="post" class="login_id_pass">
 				<h2 class="form-signin-heading">Please sign in</h2>
 				<ul class="login_id_pass">
-				<label for="mailAddress" class="sr-only">Email address</label>
-				<li>
-				<form:input path="mailAddress" type="email" class="login_form"
-					placeholder="Email address" required="true" autofocus="true" />
-				</li>
-				<label for="loginPassword" class="sr-only">Password</label>
-				<li>
-				<form:input path="loginPassword" type="password" class="login_form"
-					placeholder="Password" required="true" />
-				</li>
+					<label for="mailAddress" class="sr-only">Email address</label>
+					<li>
+						<input name="j_username" type="email" class="login_form" placeholder="Email address" required="true" autofocus="true" />
+					</li>
+					<label for="loginPassword" class="sr-only">Password</label>
+					<li>
+						<input name="j_password" type="password" class="login_form" placeholder="Password" required="true" />
+					</li>
 				</ul>
-				<button class="login_btn btn btn-warning" type="submit">Sign
-					in</button>
-
-			</form:form>
-		</div>
+				<button class="login_btn btn btn-warning" type="submit">Sign in</button>
+			</form>
 	</div>
 	<!-- /container -->
 	<!-- footer -->

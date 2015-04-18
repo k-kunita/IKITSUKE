@@ -3,6 +3,8 @@
  */
 package jp.co.ikitsuke.form;
 
+import javax.validation.constraints.Size;
+
 /**
  * 行きつけ一覧<br>
  * 編集画面<br>
@@ -17,6 +19,7 @@ public class ShopEditInputForm extends AbstractForm {
     private int shopId;
 
     /** 店舗名 */
+    @Size(min=8)
     private String shopName;
 
     /** 電話番号 */

@@ -1,14 +1,16 @@
 package jp.co.ikitsuke.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 
-import jp.co.ikitsuke.form.LoginInputForm;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Validator;
+
 import jp.co.ikitsuke.logic.LoginLogic;
 import jp.co.ikitsuke.model.LoginModel;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,48 +18,88 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
+    private static Logger logger = Logger.getLogger(LoginController.class);
+
     @Autowired
     LoginLogic loginLogic;
+
+    @Autowired
+    private Validator validator;
 
     LoginModel loginModel;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView login(@ModelAttribute("LoginInputForm") LoginInputForm loginInputForm) {
-
-        loginInputForm.setMailAddress("ikitsuke@ims.com");
-        loginInputForm.setLoginPassword("password");
+    public ModelAndView login() {
 
         // ログイン画面を表示
         return new ModelAndView("login");
     }
 
-    @RequestMapping(value = "/login/doLogin", method = RequestMethod.POST)
-    public String doLogin(@ModelAttribute("LoginInputForm") LoginInputForm loginInputForm, HttpServletRequest request) {
+    @RequestMapping(value = "/login/doLogin", method = RequestMethod.GET)
+    public String doLogin(
+            HttpServletRequest request,
+            Principal principal) {
 
         // 遷移先
-        String redirect;
+        String redirect  = "";
 
-        // メールアドレスとパスワードによりログイン情報を取得
-        loginModel = loginLogic.executeLogin(loginInputForm.getMailAddress(), loginInputForm.getLoginPassword());
+      // メールアドレスとパスワードによりログイン情報を取得
+      loginModel = loginLogic.executeLogin(principal.getName(),"password123");
 
-        // モデルの有無判定
-        if (loginModel != null) {
-            // ログイン成功時
-            // ログインモデルをセッションに保管
-            request.getSession().setAttribute("loginModel", loginModel);
-            redirect = "redirect:/categoryList";
-        } else {
-            // ログイン失敗時
-            redirect = "redirect:/login";
-        }
-
-        System.out.println(loginInputForm.getMailAddress());
-        System.out.println(loginInputForm.getLoginPassword());
-
-        request.getSession().setAttribute("unko", "うんこ");
-
-        return redirect;
+      // モデルの有無判定
+      if (loginModel != null) {
+          // ログイン成功時
+          // ログインモデルをセッションに保管
+          request.getSession().setAttribute("loginModel", loginModel);
+          redirect = "redirect:/categoryList";
+      } else {
+          // ログイン失敗時
+          redirect = "redirect:/login";
+      }
+       return redirect;
     }
+
+//    @RequestMapping(value = "/login/doLogin", method = RequestMethod.POST)
+//    public String doLogin(
+//            @Valid @ModelAttribute("LoginInputForm") LoginInputForm loginInputForm,
+//            BindingResult bindingResult,
+//            HttpServletRequest request,
+//            Principal principal) {
+//
+//        // 遷移先
+//        String redirect ;
+//
+//        //バリデーション処理
+//        if(bindingResult.hasErrors()){
+//            System.out.println("errorです");
+//            ErrorMessageForm errorForm = new ErrorMessageForm();
+//
+//            if(errorPartList != null){
+//                errorForm.setErrorMessageList(errorPartList);
+//                //セッションにエラーフォームをセット
+//                request.getSession().setAttribute("errorMessageForm", errorForm);
+//            }
+//            return "redirect:/login";
+//        }
+//
+//        // メールアドレスとパスワードによりログイン情報を取得
+//        loginModel = loginLogic.executeLogin(loginInputForm.getMailAddress(), loginInputForm.getLoginPassword());
+//
+//        // モデルの有無判定
+//        if (loginModel != null) {
+//            // ログイン成功時
+//            // ログインモデルをセッションに保管
+//            request.getSession().setAttribute("loginModel", loginModel);
+//            redirect = "redirect:/categoryList";
+//        } else {
+//            // ログイン失敗時
+//            redirect = "redirect:/categoryList";
+//        }
+//
+//        request.getSession().setAttribute("unko", "うんこ");
+//
+//        return redirect;
+//    }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String doLogout(HttpServletRequest request) {

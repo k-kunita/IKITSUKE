@@ -67,6 +67,8 @@ public class ShopInfoDaoImpl implements ShopInfoDao {
 	@Override
 	public int deleteByCategoryId(int categoryId) {
 
+        example = new ShopInfoExample();
+	    
 		record = new ShopInfo();
 
 		record.setUpdateTime(new Date());

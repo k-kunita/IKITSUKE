@@ -48,8 +48,10 @@
 							value="<c:out value="${obj.categoryName}"/>"
 							onClick="location. href='categoryList/<c:out value="${obj.categoryId}/shopList"/>'"
 							id="<c:out value="${obj.categoryId}"/>" class="category_btn">
-							 <input type="button" value="編集" id="category_edit" class="edit_btn btn btn-warning" title="fff">
-					 </li>
+						<input type="button" value="編集"
+							onClick="location. href='categoryList/<c:out value="${obj.categoryId}"/>'"
+							id="<c:out value="${obj.categoryId}"/>" class="edit_btn btn btn-warning">
+					</li>
 					</form>
 				</c:forEach>
 			</ul>
