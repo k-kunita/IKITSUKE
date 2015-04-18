@@ -44,7 +44,7 @@ public class LoginController {
         String redirect  = "";
 
       // メールアドレスとパスワードによりログイン情報を取得
-      loginModel = loginLogic.executeLogin(principal.getName(),"password123");
+      loginModel = loginLogic.getModel(principal.getName());
 
       // モデルの有無判定
       if (loginModel != null) {
