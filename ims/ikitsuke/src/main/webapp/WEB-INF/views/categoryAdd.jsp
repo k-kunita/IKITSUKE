@@ -10,15 +10,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <title>IKITSUKE</title>
-
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/bootstrap/css/bootstrap-theme.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/jquery-ui.min.css" />" rel="stylesheet">
-
-
+<link href="<c:url value="/resources/css/detailedit.css" />"
+    rel="stylesheet">
 </head>
 <body>
 
@@ -35,30 +32,29 @@
 
 	<!-- main_contents -->
 	<div class="main_contents">
-		<h1>カテゴリを編集して行きつけをまとめよう！</h1>
-		<div class="detail_contents">
-	       <ul>
-				<c:forEach var="obj" items="${CategoryOutputForm.shopCategoryList}">
-					<form>
-					<li class="category_list">
-						<input type="button"
-							value="<c:out value="${obj.categoryName}"/>"
-							onClick="location. href='categoryList/<c:out value="${obj.categoryId}/shopList"/>'"
-							id="<c:out value="${obj.categoryId}"/>" class="category_btn">
-						<input type="button" value="編集"
-							onClick="location. href='categoryList/<c:out value="${obj.categoryId}"/>'"
-							id="<c:out value="${obj.categoryId}"/>" class="edit_btn btn btn-warning">
-					</li>
-					</form>
-				</c:forEach>
-				<form>
-				    <li class="category_list">
-				        <input type="button" value="追加" onClick="location. href='/ikitsuke/categoryList/add'" class="category_btn--add">
-				    </li>
-				</form>
-			</ul>
-		</div>
+		<h1>行きつけのお店を編集しよう！</h1>
+		<spring:url value="/categoryList/${CategoryEditInputForm.categoryId}/edit" var="action" />
+		<form:form modelAttribute="CategoryEditInputForm" action="${action}" method="post">
+			<div class="detail_edit_contents">
+				<dl class="detailedit_list">
+					<dt>カテゴリ名修正画面</dt>
+					 <form:errors path="*" element="div" />
+					<dt>カテゴリ名</dt>
+					<dd>
+						<form:input path="categoryName" type="text" maxlength="15" value="" class="detailedit_form" />
+					</dd>
+				</dl>
+
+				<div class="detailedit_btn_group">
+					<input type="submit" value="保存" class="detailedit_btn">
+					<input type="button" value="削除" onClick="location.href='/ikitsuke/categoryList/${CategoryEditInputForm.categoryId}/delete'" class="detailedit_btn delete_btn">
+					<input type="button" value="キャンセル" onClick="location.href='/ikitsuke/categoryList'"
+					class="detailedit_btn">
+				</div>
+			</div>
+			</form:form>
 	</div>
+
 	<!-- footer -->
 	<footer id="footer">
 		<div class="footer_iner">
