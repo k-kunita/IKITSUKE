@@ -2,15 +2,16 @@ package jp.co.ikitsuke.logic.impl;
 
 import jp.co.ikitsuke.dataAccess.dao.LoginDao;
 import jp.co.ikitsuke.dataAccess.entity.Login;
+import jp.co.ikitsuke.form.part.ShopInfoPart;
 import jp.co.ikitsuke.logic.LoginLogic;
 import jp.co.ikitsuke.model.LoginModel;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional(readOnly=true)
 public class LoginLogicImpl implements LoginLogic {
 
 	@Autowired
@@ -37,5 +38,23 @@ public class LoginLogicImpl implements LoginLogic {
 
 		return loginModel;
 	}
+
+    @Override
+    public LoginModel getModel(String mailAddress) {
+        
+        LoginModel model = new LoginModel();
+        
+        Login entity = loginDao.selectByMailAddress(mailAddress);
+        
+        // 取得値のチェック
+        if(entity == null || entity.getMailAddress() == null){
+            return model;
+        }
+        
+        // entity -> model
+        BeanUtils.copyProperties(entity, model);
+        
+        return model;
+    }
 
 }

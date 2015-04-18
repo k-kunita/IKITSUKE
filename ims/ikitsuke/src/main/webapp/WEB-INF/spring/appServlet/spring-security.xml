@@ -24,18 +24,23 @@
 		<sec:anonymous granted-authority="ROLE_USER" />
 	</sec:http>
 
-	<authentication-manager>
-		<authentication-provider>
+	<authentication-manager >
+		<authentication-provider  user-service-ref="customUserDetailsService">
 <!-- テスト用ログイン情報
 			<user-service>
 				<user name="ikitsuke@ims.com" password="password123"
 					authorities="ROLE_USER" />
 			</user-service>
- -->
  			<jdbc-user-service data-source-ref="dataSource"
  			users-by-username-query="SELECT mail_address as username, login_password as password, true as enable FROM login WHERE mail_address = ?"
  			authorities-by-username-query="SELECT mail_address as username, 'ROLE_USER' as authority FROM login WHERE mail_address = ?"/>
+ -->
 		</authentication-provider>
 	</authentication-manager>
+
+	<beans:bean id="customUserDetailsService" class="jp.co.ikitsuke.security.CustomUserDetailsService"></beans:bean>
+
+
+
 
 </beans:beans>

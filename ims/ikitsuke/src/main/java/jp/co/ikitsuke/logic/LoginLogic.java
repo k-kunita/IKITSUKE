@@ -23,4 +23,15 @@ public interface LoginLogic {
      * @return 
      */
     public LoginModel executeLogin(String mailAddress, String loginPassword);
+    
+    /***
+     * ログインモデル取得
+     * <pre>
+     * メールアドレスよりログインモデルを取得する。
+     * </pre>
+     * @param mailAddress
+     * @return ログインモデル
+     */
+    public LoginModel getModel(String mailAddress);
+    
 }
