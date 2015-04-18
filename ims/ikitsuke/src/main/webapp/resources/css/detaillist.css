@@ -36,10 +36,13 @@ text-align: center;
 }
 
 .add_ikitsuke_btn {
-  margin: 2% 0 0 52%;  
+  margin: 2% 2% 0 0;
   font-size: 20px;
-  padding:5px 54px;
+  padding: 5px 54px;
+  float: right;
   border-radius: 6px;
+  background-color: #FF6347;
+  border: 2px solid #FF6347;
 }
 
 .cf:after {

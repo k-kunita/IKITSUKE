@@ -11,9 +11,11 @@
 <meta name="viewport" content="width=device-width">
 <title>IKITSUKE</title>
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/bootstrap/css/bootstrap-theme.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/detailedit.css" />"
-	rel="stylesheet">
+    rel="stylesheet">
 </head>
 <body>
 
@@ -44,8 +46,8 @@
 				</dl>
 
 				<div class="detailedit_btn_group">
-					<input type="button" value="削除" onClick="location.href='/ikitsuke/categoryList/${CategoryEditInputForm.categoryId}/delete'" class="detailedit_btn delete_btn">
 					<input type="submit" value="保存" class="detailedit_btn">
+					<input type="button" value="削除" onClick="location.href='/ikitsuke/categoryList/${CategoryEditInputForm.categoryId}/delete'" class="detailedit_btn delete_btn">
 					<input type="button" value="キャンセル" onClick="location.href='/ikitsuke/categoryList'"
 					class="detailedit_btn">
 				</div>
