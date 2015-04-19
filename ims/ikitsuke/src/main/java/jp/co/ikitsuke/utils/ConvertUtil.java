@@ -3,6 +3,7 @@ package jp.co.ikitsuke.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import jp.co.ikitsuke.dataAccess.entity.ShopCategory;
 import jp.co.ikitsuke.form.CategoryEditInputForm;
 import jp.co.ikitsuke.form.part.ShopCategoryPart;
 import jp.co.ikitsuke.form.part.ShopInfoPart;
@@ -156,5 +157,25 @@ public class ConvertUtil {
 
         return form;
     }
+    
+    /***
+     * ShopCategoryMpdelをEntityクラスに変換
+     * <pre>
+     * 引数がnullの場合はnullを返す
+     * </pre>
+     * @param model
+     * @return entity
+     */
+    public static ShopCategory toShopCategory(ShopCategoryModel model) {
 
+        ShopCategory entity = null;
+
+        if (model != null) {
+            entity = new ShopCategory();
+            BeanUtils.copyProperties(model, entity);
+        }
+
+        return entity;
+    }
+    
 }

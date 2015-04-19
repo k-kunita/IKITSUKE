@@ -61,6 +61,6 @@ public interface ShopCategoryLogic {
      * </pre>
      * @param userId
      */
-    public void add(int userId);
+    public int add(ShopCategoryModel model);
 
 }

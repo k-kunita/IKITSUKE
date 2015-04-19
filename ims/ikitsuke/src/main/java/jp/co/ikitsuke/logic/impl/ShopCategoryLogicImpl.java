@@ -87,19 +87,18 @@ public class ShopCategoryLogicImpl implements ShopCategoryLogic {
     }
 
     @Override
-    public void add(int userId) {
-
-        // ユーザIDが入力されている場合のみ
-        if (userId != 0) {
-            // 追加するエンティティのインスタンス
-            ShopCategory shopCategory = new ShopCategory();
-            shopCategory.setUserId(userId);
-            shopCategory.setCategoryName(null);
-
-            shopCategoryDao.insert(shopCategory);
-        } else {
-            // TODO ユーザID未入力時の処理がない
+    public int add(ShopCategoryModel model) {
+        
+        int result = 0;
+        
+        // modelとユーザIDのチェック
+        if (model != null || model.getUserId() != 0) {
+            return result;
         }
+        
+        result = shopCategoryDao.insert(ConvertUtil.toShopCategory(model));
+        
+        return result;
     }
 
     @Override
