@@ -33,8 +33,8 @@ public class ShopCategoryDaoImpl implements ShopCategoryDao {
 
         example = new ShopCategoryExample();
 
-        // ユーザIDによる検索
-        example.createCriteria().andUserIdEqualTo(userId);
+        // ユーザIDによる検索（論理削除レコードは対象外）
+        example.createCriteria().andUserIdEqualTo(userId).andDisableFlagEqualTo("0");
 
         return mapper.selectByExample(example);
     }
