@@ -41,8 +41,12 @@
 				あなただけのIKITSUKEを<br>作りませんか？
 			</h1>
 
-			<form name="f" action="<c:url value='j_spring_security_check'/>"method="post" class="login_id_pass">
+			<form name="f" action="/ikitsuke/<c:url value='j_spring_security_check'/>"method="post" class="login_id_pass">
 				<h2 class="form-signin-heading">Please sign in</h2>
+
+				<c:forEach var="msg" items="${ErrorMessageForm.messageList}">
+						<c:out value="${msg}"/>
+				</c:forEach>
 				<ul class="login_id_pass">
 					<label for="mailAddress" class="sr-only">Email address</label>
 					<li>
