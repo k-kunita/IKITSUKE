@@ -15,7 +15,7 @@
 <link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/detailedit.css" />"
-    rel="stylesheet">
+	rel="stylesheet">
 </head>
 <body>
 
@@ -32,24 +32,22 @@
 
 	<!-- main_contents -->
 	<div class="main_contents">
-		<h1>行きつけのお店を編集しよう！</h1>
-		<spring:url value="/categoryList/${CategoryEditInputForm.categoryId}/edit" var="action" />
-		<form:form modelAttribute="CategoryEditInputForm" action="${action}" method="post">
+		<h1>行きつけのお店を追加しよう！</h1>
+		<spring:url value="add/doAdd" var="action" />
+		<form:form modelAttribute="CatetgoryAddInputForm" action="${action}" method="post">
 			<div class="detail_edit_contents">
 				<dl class="detailedit_list">
-					<dt>カテゴリ名修正画面</dt>
-					 <form:errors path="*" element="div" />
 					<dt>カテゴリ名</dt>
 					<dd>
 						<form:input path="categoryName" type="text" maxlength="15" value="" class="detailedit_form" />
 					</dd>
 				</dl>
 
+				<!-- 削除はゴミ箱アイコンにしたい。。。 -->
 				<div class="detailedit_btn_group">
-					<input type="submit" value="保存" class="detailedit_btn">
-					<input type="button" value="削除" onClick="location.href='/ikitsuke/categoryList/${CategoryEditInputForm.categoryId}/delete'" class="detailedit_btn delete_btn">
+					<input type="submit" value="保存" class="detailedit_btn btn btn-warning">
 					<input type="button" value="キャンセル" onClick="location.href='/ikitsuke/categoryList'"
-					class="detailedit_btn">
+					class="detailedit_btn cancel_btn btn btn-warning">
 				</div>
 			</div>
 			</form:form>

@@ -86,7 +86,8 @@ public class ShopCategoryLogicImpl implements ShopCategoryLogic {
         return shopCategoryModel;
     }
 
-    @Override
+    @SuppressWarnings("null")
+	@Override
     public int add(ShopCategoryModel model) {
         
         int result = 0;

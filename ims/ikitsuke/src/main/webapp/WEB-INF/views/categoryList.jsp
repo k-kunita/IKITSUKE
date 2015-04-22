@@ -2,7 +2,7 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!DOCTYPE html>
 <html lang=ja>
@@ -39,8 +39,8 @@
 		<div class="detail_contents">
 	       <ul>
 				<c:forEach var="obj" items="${CategoryOutputForm.shopCategoryList}">
-					<form>
 					<li class="category_list">
+					<form>
 						<input type="button"
 							value="<c:out value="${obj.categoryName}"/>"
 							onClick="location. href='categoryList/<c:out value="${obj.categoryId}/shopList"/>'"
@@ -48,24 +48,27 @@
 						<input type="button" value="編集"
 							onClick="location. href='categoryList/<c:out value="${obj.categoryId}"/>'"
 							id="<c:out value="${obj.categoryId}"/>" class="edit_btn btn btn-warning">
-					</li>
 					</form>
+					</li>
 				</c:forEach>
+				
+				<li class="category_list">
 				<form>
-				    <li class="category_list">
-				        <input type="button" value="追加" onClick="location. href='/ikitsuke/categoryList/add'" class="category_btn--add">
-				    </li>
+				       <input type="button" value="追加" onClick="location.href='/ikitsuke/categoryList/add'" class="category_btn--add">
 				</form>
+				 </li>
 			</ul>
 		</div>
 	</div>
 	<!-- footer -->
 	<footer id="footer">
 		<div class="footer_iner">
+		<div class="footer_text">
 			<small>
-				<div class="footer_text">copyright &copy;IKITSUKE.inc All
-					Rights Reserved.</div>
+				copyright &copy;IKITSUKE.inc All
+					Rights Reserved.
 			</small>
+			</div>
 		</div>
 	</footer>
 </body>

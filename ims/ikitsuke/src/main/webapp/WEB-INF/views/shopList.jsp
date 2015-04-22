@@ -78,10 +78,12 @@
 	<!-- footer -->
 	<footer id="footer">
 		<div class="footer_iner">
+		<div class="footer_text">
 			<small>
-				<div class="footer_text">copyright &copy;IKITSUKE.inc All
-					Rights Reserved.</div>
+				copyright &copy;IKITSUKE.inc All
+					Rights Reserved.
 			</small>
+			</div>
 		</div>
 	</footer>
 </body>

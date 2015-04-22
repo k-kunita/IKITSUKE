@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.ikitsuke.dataAccess.entity.ShopCategory;
+import jp.co.ikitsuke.form.CategoryAddInputForm;
 import jp.co.ikitsuke.form.CategoryEditInputForm;
 import jp.co.ikitsuke.form.part.ShopCategoryPart;
 import jp.co.ikitsuke.form.part.ShopInfoPart;
@@ -152,6 +153,26 @@ public class ConvertUtil {
 
         if (model != null) {
             form = new CategoryEditInputForm();
+            BeanUtils.copyProperties(model, form);
+        }
+
+        return form;
+    }
+    
+    /***
+     * ShopCategoryMpdelをFormクラスに変換
+     * <pre>
+     * 引数がnullの場合はnullを返す
+     * </pre>
+     * @param model
+     * @return
+     */
+    public static CategoryAddInputForm toCategoryAddInputForm(ShopCategoryModel model) {
+
+        CategoryAddInputForm form = null;
+
+        if (model != null) {
+            form = new CategoryAddInputForm();
             BeanUtils.copyProperties(model, form);
         }
 
