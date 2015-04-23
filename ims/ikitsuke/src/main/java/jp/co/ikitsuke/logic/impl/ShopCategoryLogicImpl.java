@@ -86,21 +86,21 @@ public class ShopCategoryLogicImpl implements ShopCategoryLogic {
         return shopCategoryModel;
     }
 
-    @SuppressWarnings("null")
 	@Override
     public int add(ShopCategoryModel model) {
         
         int result = 0;
         
         // modelとユーザIDのチェック
-        if (model != null || model.getUserId() != 0) {
-            return result;
+        if (model == null || model.getUserId() == 0) {
+            return 0;
         }
         
         result = shopCategoryDao.insert(ConvertUtil.toShopCategory(model));
         
         return result;
     }
+
 
     @Override
     public int update(ShopCategoryModel model) {

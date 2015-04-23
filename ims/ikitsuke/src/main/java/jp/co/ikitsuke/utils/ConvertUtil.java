@@ -193,7 +193,8 @@ public class ConvertUtil {
 
         if (model != null) {
             entity = new ShopCategory();
-            BeanUtils.copyProperties(model, entity);
+            entity.setCategoryName(model.getCategoryName());
+            entity.setUserId(model.getUserId());
         }
 
         return entity;

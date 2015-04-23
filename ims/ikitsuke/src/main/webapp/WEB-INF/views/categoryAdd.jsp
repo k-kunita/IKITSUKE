@@ -32,7 +32,7 @@
 
 	<!-- main_contents -->
 	<div class="main_contents">
-		<h1>行きつけのお店を追加しよう！</h1>
+		<h1>カテゴリを追加しよう！</h1>
 		<spring:url value="add/doAdd" var="action" />
 		<form:form modelAttribute="CatetgoryAddInputForm" action="${action}" method="post">
 			<div class="detail_edit_contents">
