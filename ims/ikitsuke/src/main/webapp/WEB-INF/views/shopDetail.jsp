@@ -43,22 +43,22 @@
 					<dt>店舗名</dt>
 					<dd>
 						<form:input path="shopName" type="text" maxlength="15" value="" class="detailedit_form" />
-						<form:errors path = "shopName" />
+                        <form:errors path = "shopName" class="error_area" />
 					</dd>
 					<dt>電話番号</dt>
 					<dd>
 						<form:input path="shopTel" type="text" maxlength="11" value="" class="detailedit_form" />
-						<form:errors path = "shopTel" />
+                        <form:errors path = "shopTel" class="error_area" />
 					</dd>
 					<dt>URL</dt>
 					<dd>
 						<form:input path="shopPageUrl" type="text" maxlength="2083" value="" class="detailedit_form" />
-						<form:errors path = "shopPageUrl" />
+						<form:errors path = "shopPageUrl" class="error_area" />
 					</dd>
 					<dt>備考</dt>
 					<dd>
 						<form:input path="shopMemo" type="text" maxlength="500" value="" class="detailedit_form" />
-						<form:errors path = "shopMemo" />
+						<form:errors path = "shopMemo" class="error_area" />
 					</dd>
 				</dl>
 
