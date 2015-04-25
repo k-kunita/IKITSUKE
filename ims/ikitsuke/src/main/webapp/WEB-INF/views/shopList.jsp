@@ -37,7 +37,7 @@
 	<!-- main_contents -->
 	<div class="main_contents">
 		<div class="cf">
-			<h1>○○のIKITSUKE一覧</h1>
+			<h1>あなたのIKITSUKE一覧</h1>
 			<input type="button" value="追加" onClick="location. href='shopAdd'"
 				class="add_ikitsuke_btn btn btn-warning">
 		</div>
