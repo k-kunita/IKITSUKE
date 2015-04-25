@@ -26,7 +26,7 @@ public class ShopEditInputForm extends AbstractForm {
     private String shopName;
 
     /** 電話番号 */
-    @Size(min = 10,max = 11)
+    @Size(max = 11)
     private String shopTel;
 
     /** 備考 */

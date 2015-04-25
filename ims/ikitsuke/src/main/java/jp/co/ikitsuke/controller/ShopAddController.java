@@ -1,9 +1,11 @@
 package jp.co.ikitsuke.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import jp.co.ikitsuke.form.ShopAddInputForm;
 import jp.co.ikitsuke.form.ShopAddOutputForm;
+import jp.co.ikitsuke.form.ShopEditInputForm;
 import jp.co.ikitsuke.logic.ShopCategoryLogic;
 import jp.co.ikitsuke.logic.ShopInfoLogic;
 import jp.co.ikitsuke.model.ShopCategoryModel;
@@ -11,6 +13,7 @@ import jp.co.ikitsuke.model.ShopInfoModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,7 +52,15 @@ public class ShopAddController {
     }
 
     @RequestMapping(value = "/categoryList/{categoryId}/shopAdd/doAdd", method = RequestMethod.POST)
-    public String doShopAdd(@PathVariable("categoryId") String categoryId, @ModelAttribute("ShopEditInputForm") ShopAddInputForm shopAddInputForm, HttpServletRequest request) {
+    public String doShopAdd(@PathVariable("categoryId") String categoryId, 
+                            @Valid @ModelAttribute("ShopAddInputForm") ShopAddInputForm shopAddInputForm, 
+                            BindingResult bindingResult,
+                            HttpServletRequest request) {
+
+        if(bindingResult.hasErrors()){
+            System.out.println("errorです");
+            return "/shopAdd";
+        }
 
         ShopInfoModel shopInfoModel = new ShopInfoModel();
         // Modelを入力値をセット

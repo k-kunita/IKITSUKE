@@ -33,7 +33,7 @@
 	<!-- main_contents -->
 	<div class="main_contents">
 		<h1>行きつけのお店を追加しよう！</h1>
-		<spring:url value="shopAdd/doAdd" var="action" />
+		<spring:url value="/categoryList/${ShopAddInputForm.categoryId}/shopAdd/doAdd" var="action" />
 		<form:form modelAttribute="ShopAddInputForm" action="${action}" method="post">
 			<div class="detail_edit_contents">
 				<dl class="detailedit_list">
@@ -42,25 +42,29 @@
 					<dt>店舗名</dt>
 					<dd>
 						<form:input path="shopName" type="text" maxlength="15" value="" class="detailedit_form" />
+						<form:errors path = "shopName" />
 					</dd>
 					<dt>電話番号</dt>
 					<dd>
 						<form:input path="shopTel" type="text" maxlength="11" value="" class="detailedit_form" />
+						<form:errors path = "shopTel" />
 					</dd>
 					<dt>URL</dt>
 					<dd>
 						<form:input path="shopPageUrl" type="text" maxlength="2083" value="" class="detailedit_form" />
+						<form:errors path = "shopPageUrl" />
 					</dd>
 					<dt>備考</dt>
 					<dd>
 						<form:input path="shopMemo" type="text" maxlength="500" value="" class="detailedit_form--area" />
+						<form:errors path = "shopMemo" />
 					</dd>
 				</dl>
 
 				<!-- 削除はゴミ箱アイコンにしたい。。。 -->
 				<div class="detailedit_btn_group">
 					<input type="submit" value="保存" class="detailedit_btn btn btn-warning">
-					<input type="button" value="キャンセル" onClick="location.href='./shopList'"
+					<input type="button" value="キャンセル" onClick="location.href='/ikitsuke/categoryList/${ShopAddInputForm.categoryId}/shopList'"
 					class="detailedit_btn cancel_btn btn btn-warning">
 				</div>
 			</div>
