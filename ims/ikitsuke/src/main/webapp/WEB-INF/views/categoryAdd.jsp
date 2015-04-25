@@ -35,7 +35,7 @@
 		<h1>カテゴリを追加しよう！</h1>
 		<spring:url value="add/doAdd" var="action" />
 		<form:form modelAttribute="CatetgoryAddInputForm" action="${action}" method="post">
-			<div class="detail_edit_contents">
+			<div class="detail_edit_contents l-category_edit">
 				<dl class="detailedit_list">
 					<dt>カテゴリ名</dt>
 					<dd>
