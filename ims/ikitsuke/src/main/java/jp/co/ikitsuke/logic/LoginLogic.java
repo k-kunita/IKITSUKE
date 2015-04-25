@@ -20,10 +20,9 @@ public interface LoginLogic {
      * 
      * @param mailAddress
      * @param loginPassword
-     * @return ログイン可否
+     * @return 
      */
     public LoginModel executeLogin(String mailAddress, String loginPassword);
-    
     
     /***
      * ログインモデル取得

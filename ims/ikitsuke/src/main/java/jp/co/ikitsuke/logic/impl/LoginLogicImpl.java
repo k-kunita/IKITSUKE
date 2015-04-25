@@ -2,6 +2,7 @@ package jp.co.ikitsuke.logic.impl;
 
 import jp.co.ikitsuke.dataAccess.dao.LoginDao;
 import jp.co.ikitsuke.dataAccess.entity.Login;
+import jp.co.ikitsuke.form.part.ShopInfoPart;
 import jp.co.ikitsuke.logic.LoginLogic;
 import jp.co.ikitsuke.model.LoginModel;
 
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional(readOnly=true)
 public class LoginLogicImpl implements LoginLogic {
 
 	@Autowired
@@ -56,5 +56,5 @@ public class LoginLogicImpl implements LoginLogic {
         
         return model;
     }
-	
+
 }
