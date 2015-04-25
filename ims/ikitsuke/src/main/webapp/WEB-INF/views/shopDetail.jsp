@@ -64,9 +64,9 @@
 
 				<!-- 削除はゴミ箱アイコンにしたい。。。 -->
 				<div class="detailedit_btn_group">
-					<input type="submit" value="保存" class="detailedit_btn btn btn-warning">
-                    <input type="button" value="削除" onClick="location.href='./${ShopEditInputForm.shopId}/delete'" class="detailedit_btn btn btn-warning">
-                    <input type="button" value="キャンセル" onClick="location.href='../shopList'" class="detailedit_btn cancel_btn btn btn-warning">
+                    <input type="submit" value="保存" class="detailedit_btn btn btn-warning">
+					<input type="button" value="削除" onClick="location.href='/ikitsuke/categoryList/${ShopEditInputForm.categoryId}/shopDetail/${ShopEditInputForm.shopId}/delete'" class="detailedit_btn btn btn-warning">
+                    <input type="button" value="キャンセル" onClick="location.href='/ikitsuke/categoryList/${ShopEditInputForm.categoryId}/shopList'" class="detailedit_btn cancel_btn btn btn-warning">
 				</div>
 			</div>
 			</form:form>
