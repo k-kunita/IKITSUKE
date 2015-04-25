@@ -4,6 +4,8 @@
 package jp.co.ikitsuke.form;
 
 import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 /**
  * 行きつけ一覧<br>
@@ -19,16 +21,20 @@ public class ShopEditInputForm extends AbstractForm {
     private int shopId;
 
     /** 店舗名 */
-    @Size(min=8)
+    @NotEmpty
+    @Size(max=16)
     private String shopName;
 
     /** 電話番号 */
+    @Size(min = 10,max = 11)
     private String shopTel;
 
     /** 備考 */
+    @Size(max=1000)
     private String shopMemo;
 
     /** 参照URL */
+    @Size(max=1024)
     private String shopPageUrl;
 
     public int getShopId() {

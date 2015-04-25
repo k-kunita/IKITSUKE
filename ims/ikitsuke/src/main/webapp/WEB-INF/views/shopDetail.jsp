@@ -33,37 +33,42 @@
 	<!-- main_contents -->
 	<div class="main_contents">
 		<h1>行きつけのお店を編集しよう！</h1>
-		<spring:url value="./${ShopEditInputForm.shopId}/edit" var="action" />
+		<spring:url value="/categoryList/${ShopEditInputForm.categoryId}/shopDetail/${ShopEditInputForm.shopId}/edit" var="action" />
 		<form:form modelAttribute="ShopEditInputForm" action="${action}" method="post">
 			<div class="detail_edit_contents">
 				<dl class="detailedit_list">
 					<dt>カテゴリ名</dt>
 					<dd>${ShopEditOutputForm.categoryName}</dd>
-					 <form:errors path="*" element="div" />
+					 <!-- <form:errors path="*" element="div" /> -->
 					<dt>店舗名</dt>
 					<dd>
 						<form:input path="shopName" type="text" maxlength="15" value="" class="detailedit_form" />
+						<form:errors path = "shopName" />
 					</dd>
 					<dt>電話番号</dt>
 					<dd>
 						<form:input path="shopTel" type="text" maxlength="11" value="" class="detailedit_form" />
+						<form:errors path = "shopTel" />
 					</dd>
 					<dt>URL</dt>
 					<dd>
 						<form:input path="shopPageUrl" type="text" maxlength="2083" value="" class="detailedit_form" />
+						<form:errors path = "shopPageUrl" />
 					</dd>
 					<dt>備考</dt>
 					<dd>
-						<form:input path="shopMemo" type="text" maxlength="500" value="" class="detailedit_form--area" />
+						<form:input path="shopMemo" type="text" maxlength="500" value="" class="detailedit_form" />
+						<form:errors path = "shopMemo" />
 					</dd>
 				</dl>
 
 				<!-- 削除はゴミ箱アイコンにしたい。。。 -->
 				<div class="detailedit_btn_group">
-					<input type="submit" value="保存" class="detailedit_btn btn btn-warning">
-					<input type="button" value="削除" onClick="location.href='./${ShopEditInputForm.shopId}/delete'" class="detailedit_btn btn btn-warning">
-					<input type="button" value="キャンセル" onClick="location.href='../shopList'"
-					class="detailedit_btn cancel_btn btn btn-warning">
+					<input type="button" value="削除" onClick="location.href='/ikitsuke/categoryList/${ShopEditInputForm.categoryId}/shopDetail/${ShopEditInputForm.shopId}/delete'" 
+					class="detailedit_btn delete_btn">
+					<input type="submit" value="保存" class="detailedit_btn">
+					<input type="button" value="キャンセル" onClick="location.href='/ikitsuke/categoryList/${ShopEditInputForm.categoryId}/shopList'" 
+					class="detailedit_btn">
 				</div>
 			</div>
 			</form:form>

@@ -2,13 +2,16 @@ package jp.co.ikitsuke.form;
 
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class CategoryEditInputForm {
     
     /** 店舗カテゴリID */
     private int categoryId;
 
     /** 店舗カテゴリ名 */
-    @Size(min = 3)
+    @NotEmpty
+    @Size(max=10)
     private String categoryName;
 
     public int getCategoryId() {
