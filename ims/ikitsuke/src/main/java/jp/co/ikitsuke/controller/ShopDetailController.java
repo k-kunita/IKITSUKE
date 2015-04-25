@@ -65,15 +65,18 @@ public class ShopDetailController {
     public String doShopEdit(
     		@PathVariable("categoryId") String categoryId,
     		@PathVariable("shopId") String shopId,
-    		@Valid @ModelAttribute("ShopEditInputForm") ShopEditInputForm shopEditInputForm,
+            @ModelAttribute("ShopEditOutputForm") ShopEditOutputForm shopEditOutputForm,
+            @Valid @ModelAttribute("ShopEditInputForm") ShopEditInputForm shopEditInputForm,
     		BindingResult bindingResult,
     		HttpServletRequest request) {
-
-      if(bindingResult.hasErrors()){
-	      System.out.println("errorです");
-//	      return "/categoryList/"+ categoryId +"/shopDetail/" + shopId ;
-	      return "/shopDetail";
-      }
+        
+        // バリデーションチェック
+        if(bindingResult.hasErrors()){
+            // カテゴリー名の再取得
+            ShopCategoryModel shopCategoryModel = shopCategoryLogic.getCategory(Integer.parseInt(categoryId));
+            shopEditOutputForm.setCategoryName(shopCategoryModel.getCategoryName());
+            return "/shopDetail";
+        }
 
         ShopInfoModel shopInfoModel = new ShopInfoModel();
         // Modelを入力値をセット
