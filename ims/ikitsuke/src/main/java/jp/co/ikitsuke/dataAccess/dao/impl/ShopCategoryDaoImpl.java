@@ -21,73 +21,75 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ShopCategoryDaoImpl implements ShopCategoryDao {
 
-	ShopCategory record;
+    ShopCategory record;
 
-	@Autowired
-	ShopCategoryMapper mapper;
+    @Autowired
+    ShopCategoryMapper mapper;
 
-	ShopCategoryExample example;
+    ShopCategoryExample example;
 
-	@Override
-	public List<ShopCategory> selectByUserId(int userId) {
+    @Override
+    public List<ShopCategory> selectByUserId(int userId) {
 
-		example = new ShopCategoryExample();
+        example = new ShopCategoryExample();
 
-		// ユーザIDによる検索
-		example.createCriteria().andUserIdEqualTo(userId);
+        // ユーザIDによる検索（論理削除レコードは対象外）
+        example.createCriteria().andUserIdEqualTo(userId).andDisableFlagEqualTo("0");
 
-		return mapper.selectByExample(example);
-	}
+        return mapper.selectByExample(example);
+    }
 
-	@Override
-	public int updateByCategoryId(ShopCategoryModel model) {
+    @Override
+    public int updateByCategoryId(ShopCategoryModel model) {
 
-		record = new ShopCategory();
+        record = new ShopCategory();
 
-		record.setCategoryId(model.getCategoryId());
-		record.setCategoryName(model.getCategoryName());
+        record.setCategoryId(model.getCategoryId());
+        record.setCategoryName(model.getCategoryName());
         record.setUpdateTime(new Date());
-		record.setDisableFlag("0");
+        record.setDisableFlag("0");
 
-		return mapper.updateByPrimaryKeySelective(record);
-	}
+        return mapper.updateByPrimaryKeySelective(record);
+    }
 
-	@Override
-	public int updateDisabledFlagByCategoryId(int categoryId) {
+    @Override
+    public int updateDisabledFlagByCategoryId(int categoryId) {
 
-		record = new ShopCategory();
+        record = new ShopCategory();
 
-		record.setCategoryId(categoryId);
-		record.setUpdateTime(new Date());
-		// 無効フラグに1をセット
-		record.setDisableFlag("1");
+        record.setCategoryId(categoryId);
+        record.setUpdateTime(new Date());
+        // 無効フラグに1をセット
+        record.setDisableFlag("1");
 
-		return mapper.updateByPrimaryKeySelective(record);
-	}
+        return mapper.updateByPrimaryKeySelective(record);
+    }
 
-	@Override
-	public ShopCategory selectByCategoryId(int categoryId) {
-		
-		return mapper.selectByPrimaryKey(categoryId);
-	}
+    @Override
+    public ShopCategory selectByCategoryId(int categoryId) {
+
+        return mapper.selectByPrimaryKey(categoryId);
+    }
 
     @Override
     public int insert(ShopCategory shopCategory) {
-        
-        //更新結果
+
+        // 更新結果
         int result = 0;
-        
+
         // userIdが入力されている場合にInsert処理を実施
-        if(shopCategory != null && shopCategory.getUserId() != 0){
-            
-            shopCategory.setDisableFlag("0");
-            shopCategory.setUpdateTime(new Date());
-            // 追加処理の実行
-            mapper.insert(shopCategory);
-            result = 1;
+        if (shopCategory == null || shopCategory.getUserId() == 0) {
+            return result;
         }
-        
+
+        shopCategory.setDisableFlag("0");
+        shopCategory.setUpdateTime(new Date());
+        // 追加処理の実行
+        mapper.insert(shopCategory);
+        result = 1;
+
         return result;
+        
     }
 
 }
