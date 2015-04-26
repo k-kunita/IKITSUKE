@@ -53,12 +53,16 @@ public class ShopAddController {
 
     @RequestMapping(value = "/categoryList/{categoryId}/shopAdd/doAdd", method = RequestMethod.POST)
     public String doShopAdd(@PathVariable("categoryId") String categoryId, 
+                            @ModelAttribute("ShopAddOutputForm") ShopAddOutputForm shopAddOutputForm,
                             @Valid @ModelAttribute("ShopAddInputForm") ShopAddInputForm shopAddInputForm, 
                             BindingResult bindingResult,
                             HttpServletRequest request) {
 
+        //バリデーションチェック
         if(bindingResult.hasErrors()){
-            System.out.println("errorです");
+            // カテゴリー名の再取得
+            ShopCategoryModel shopCategoryModel = shopCategoryLogic.getCategory(Integer.parseInt(categoryId));
+            shopAddOutputForm.setCategoryName(shopCategoryModel.getCategoryName());
             return "/shopAdd";
         }
 

@@ -1,6 +1,7 @@
 package jp.co.ikitsuke.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import jp.co.ikitsuke.form.CategoryAddInputForm;
 import jp.co.ikitsuke.logic.ShopCategoryLogic;
@@ -9,6 +10,7 @@ import jp.co.ikitsuke.model.ShopCategoryModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,7 +30,6 @@ public class CategoryAddController {
         // ModelAndViewのインスタンス生成
         ModelAndView mv = new ModelAndView("categoryAdd");
 
-
         // ModelAndViewにセット
         mv.addObject("CategoryAddInputForm", categoryAddInputForm);
 
@@ -37,7 +38,14 @@ public class CategoryAddController {
     }
 
     @RequestMapping(value = "/categoryList/add/doAdd", method = RequestMethod.POST)
-    public String doCategoryAdd(@ModelAttribute("CategoryAddInputForm") CategoryAddInputForm categoryAddInputForm, HttpServletRequest request) {
+    public String doCategoryAdd(@Valid @ModelAttribute("CategoryAddInputForm") CategoryAddInputForm categoryAddInputForm,
+                                BindingResult bindingResult, 
+                                HttpServletRequest request) {
+
+        //バリデーションチェック
+        if(bindingResult.hasErrors()){
+            return "/categoryAdd";
+        }
 
     	//セッションの取得
         loginModel = (LoginModel) request.getSession().getAttribute("loginModel");

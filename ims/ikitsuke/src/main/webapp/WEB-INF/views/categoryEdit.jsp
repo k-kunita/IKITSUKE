@@ -38,7 +38,6 @@
 			<div class="detail_edit_contents">
 				<dl class="detailedit_list">
 					<dt>カテゴリ名修正画面</dt>
-					 <!-- <form:errors path="*" element="div" /> -->
 					<dt>カテゴリ名</dt>
 					<dd>
 						<form:input path="categoryName" type="text" maxlength="15" value="" class="detailedit_form" />

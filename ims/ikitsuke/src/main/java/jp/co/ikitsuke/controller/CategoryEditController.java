@@ -56,9 +56,8 @@ public class CategoryEditController {
             BindingResult bindingResult, 
             HttpServletRequest request) {
         
-        //validationチェック
+        //バリデーションチェック
         if (bindingResult.hasErrors()) {
-            System.out.println("errorです");
             return "/categoryEdit";
         }
 
