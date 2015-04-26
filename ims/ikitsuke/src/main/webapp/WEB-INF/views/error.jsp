@@ -25,7 +25,7 @@
 	<header>
 		<nav>
 				<ul class="nav_bar">
-					<li class="title"><a href="#">title</a></li>
+					<li class="title"><a href="#"> IKITSUKE </a></li>
 				</ul>
 		</nav>
 	</header>
