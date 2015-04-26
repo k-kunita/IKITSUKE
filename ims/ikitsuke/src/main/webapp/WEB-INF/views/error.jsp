@@ -36,26 +36,13 @@
 
 	<!-- main_contents -->
 	<div class="main_contents">
-		<div class="login_contents">
-			<h1>
-				あなただけのIKITSUKEを<br>作りませんか？
-			</h1>
+		<div>
+            <img alt="cant_see" src="../resources/img/cant_see.jpg" class="error_img">
+			<div>
+				<input type="button" value="ログイン画面へ戻る" onClick="location.href='/ikitsuke/logout'" class="detailedit_btn cancel_btn btn btn-warning">
+			</div>
 
-			<form name="f" action="<c:url value='j_spring_security_check'/>"method="post" class="login_id_pass">
-				<h2 class="form-signin-heading">Please sign in</h2>
-				<ul class="login_id_pass">
-					<label for="mailAddress" class="sr-only">Email address</label>
-					<li>
-						<input name="j_username" type="email" class="login_form" placeholder="Email address" required="true" autofocus="true" />
-					</li>
-					<label for="loginPassword" class="sr-only">Password</label>
-					<li>
-						<input name="j_password" type="password" class="login_form" placeholder="Password" required="true" />
-					</li>
-				</ul>
-				<button class="login_btn btn btn-warning" type="submit">Sign in</button>
-			</form>
-	</div>
+		</div>
 	<!-- /container -->
 	<!-- footer -->
 	<footer id="footer">

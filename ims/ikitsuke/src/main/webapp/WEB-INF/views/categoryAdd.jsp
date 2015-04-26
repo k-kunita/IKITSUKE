@@ -23,7 +23,7 @@
 	<header>
 		<nav>
 			<ul class="nav_bar">
-				<li class="title"><a href="#"> title </a></li>
+				<li class="title"><a href="#"> IKITSUKE </a></li>
 				<li><a href="/ikitsuke/categoryList"> Home</a></li>
 				<li><a href="/ikitsuke/logout"> Logout </a></li>
 			</ul>
@@ -45,7 +45,7 @@
 				</dl>
 
 				<!-- 削除はゴミ箱アイコンにしたい。。。 -->
-				<div class="detailedit_btn_group">
+				<div class="detailedit_btn_group l-categoryDetail__BtnArea">
 					<input type="submit" value="保存" class="detailedit_btn btn btn-warning">
 					<input type="button" value="キャンセル" onClick="location.href='/ikitsuke/categoryList'"
 					class="detailedit_btn cancel_btn btn btn-warning">

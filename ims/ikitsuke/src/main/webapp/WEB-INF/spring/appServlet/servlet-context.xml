@@ -31,10 +31,14 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
+	<!-- 例外のハンドラクラス  -->
+	<beans:bean class="jp.co.ikitsuke.handler.CustomHandlerExceptionResolver"/>
+
 	<context:component-scan base-package="jp.co.ikitsuke.config" />
 	<context:component-scan base-package="jp.co.ikitsuke.controller" />
 	<context:component-scan base-package="jp.co.ikitsuke.interceptor" />
 	<context:component-scan base-package="jp.co.ikitsuke.logic.impl" />
+	<context:component-scan base-package="jp.co.ikitsuke.security" />
 	<!-- テスト用
 	<context:component-scan base-package="jp.co.ikitsuke.dataAccess.dao.testImpl" />
 	 テスト用 -->

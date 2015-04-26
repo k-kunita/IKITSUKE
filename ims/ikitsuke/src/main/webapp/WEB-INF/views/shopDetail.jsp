@@ -23,7 +23,7 @@
 	<header>
 		<nav>
 			<ul class="nav_bar">
-				<li class="title"><a href="#"> title </a></li>
+				<li class="title"><a href="#"> IKITSUKE </a></li>
 				<li><a href="/ikitsuke/categoryList"> Home</a></li>
 				<li><a href="/ikitsuke/logout"> Logout </a></li>
 			</ul>
@@ -63,11 +63,9 @@
 
 				<!-- 削除はゴミ箱アイコンにしたい。。。 -->
 				<div class="detailedit_btn_group">
-					<input type="button" value="削除" onClick="location.href='/ikitsuke/categoryList/${ShopEditInputForm.categoryId}/shopDetail/${ShopEditInputForm.shopId}/delete'" 
-					class="detailedit_btn delete_btn">
-					<input type="submit" value="保存" class="detailedit_btn">
-					<input type="button" value="キャンセル" onClick="location.href='/ikitsuke/categoryList/${ShopEditInputForm.categoryId}/shopList'" 
-					class="detailedit_btn">
+                    <input type="submit" value="保存" class="detailedit_btn btn btn-warning">
+					<input type="button" value="削除" onClick="location.href='/ikitsuke/categoryList/${ShopEditInputForm.categoryId}/shopDetail/${ShopEditInputForm.shopId}/delete'" class="detailedit_btn btn btn-warning">
+                    <input type="button" value="キャンセル" onClick="location.href='/ikitsuke/categoryList/${ShopEditInputForm.categoryId}/shopList'" class="detailedit_btn cancel_btn btn btn-warning">
 				</div>
 			</div>
 			</form:form>

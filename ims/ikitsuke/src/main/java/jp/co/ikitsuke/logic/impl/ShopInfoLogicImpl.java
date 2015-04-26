@@ -20,7 +20,6 @@ public class ShopInfoLogicImpl implements ShopInfoLogic {
 	@Autowired
 	ShopInfoDao shopInfoDao;
 
-
 	@Override
 	public List<ShopInfoModel> getShopInfoList(int categoryId) {
 
