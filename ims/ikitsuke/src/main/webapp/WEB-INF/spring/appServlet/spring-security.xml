@@ -18,27 +18,17 @@
 
 		<!-- 認証の設定 -->
 		<sec:form-login login-page="/login" default-target-url="/login/doLogin"
-			authentication-failure-url="/error" />
-		<sec:logout logout-url="/logout" logout-success-url="/login"
-			invalidate-session="true" />
+			authentication-failure-url="/login/failure" />
+		<sec:logout logout-url="/logout" logout-success-url="/login" invalidate-session="true" />
 		<sec:anonymous granted-authority="ROLE_USER" />
 	</sec:http>
 
 	<authentication-manager >
 		<authentication-provider>
-<!-- テスト用ログイン情報
-			<user-service>
-				<user name="ikitsuke@ims.com" password="password123"
-					authorities="ROLE_USER" />
-			</user-service>
--->
  			<jdbc-user-service data-source-ref="dataSource"
  			users-by-username-query="SELECT mail_address as username, login_password as password, true as enable FROM login WHERE mail_address = ?"
  			authorities-by-username-query="SELECT mail_address as username, 'ROLE_USER' as authority FROM login WHERE mail_address = ?"/>
 		</authentication-provider>
 	</authentication-manager>
-
-
-
 
 </beans:beans>

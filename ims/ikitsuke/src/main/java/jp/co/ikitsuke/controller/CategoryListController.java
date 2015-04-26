@@ -24,22 +24,20 @@ public class CategoryListController {
 
     @Autowired
     ShopCategoryLogic shopCategoryLogic;
-    
+
     @Autowired
     LoginLogic loginLogic;
-    
+
     @RequestMapping(value = "/categoryList", method = RequestMethod.GET)
     public ModelAndView categoryList(@ModelAttribute("CategoryOutputForm") CategoryOutputForm categoryOutputForm, HttpServletRequest request,Principal principal) {
-        
+
         // ログイン時情報よりuser情報取得
         LoginModel loginModel = loginLogic.getModel(principal.getName());
-        
-        List<ShopCategoryModel> shopCategoryModelList = shopCategoryLogic.getCategoryList(loginModel.getUserId());
 
-        // TODO modelListにnullが返ってきた場合
+        List<ShopCategoryModel> categoryModelList = shopCategoryLogic.getCategoryList(loginModel.getUserId());
 
         // ModelをPartに変換しFormにセット
-        categoryOutputForm.setShopCategoryList(ConvertUtil.toShopCategoryParts(shopCategoryModelList));
+        categoryOutputForm.setShopCategoryList(ConvertUtil.toShopCategoryParts(categoryModelList));
 
         // カテゴリ一覧画面を表示
         return new ModelAndView("categoryList", "CategoryOutputForm", categoryOutputForm);

@@ -9,23 +9,23 @@ public interface ShopCategoryDao {
 
     /***
      * ユーザID指定で取得
-     * 
+     *
      * @param userId
      * @return 店舗カテゴリーリスト
      */
     public List<ShopCategory> selectByUserId(int userId);
 
     /***
-     * カテゴリーID指定で取得
-     * 
+     * カテゴリーID・ユーザID指定による取得
+     *
      * @param categoryId
      * @return
      */
-    public ShopCategory selectByCategoryId(int categoryId);
+    public ShopCategory selectByCategoryIdUserId(int categoryId,int userId);
 
     /***
      * ユーザID指定でカテゴリ名を更新
-     * 
+     *
      * @param categoryId
      * @param categoryName
      * @return 更新数
@@ -34,12 +34,12 @@ public interface ShopCategoryDao {
 
     /***
      * カテゴリID指定で無効フラグを更新
-     * 
+     *
      * @param categoryId
      * @return 更新数
      */
     public int updateDisabledFlagByCategoryId(int categoryId);
-    
+
     /***
      * カテゴリー情報の追加
      * @param shopCategory

@@ -37,11 +37,10 @@
 	<!-- main_contents -->
 	<div class="main_contents">
 		<div>
-            <img alt="cant_see" src="../resources/img/cant_see.jpg" class="error_img">
+            <img alt="cant_see" src="/ikitsuke/resources/img/cant_see.jpg" class="error_img">
 			<div>
 				<input type="button" value="ログイン画面へ戻る" onClick="location.href='/ikitsuke/logout'" class="detailedit_btn cancel_btn btn btn-warning">
 			</div>
-
 		</div>
 	<!-- /container -->
 	<!-- footer -->

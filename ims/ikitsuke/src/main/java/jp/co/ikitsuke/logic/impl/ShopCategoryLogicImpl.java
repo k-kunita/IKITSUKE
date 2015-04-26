@@ -57,18 +57,19 @@ public class ShopCategoryLogicImpl implements ShopCategoryLogic {
     }
 
     @Override
+    @Transactional(readOnly = false, rollbackFor = RuntimeException.class)
     public int delete(int categoryId) {
         shopInfoDao.deleteByCategoryId(categoryId);
         return shopCategoryDao.updateDisabledFlagByCategoryId(categoryId);
     }
 
     @Override
-    public ShopCategoryModel getCategory(int categoryId) {
+    public ShopCategoryModel getCategory(int categoryId,int userId) {
 
         ShopCategoryModel shopCategoryModel = null;
 
         // ショップカテゴリー情報の取得
-        ShopCategory shopCategory = shopCategoryDao.selectByCategoryId(categoryId);
+        ShopCategory shopCategory = shopCategoryDao.selectByCategoryIdUserId(categoryId,userId);
 
         // 取得成功の場合
         if (shopCategory != null && shopCategory.getCategoryId() != null) {
@@ -86,23 +87,24 @@ public class ShopCategoryLogicImpl implements ShopCategoryLogic {
         return shopCategoryModel;
     }
 
-	@Override
+    @Override
+    @Transactional(readOnly = false, rollbackFor = RuntimeException.class)
     public int add(ShopCategoryModel model) {
-        
+
         int result = 0;
-        
+
         // modelとユーザIDのチェック
         if (model == null || model.getUserId() == 0) {
             return 0;
         }
-        
+
         result = shopCategoryDao.insert(ConvertUtil.toShopCategory(model));
-        
+
         return result;
     }
 
-
     @Override
+    @Transactional(readOnly = false, rollbackFor = RuntimeException.class)
     public int update(ShopCategoryModel model) {
         // TODO 自動生成されたメソッド・スタブ
 
