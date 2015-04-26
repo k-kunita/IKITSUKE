@@ -18,7 +18,7 @@
 
 		<!-- 認証の設定 -->
 		<sec:form-login login-page="/login" default-target-url="/login/doLogin"
-			authentication-failure-url="/error" />
+			authentication-failure-url="/login/failure" />
 		<sec:logout logout-url="/logout" logout-success-url="/login" invalidate-session="true" />
 		<sec:anonymous granted-authority="ROLE_USER" />
 	</sec:http>

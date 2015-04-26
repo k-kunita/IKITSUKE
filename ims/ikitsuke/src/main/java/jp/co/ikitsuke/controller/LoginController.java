@@ -1,16 +1,20 @@
 package jp.co.ikitsuke.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Validator;
 
+import jp.co.ikitsuke.form.ErrorMessageForm;
 import jp.co.ikitsuke.logic.LoginLogic;
 import jp.co.ikitsuke.model.LoginModel;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -109,6 +113,24 @@ public class LoginController {
 
         // ログイン画面を表示
         return "redirect:/login";
+    }
+
+
+    @RequestMapping(value = "/login/failure", method = RequestMethod.GET)
+    public ModelAndView failure(@ModelAttribute("ErrorMessageForm") ErrorMessageForm errorMessageForm, HttpServletRequest request) {
+
+
+        errorMessageForm = new ErrorMessageForm();
+
+        List<String> msgList = new ArrayList<>();
+
+        msgList.add("IDまたはパスワードを正しい形式で入力してください。");
+
+        // エラーメッセージのセット
+        errorMessageForm.setMessageList(msgList);
+
+        // ログイン画面を表示
+        return new ModelAndView("login","ErrorMessageForm",errorMessageForm);
     }
 
 }

@@ -40,3 +40,13 @@ h1 {
 	font-size: 20px;
 	border-radius: 5px;
 }
+
+.login_feedback {
+	width: 400px;
+	margin: 15px auto;
+	padding: 0px 0px 0px 5px;
+	background: #FFEFE5;
+	color: #D90028;
+	border: 1px solid #D90028;
+	font-size: 90%;
+}
