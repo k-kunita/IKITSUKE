@@ -35,6 +35,27 @@
 	<!-- main_contents -->
 	<div class="main_contents">
 		<h1><%= request.getParameter("status") %></h1>
+
+		<font style="font-family: &quot;ＭＳ Ｐゴシック&quot;,&quot;Mona&quot;,&quot;IPA MONAPGOTHIC&quot;,&quot;MS PGothic&quot;,&quot;MS Pｺﾞｼｯｸ&quot;,&quot;MS Pゴシック&quot;,sans-serif;font-size: 12pt;line-height: 15px;">
+
+		　 　 　 　　　　　　　 　 　　　　　　　　　　　　　　　　 ,.へ <br>
+		　　___ 　　　　　　　 　 　 　 　 　　　　　　　　　　　　ﾑ　　i <br>
+		　「 ﾋ_i〉　　　 　 　　　　　　 　 　　　　　　　　　　　　 ゝ　〈 <br>
+		　ﾄ　ノ 　　　　　　　　　　　　　　　　　　　　　　　　　　iニ(() <br>
+		　i 　{ 　 　　　　　　　 　　　＿＿＿_ 　 　　　　　　　　| 　ヽ <br>
+		　i　　i　　　 　　　　　　　／__,　 , ‐-＼ 　 　 　 　 　　i 　　} <br>
+		　|　　 i　　　　　　 　　／（●) 　 ( ● )＼　　　　　　 {､　 λ <br>
+		　ト－┤.　　　　　　／ 　 　（__人__） 　　　＼　　　 ,ノ　￣ ,! <br>
+		　i　　　ゝ､_ 　　　　|　　　　　´￣` 　 　　　　|　,. '´ﾊ　　　,! <br>
+		.　ヽ、 　　　｀`　､,__＼ 　　 　 　　　　　 　 ／"　＼ 　ヽ／ <br>
+		　　　＼ノ　ﾉ　　　ﾊ￣r/:::r―--―/::７　　 ﾉ　　　　／ <br>
+		　 　　 　 ヽ.　　　　　　ヽ::〈； . '::. :' |::/　　 /　　　,. " <br>
+		　　　　　　　 `ｰ ､　　　　＼ヽ::. ;::：|/　　　　　ｒ'" <br>
+		　　　　　／￣二二二二二二二二二二二二二二二二ヽ <br>
+		　　　　　| 答 |　　　　　<%= request.getParameter("status") %>　　　　　　　　　│| <br>
+		　　　　　＼＿二二二二二二二二二二二二二二二二ノ <br>
+		</font>
+
 		<div>
 			<input type="button" value="HOME画面へ戻る" onClick="location.href='/ikitsuke/categoryList'" class="detailedit_btn cancel_btn btn btn-warning">
 		</div>
