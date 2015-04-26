@@ -30,18 +30,13 @@
 		</nav>
 	</header>
 
-	<div>
-		<c:out value="${unko}"></c:out>
-	</div>
-
 	<!-- main_contents -->
 	<div class="main_contents">
+		<h1><%= request.getParameter("status") %></h1>
 		<div>
-            <img alt="cant_see" src="/ikitsuke/resources/img/cant_see.jpg" class="error_img">
-			<div>
-				<input type="button" value="ログイン画面へ戻る" onClick="location.href='/ikitsuke/logout'" class="detailedit_btn cancel_btn btn btn-warning">
-			</div>
+			<input type="button" value="HOME画面へ戻る" onClick="location.href='/ikitsuke/categoryList'" class="detailedit_btn cancel_btn btn btn-warning">
 		</div>
+	</div>
 	<!-- /container -->
 	<!-- footer -->
 	<footer id="footer">

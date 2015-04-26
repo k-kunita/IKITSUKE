@@ -40,7 +40,7 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- The definition of the Root Spring Container shared by all Servlets 
+	<!-- The definition of the Root Spring Container shared by all Servlets
 		and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -63,6 +63,25 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-	<!-- Processes application requests <servlet-mapping> <servlet-name>default</servlet-name> 
+	<!-- Processes application requests <servlet-mapping> <servlet-name>default</servlet-name>
 		<url-pattern>*.css</url-pattern> </servlet-mapping> -->
+
+	<!-- HTTP ErrorPage -->
+	<error-page>
+		<error-code>400</error-code>
+		<location>/WEB-INF/views/httpError.jsp?status=400 Bad Request</location>
+	</error-page>
+	<error-page>
+		<error-code>401</error-code>
+		<location>/WEB-INF/views/httpError.jsp?status=401 Unauthorized</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/WEB-INF/views/httpError.jsp?status=403 Forbidden</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/httpError.jsp?status=404 Not Found</location>
+	</error-page>
+
 </web-app>

@@ -44,5 +44,4 @@
 	 テスト用 -->
 	<context:component-scan base-package="jp.co.ikitsuke.dataAccess.dao.impl" />
 
-
 </beans:beans>
