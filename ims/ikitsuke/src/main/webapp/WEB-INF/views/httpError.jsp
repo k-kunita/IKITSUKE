@@ -26,6 +26,8 @@
 		<nav>
 				<ul class="nav_bar">
 					<li class="title"><a href="#"> IKITSUKE </a></li>
+					<li><a href="/ikitsuke/categoryList"> Home</a></li>
+					<li><a href="/ikitsuke/logout"> Logout </a></li>
 				</ul>
 		</nav>
 	</header>
