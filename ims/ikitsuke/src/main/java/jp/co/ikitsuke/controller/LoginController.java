@@ -124,7 +124,7 @@ public class LoginController {
 
         List<String> msgList = new ArrayList<>();
 
-        msgList.add("認証できません。メールアドレスまたはパスワードが正しくありません。");
+        msgList.add("IDまたはパスワードを正しい形式で入力してください。");
 
         // エラーメッセージのセット
         errorMessageForm.setMessageList(msgList);
