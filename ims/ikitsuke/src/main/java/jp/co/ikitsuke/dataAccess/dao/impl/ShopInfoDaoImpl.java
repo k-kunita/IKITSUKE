@@ -14,77 +14,75 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ShopInfoDaoImpl implements ShopInfoDao {
 
+    ShopInfo record;
 
-	ShopInfo record;
+    @Autowired
+    ShopInfoMapper mapper;
 
-	@Autowired
-	ShopInfoMapper mapper;
+    ShopInfoExample example;
 
-	ShopInfoExample example;
-
-
-	@Override
-	public List<ShopInfo> selectByCategoryId(int categoryId) {
-
-		example = new ShopInfoExample();
-		//カテゴリID指定による検索&未削除のみ検索対象
-		example.createCriteria().andCategoryIdEqualTo(categoryId).andDeleteFlagEqualTo("0");
-		
-		return mapper.selectByExample(example);
-	}
-
-	@Override
-	public int insert(ShopInfo record) {
-		
-		record.setUpdateTime(new Date());
-		record.setDeleteFlag("0");
-		
-		return mapper.insert(record);
-	}
-
-	@Override
-	public int updateByShopId(ShopInfo record) {
-
-		record.setUpdateTime(new Date());
-		record.setDeleteFlag("0");
-
-		return mapper.updateByPrimaryKeySelective(record);
-	}
-
-	@Override
-	public int deleteByShopId(int shopId) {
-
-		record = new ShopInfo();
-
-		record.setShopId(shopId);
-		record.setUpdateTime(new Date());
-		//論理削除フラグに１をセット
-		record.setDeleteFlag("1");
-
-		return mapper.updateByPrimaryKeySelective(record);
-	}
-
-	@Override
-	public int deleteByCategoryId(int categoryId) {
+    @Override
+    public List<ShopInfo> selectByCategoryId(int categoryId) {
 
         example = new ShopInfoExample();
-	    
-		record = new ShopInfo();
+        // カテゴリID指定による検索&未削除のみ検索対象
+        example.createCriteria().andCategoryIdEqualTo(categoryId).andDeleteFlagEqualTo("0");
 
-		record.setUpdateTime(new Date());
-		//論理削除フラグに１をセット
-		record.setDeleteFlag("1");
+        return mapper.selectByExample(example);
+    }
 
-		//検索条件にカテゴリーIDをセット
-		example.createCriteria().andCategoryIdEqualTo(categoryId);
+    @Override
+    public int insert(ShopInfo record) {
 
-		return mapper.updateByExampleSelective(record, example);
-	}
+        record.setUpdateTime(new Date());
+        record.setDeleteFlag("0");
 
-	@Override
-	public ShopInfo selectByShopId(int shopId) {
-		
-		return mapper.selectByPrimaryKey(shopId);
-	}
+        return mapper.insert(record);
+    }
+
+    @Override
+    public int updateByShopId(ShopInfo record) {
+
+        record.setUpdateTime(new Date());
+        record.setDeleteFlag("0");
+
+        return mapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public int deleteByShopId(int shopId) {
+
+        record = new ShopInfo();
+
+        record.setShopId(shopId);
+        record.setUpdateTime(new Date());
+        // 論理削除フラグに１をセット
+        record.setDeleteFlag("1");
+
+        return mapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public int deleteByCategoryId(int categoryId) {
+
+        example = new ShopInfoExample();
+
+        record = new ShopInfo();
+
+        record.setUpdateTime(new Date());
+        // 論理削除フラグに１をセット
+        record.setDeleteFlag("1");
+
+        // 検索条件にカテゴリーIDをセット
+        example.createCriteria().andCategoryIdEqualTo(categoryId);
+
+        return mapper.updateByExampleSelective(record, example);
+    }
+
+    @Override
+    public ShopInfo selectByShopId(int shopId) {
+
+        return mapper.selectByPrimaryKey(shopId);
+    }
 
 }
