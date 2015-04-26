@@ -22,9 +22,12 @@ public class ShopListOutputForm {
     /** カテゴリーID */
     private int categoryId;
 
+    /** カテゴリー名 */
+    private String categoryName;
+
     /***
      * 店舗情報リストのgetter
-     * 
+     *
      * @return
      */
     public List<ShopInfoPart> getShopInfoList() {
@@ -33,7 +36,7 @@ public class ShopListOutputForm {
 
     /***
      * 店舗情報リストのsetter
-     * 
+     *
      * @param shopInfoList
      */
     public void setShopInfoList(List<ShopInfoPart> shopInfoList) {
@@ -48,4 +51,21 @@ public class ShopListOutputForm {
         this.categoryId = categoryId;
     }
 
+    /***
+     * カテゴリー名のgetter
+     *
+     * @return
+     */
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    /***
+     * カテゴリー名のsetter
+     *
+     * @return
+     */
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 }

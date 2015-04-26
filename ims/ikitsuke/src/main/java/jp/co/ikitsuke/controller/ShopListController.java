@@ -22,28 +22,29 @@ public class ShopListController {
 
     @Autowired
     ShopInfoLogic shopInfoLogic;
-    
+
     @Autowired
     ShopCategoryLogic shopCategoryLogic;
-    
+
     @RequestMapping(value = "categoryList/{categoryId}/shopList", method = RequestMethod.GET)
     public ModelAndView shopListView(@PathVariable("categoryId") String inputCategoryId, @ModelAttribute("ShopEditOutputForm") ShopListOutputForm shopEditOutputForm) {
-        
+
         int categoryId = Integer.parseInt(inputCategoryId);
-        
-        // FormにカテゴリーIDをセット
-        shopEditOutputForm.setCategoryId(categoryId);
-        
+
         ShopCategoryModel categoryModel = shopCategoryLogic.getCategory(categoryId);
-        if(categoryModel == null || categoryModel.isDisableFlag()){
+        if (categoryModel == null || categoryModel.isDisableFlag()) {
             System.out.println("不正なカテゴリーをゲットした！");
         }
-        
+
+        // FormにカテゴリーID・Nameをセット
+        shopEditOutputForm.setCategoryId(categoryModel.getCategoryId());
+        shopEditOutputForm.setCategoryName(categoryModel.getCategoryName());
+
         // カテゴリーIDで店舗一覧取得
         List<ShopInfoModel> modelList = shopInfoLogic.getShopInfoList(categoryId);
-        
+
         // 一覧を取得した場合
-        if (modelList != null) {
+        if (modelList != null && !modelList.isEmpty()) {
             shopEditOutputForm.setShopInfoList(ConvertUtil.toShopInfoParts(modelList));
         }
 
