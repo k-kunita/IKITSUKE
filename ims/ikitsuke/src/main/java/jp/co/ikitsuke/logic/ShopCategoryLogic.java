@@ -36,7 +36,7 @@ public interface ShopCategoryLogic {
      * @param categoryId
      * @return ShopCategoryModel
      */
-    public ShopCategoryModel getCategory(int categoryId);
+    public ShopCategoryModel getCategory(int categoryId,int userId);
 
     /***
      * カテゴリー更新処理

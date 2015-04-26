@@ -1,10 +1,14 @@
 package jp.co.ikitsuke.controller;
 
+import java.security.Principal;
 import java.util.List;
 
+import jp.co.ikitsuke.exception.ForbiddenException;
 import jp.co.ikitsuke.form.ShopListOutputForm;
+import jp.co.ikitsuke.logic.LoginLogic;
 import jp.co.ikitsuke.logic.ShopCategoryLogic;
 import jp.co.ikitsuke.logic.ShopInfoLogic;
+import jp.co.ikitsuke.model.LoginModel;
 import jp.co.ikitsuke.model.ShopCategoryModel;
 import jp.co.ikitsuke.model.ShopInfoModel;
 import jp.co.ikitsuke.utils.ConvertUtil;
@@ -21,19 +25,31 @@ import org.springframework.web.servlet.ModelAndView;
 public class ShopListController {
 
     @Autowired
+    LoginLogic loginLogic;
+
+    @Autowired
     ShopInfoLogic shopInfoLogic;
 
     @Autowired
     ShopCategoryLogic shopCategoryLogic;
 
     @RequestMapping(value = "categoryList/{categoryId}/shopList", method = RequestMethod.GET)
-    public ModelAndView shopListView(@PathVariable("categoryId") String inputCategoryId, @ModelAttribute("ShopEditOutputForm") ShopListOutputForm shopEditOutputForm) {
+    public ModelAndView shopListView(
+            @PathVariable("categoryId") String inputCategoryId,
+            @ModelAttribute("ShopEditOutputForm") ShopListOutputForm shopEditOutputForm,
+            Principal principal) {
+
+        // ログイン時情報よりuser情報取得
+        LoginModel loginModel = loginLogic.getModel(principal.getName());
 
         int categoryId = Integer.parseInt(inputCategoryId);
 
-        ShopCategoryModel categoryModel = shopCategoryLogic.getCategory(categoryId);
-        if (categoryModel == null || categoryModel.isDisableFlag()) {
-            System.out.println("不正なカテゴリーをゲットした！");
+        // カテゴリーModelの取得
+        ShopCategoryModel categoryModel = shopCategoryLogic.getCategory(categoryId,loginModel.getUserId());
+
+        // Model取得不可の場合はForbiddenException
+        if (categoryModel == null || categoryModel.getCategoryId() == 0) {
+            throw new ForbiddenException("ForbiddenException");
         }
 
         // FormにカテゴリーID・Nameをセット

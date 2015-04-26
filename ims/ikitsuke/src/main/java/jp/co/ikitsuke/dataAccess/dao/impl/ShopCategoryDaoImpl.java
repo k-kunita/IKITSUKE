@@ -66,9 +66,22 @@ public class ShopCategoryDaoImpl implements ShopCategoryDao {
     }
 
     @Override
-    public ShopCategory selectByCategoryId(int categoryId) {
+    public ShopCategory selectByCategoryIdUserId(int categoryId,int userId) {
 
-        return mapper.selectByPrimaryKey(categoryId);
+        ShopCategory entity = new ShopCategory();
+
+        example = new ShopCategoryExample();
+
+        // カテゴリID・ユーザIDによる検索（論理削除レコードは対象外）
+        example.createCriteria().andCategoryIdEqualTo(categoryId).andUserIdEqualTo(userId).andDisableFlagEqualTo("0");
+
+        List<ShopCategory> entityList = mapper.selectByExample(example);
+
+        if(entityList != null && !entityList.isEmpty()){
+            entity = entityList.get(0);
+        }
+
+        return entity;
     }
 
     @Override
@@ -89,7 +102,7 @@ public class ShopCategoryDaoImpl implements ShopCategoryDao {
         result = 1;
 
         return result;
-        
+
     }
 
 }

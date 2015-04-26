@@ -1,11 +1,16 @@
 package jp.co.ikitsuke.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 
+import jp.co.ikitsuke.exception.ForbiddenException;
 import jp.co.ikitsuke.form.ShopAddInputForm;
 import jp.co.ikitsuke.form.ShopAddOutputForm;
+import jp.co.ikitsuke.logic.LoginLogic;
 import jp.co.ikitsuke.logic.ShopCategoryLogic;
 import jp.co.ikitsuke.logic.ShopInfoLogic;
+import jp.co.ikitsuke.model.LoginModel;
 import jp.co.ikitsuke.model.ShopCategoryModel;
 import jp.co.ikitsuke.model.ShopInfoModel;
 
@@ -21,37 +26,64 @@ import org.springframework.web.servlet.ModelAndView;
 public class ShopAddController {
 
     @Autowired
+    LoginLogic loginLogic;
+
+    @Autowired
     ShopCategoryLogic shopCategoryLogic;
 
     @Autowired
     ShopInfoLogic shopInfoLogic;
 
     @RequestMapping(value = "/categoryList/{categoryId}/shopAdd", method = RequestMethod.GET)
-    public ModelAndView shopAdd(@PathVariable("categoryId") String categoryId, @ModelAttribute("ShopAddOutputForm") ShopAddOutputForm shopAddOutputForm, @ModelAttribute("ShopAddInputForm") ShopAddInputForm shopAddInputForm) {
+    public ModelAndView shopAdd(@PathVariable("categoryId") String categoryId,
+            @ModelAttribute("ShopAddOutputForm") ShopAddOutputForm shopAddOutputForm,
+            @ModelAttribute("ShopAddInputForm") ShopAddInputForm shopAddInputForm,
+            Principal principal) {
 
-        // ModelAndViewのインスタンス生成
-        ModelAndView mv = new ModelAndView("shopAdd");
+        // ログイン時情報よりuser情報取得
+        LoginModel loginModel = loginLogic.getModel(principal.getName());
 
         // カテゴリーModelの取得
-        ShopCategoryModel shopCategoryModel = shopCategoryLogic.getCategory(Integer.parseInt(categoryId));
-        // Modelが取得できた場合はIDとカテゴリーをセット
-        if (shopCategoryModel != null) {
-            shopAddOutputForm.setCategoryId(shopCategoryModel.getCategoryId());
-            shopAddOutputForm.setCategoryName(shopCategoryModel.getCategoryName());
+        ShopCategoryModel categoryModel = shopCategoryLogic.getCategory(Integer.parseInt(categoryId),loginModel.getUserId());
+
+        // Model取得不可の場合はForbiddenException
+        if (categoryModel == null || categoryModel.getCategoryId() == 0) {
+            throw new ForbiddenException("ForbiddenException");
         }
 
+        // ModelAndViewのインスタンス生成
+        ModelAndView mav = new ModelAndView("shopAdd");
+
+        shopAddOutputForm.setCategoryId(categoryModel.getCategoryId());
+        shopAddOutputForm.setCategoryName(categoryModel.getCategoryName());
+
         // ModelAndViewにセット
-        mv.addObject("ShopAddOutputForm", shopAddOutputForm);
-        mv.addObject("ShopAddInputForm", shopAddInputForm);
+        mav.addObject("ShopAddOutputForm", shopAddOutputForm);
+        mav.addObject("ShopAddInputForm", shopAddInputForm);
 
         // 店舗詳細画面の表示
-        return mv;
+        return mav;
     }
 
     @RequestMapping(value = "/categoryList/{categoryId}/shopAdd/doAdd", method = RequestMethod.POST)
-    public String doShopAdd(@PathVariable("categoryId") String categoryId, @ModelAttribute("ShopEditInputForm") ShopAddInputForm shopAddInputForm, HttpServletRequest request) {
+    public String doShopAdd(@PathVariable("categoryId") String categoryId,
+            @ModelAttribute("ShopEditInputForm") ShopAddInputForm shopAddInputForm,
+            HttpServletRequest request,
+            Principal principal) {
+
+        // ログイン時情報よりuser情報取得
+        LoginModel loginModel = loginLogic.getModel(principal.getName());
+
+        // カテゴリーModelの取得
+        ShopCategoryModel categoryModel = shopCategoryLogic.getCategory(Integer.parseInt(categoryId),loginModel.getUserId());
+
+        // Model取得不可の場合はForbiddenException
+        if (categoryModel == null || categoryModel.getCategoryId() == 0) {
+            throw new ForbiddenException("ForbiddenException");
+        }
 
         ShopInfoModel shopInfoModel = new ShopInfoModel();
+
         // Modelを入力値をセット
         shopInfoModel.setCategoryId(Integer.parseInt(categoryId));
         shopInfoModel.setShopName(shopAddInputForm.getShopName());

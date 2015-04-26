@@ -82,7 +82,20 @@ public class ShopInfoDaoImpl implements ShopInfoDao {
     @Override
     public ShopInfo selectByShopId(int shopId) {
 
-        return mapper.selectByPrimaryKey(shopId);
+        ShopInfo entity = new ShopInfo();
+
+        example = new ShopInfoExample();
+
+        // 店舗IDによる検索（論理削除レコードは対象外）
+        example.createCriteria().andShopIdEqualTo(shopId).andDeleteFlagEqualTo("0");
+
+        List<ShopInfo> entityList = mapper.selectByExample(example);
+
+        if(entityList != null && !entityList.isEmpty()){
+            entity = entityList.get(0);
+        }
+        return entity;
+
     }
 
 }
