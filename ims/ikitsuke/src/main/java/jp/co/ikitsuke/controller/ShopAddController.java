@@ -3,6 +3,7 @@ package jp.co.ikitsuke.controller;
 import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import jp.co.ikitsuke.exception.ForbiddenException;
 import jp.co.ikitsuke.form.ShopAddInputForm;
@@ -16,6 +17,7 @@ import jp.co.ikitsuke.model.ShopInfoModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,7 +69,9 @@ public class ShopAddController {
 
     @RequestMapping(value = "/categoryList/{categoryId}/shopAdd/doAdd", method = RequestMethod.POST)
     public String doShopAdd(@PathVariable("categoryId") String categoryId,
-            @ModelAttribute("ShopEditInputForm") ShopAddInputForm shopAddInputForm,
+            @ModelAttribute("ShopAddOutputForm") ShopAddOutputForm shopAddOutputForm,
+            @Valid @ModelAttribute("ShopAddInputForm") ShopAddInputForm shopAddInputForm,
+            BindingResult bindingResult,
             HttpServletRequest request,
             Principal principal) {
 
@@ -81,7 +85,14 @@ public class ShopAddController {
         if (categoryModel == null || categoryModel.getCategoryId() == 0) {
             throw new ForbiddenException("ForbiddenException");
         }
-
+        
+        //Validationチェック
+        if(bindingResult.hasErrors()){
+            // カテゴリー名の再取得
+            ShopCategoryModel shopCategoryModel = shopCategoryLogic.getCategory(Integer.parseInt(categoryId),loginModel.getUserId());
+            shopAddOutputForm.setCategoryName(shopCategoryModel.getCategoryName());
+            return "/shopAdd";
+        }
         ShopInfoModel shopInfoModel = new ShopInfoModel();
 
         // Modelを入力値をセット

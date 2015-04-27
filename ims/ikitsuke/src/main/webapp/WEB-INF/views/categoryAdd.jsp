@@ -39,7 +39,7 @@
 				<dl class="detailedit_list">
 					<dt>カテゴリ名</dt>
 					<dd>
-						<form:input path="categoryName" type="text" maxlength="15" value="" class="detailedit_form" />
+						<form:input path="categoryName" type="text" maxlength="10" value="" class="detailedit_form" />
                         <form:errors path = "categoryName" />
 					</dd>
 				</dl>
