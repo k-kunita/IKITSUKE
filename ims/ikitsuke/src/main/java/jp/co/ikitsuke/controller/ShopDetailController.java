@@ -89,6 +89,7 @@ public class ShopDetailController {
     public String doShopEdit(
         @PathVariable("categoryId") String categoryId,
         @PathVariable("shopId") String shopId,
+        @ModelAttribute("ShopEditOutputForm") ShopEditOutputForm shopEditOutputForm,
         @Valid @ModelAttribute("ShopEditInputForm") ShopEditInputForm shopEditInputForm,
         BindingResult bindingResult,
         HttpServletRequest request,
@@ -114,6 +115,7 @@ public class ShopDetailController {
 
         //Validationチェック
         if(bindingResult.hasErrors()){
+            shopEditOutputForm.setCategoryName(categoryModel.getCategoryName());
             return "/shopDetail";
         }
 

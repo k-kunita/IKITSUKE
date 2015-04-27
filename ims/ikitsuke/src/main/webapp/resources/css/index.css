@@ -50,7 +50,7 @@ body {
   background-color: #F5F5F5;
   overflow: auto;
   padding-bottom: 60px;
-  
+
 }
 
 .footer_iner {
@@ -69,4 +69,8 @@ body {
 
 .error_img {
   padding: 10px 0;
+}
+
+.error_area {
+    color: red;
 }

@@ -40,7 +40,7 @@
 					<dt>カテゴリ名</dt>
 					<dd>
 						<form:input path="categoryName" type="text" maxlength="15" value="" class="detailedit_form" />
-						<form:errors path = "categoryName" />
+						<form:errors path = "categoryName" class="error_area" />
 					</dd>
 				</dl>
 
