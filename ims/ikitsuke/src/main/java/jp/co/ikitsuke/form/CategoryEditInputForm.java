@@ -11,7 +11,7 @@ public class CategoryEditInputForm {
 
     /** 店舗カテゴリ名 */
     @NotEmpty
-    @Size(max=10)
+    @Size(max = 10, message = "{categoryName}")
     private String categoryName;
 
     public int getCategoryId() {

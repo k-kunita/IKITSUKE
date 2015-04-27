@@ -39,7 +39,6 @@
 				<dl class="detailedit_list">
 					<dt>カテゴリ名</dt>
 					<dd>${ShopEditOutputForm.categoryName}</dd>
-					 <!-- <form:errors path="*" element="div" /> -->
 					<dt>店舗名</dt>
 					<dd>
 						<form:input path="shopName" type="text" maxlength="15" value="" class="detailedit_form" />

@@ -3,6 +3,10 @@
  */
 package jp.co.ikitsuke.form;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  *
  * カテゴリ一覧<br>
@@ -14,6 +18,8 @@ package jp.co.ikitsuke.form;
 public class CategoryAddInputForm extends AbstractForm {
 
     /** カテゴリ名 */
+    @NotEmpty
+    @Size(max = 10, message = "{categoryName}")
     private String categoryName;
 
     /**
