@@ -69,6 +69,11 @@
 						<input type="button" value="編集"
 							onClick="location.href='shopDetail/<c:out value="${obj.shopId}"/>'"
 							class="edit_ikitsuke_btn btn btn-warning">
+						<c:if test="${obj.shopPageUrl!=''}">
+						<input type="button" value="Access!"
+							onClick="location.href='<c:out value="${obj.shopPageUrl}"/>'"
+							class="access_ikitsuke_btn btn btn-warning">
+						</c:if>
 					</div>
 				</div>
 			</div>

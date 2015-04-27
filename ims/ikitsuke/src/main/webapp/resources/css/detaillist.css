@@ -60,9 +60,14 @@ text-align: center;
 
 .text-area {
 	width : 200px;
-	
+
 }
 
 .edit_ikitsuke_btn {
  width: 122px;
+}
+
+.access_ikitsuke_btn {
+ width: 122px;
+ float: right;
 }
